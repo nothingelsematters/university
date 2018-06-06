@@ -33,18 +33,18 @@ private:
         }
         return wave;
     }
+    bool abs_more(BigInteger const& b) {
+        return ((digits.size() > b.digits.size()) || ((digits.size() == b.digits.size()) && (digits.back() > b.digits.back())));
+    }
 public:
     friend BigInteger operator -(BigInteger b){
         b.sign = !b.sign;
         return b;
     }
-    bool operator >(BigInteger const& b) {
-        return ((digits.size() > b.digits.size()) || ((digits.size() == b.digits.size()) && (digits.back() > b.digits.back())));
-    }
     BigInteger operator -(BigInteger b) {
         if (sign != b.sign) return ((!sign) ? (-(-*this + b)) : (*this + -b));
         if (!sign) return (-b - -*this);
-        if (*this > b) return (-(b - *this));
+        if (*this.abs_more(b)) return (-(b - *this));
         int carry = 0;
         for (int i = 0; i < digits.size() || carry; ++i) {
                 int c = ((int) b.digits[i] - carry - (int)(i < digits.size() ? digits[i] : 0));
@@ -72,12 +72,9 @@ public:
         *this = *this + b;
         return *this;
     }
-    BigInteger () {
-        sign = true;
-    }
-    BigInteger (int32_t b) {
+    BigInteger () : sign (true) {}
+    BigInteger (int32_t b) : sign(b > 0) {
         digits.push_back(abs(b));
-        sign = (b > 0);
     }
 };
 
