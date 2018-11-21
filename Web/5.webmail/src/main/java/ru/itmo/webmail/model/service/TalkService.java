@@ -35,7 +35,8 @@ public class TalkService {
         List<Talk> talks = findAllForUser(id);
         List<FrontTalk> result = new ArrayList<>();
         for (Talk talk: talks) {
-            result.add(new FrontTalk(userService.findById(talk.getSourceUserId()).getLogin(), talk.getText(),
+            result.add(new FrontTalk(userService.findById(talk.getSourceUserId()).getLogin(),
+                    userService.findById(talk.getTargetUserId()).getLogin(), talk.getText(),
                     talk.getCreationTime()));
         }
         return result;
@@ -43,6 +44,7 @@ public class TalkService {
 
     public static class FrontTalk {
         private String source;
+        private String target;
         private String text;
         private Date time;
 
@@ -54,7 +56,8 @@ public class TalkService {
             this.time = time;
         }
 
-        public FrontTalk(String source, String text, Date time) {
+        public FrontTalk(String source, String target, String text, Date time) {
+            this.target = target;
             this.source = source;
             this.text = text;
             this.time = time;
@@ -75,6 +78,14 @@ public class TalkService {
 
         public void setSource(String source) {
             this.source = source;
+        }
+
+        public String getTarget() {
+            return target;
+        }
+
+        public void setTarget(String target) {
+            this.target = target;
         }
     }
 }
