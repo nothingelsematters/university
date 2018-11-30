@@ -16,4 +16,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query(value = "SELECT * FROM user WHERE login=?1 AND passwordSha=SHA1(CONCAT('e979614203d4fd9f', ?2))", nativeQuery = true)
     User findByLoginAndPassword(String login, String password);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE user SET disabled=?2 WHERE id=?1", nativeQuery = true)
+    void updateDisabled(long id, Boolean disabled);
 }

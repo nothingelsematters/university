@@ -32,9 +32,8 @@
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
-            <#if user??>
-                <li><a href="/users">Users</a></li>
-            </#if>
+            <li><a href="/addNotice">Add Notice</a></li>
+            <li><a href="/users">Users</a></li>
         </ul>
     </nav>
 </header>
@@ -45,8 +44,9 @@
                 Pay attention
             </div>
             <div class="body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ducimus enim facere impedit nobis,
-                nulla placeat quam suscipit unde voluptatibus.
+                <#list notices as notice>
+                    <li>${notice.content}</li>
+                </#list>
             </div>
             <div class="footer">
                 <a href="#">View all</a>

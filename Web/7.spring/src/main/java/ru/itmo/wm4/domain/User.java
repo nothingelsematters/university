@@ -21,6 +21,8 @@ public class User {
     @CreationTimestamp
     private Date creationTime;
 
+    private Boolean disabled;
+
     public long getId() {
         return id;
     }
@@ -43,5 +45,13 @@ public class User {
 
     public void setCreationTime(Date creationTime) {
         this.creationTime = creationTime;
+    }
+
+    public Boolean getDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
     }
 }

@@ -3,6 +3,7 @@ package ru.itmo.wm4.form.validator;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+import ru.itmo.wm4.domain.User;
 import ru.itmo.wm4.form.UserCredentials;
 import ru.itmo.wm4.service.UserService;
 
@@ -23,8 +24,11 @@ public class UserCredentialsEnterValidator implements Validator {
     public void validate(Object target, Errors errors) {
         if (!errors.hasErrors()) {
             UserCredentials registerForm = (UserCredentials) target;
-            if (userService.findByLoginAndPassword(registerForm.getLogin(), registerForm.getPassword()) == null) {
+            User user = userService.findByLoginAndPassword(registerForm.getLogin(), registerForm.getPassword());
+            if (user == null) {
                 errors.rejectValue("password", "invalid.login.or.password", "invalid login or password");
+            } else if (user.getDisabled()) {
+                errors.rejectValue("login", "invalid.login.or.password", "this user is disabled");
             }
         }
     }

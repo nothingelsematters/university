@@ -5,3 +5,5 @@
 + <a href="https://github.com/nothingelsematters/University/tree/master/Web/5.webmail">SQL (SQL basics, refactoring with Java reflection, MariaDB)</a>
 + <a href="https://github.com/nothingelsematters/University/tree/master/Web/6.js">AJAX (Javascript, AJAX)</a>
 + <a href="https://github.com/nothingelsematters/University/tree/master/Web/7.spring">Spring (Spring Boot)</a>
++ <a href="https://github.com/nothingelsematters/University/tree/master/Web/8.tableRelations">Spring (OneToMany, ManyToOne, ManyToMany relations)</a>
++ <a href="https://github.com/nothingelsematters/University/tree/master/Web/9.vueJS">Vue.js (Basics)</a>
