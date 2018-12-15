@@ -33,7 +33,7 @@ public class User {
 
     @JsonIgnore
     @OneToMany
-    @JoinColumn(name = "comment_id")
+    @JoinColumn(name = "user_id")
     @OrderBy("creationTime DESC")
     private List<Comment> comments;
 
