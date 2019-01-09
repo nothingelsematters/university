@@ -1,6 +1,6 @@
 # C++
 
-+ <a href="https://github.com/nothingelsematters/similarFiles/tree/master/">Similar Files</a>
++ <a href="https://github.com/nothingelsematters/SimilarFiles/tree/master/">Similar Files</a>
 
     An utility to find files with similar content in directories
 ***
