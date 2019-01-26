@@ -7,3 +7,7 @@
 + <a href="https://github.com/nothingelsematters/SubstringFinder/tree/master/">Substring Finder</a>
 
     An utility to find the given substring in directories
+***
++ <a href="https://github.com/nothingelsematters/Function/tree/master/">Exam: Function</a>
+
+    std::function implementation
