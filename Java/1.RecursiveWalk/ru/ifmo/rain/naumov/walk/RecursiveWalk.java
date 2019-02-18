@@ -18,13 +18,15 @@ public class RecursiveWalk {
         Path outputPath;
         try {
             outputPath = Path.of(args[1]);
-            Files.createDirectories(outputPath);
-        } catch (InvalidPathException e) {
+            if (outputPath.getParent() != null) {
+                Files.createDirectories(outputPath.getParent());
+            }
+        } catch (InvalidPathException | IOException e) {
             System.out.println("Can't make an output file");
             return;
         }
 
-        try (FileWriter fileWriter = new FileWriter(outputPath, StandardCharsets.UTF_8)) {
+        try (FileWriter fileWriter = new FileWriter(outputPath.toString(), StandardCharsets.UTF_8)) {
             try (Stream<String> inputStream = Files.lines(Path.of(args[0]), StandardCharsets.UTF_8)) {
 
                 inputStream.forEach(it -> {
