@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+Main-Class: ru.ifmo.rain.naumov.implementor.JarImplementor
