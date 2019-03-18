@@ -6,3 +6,4 @@
 + <a href="https://github.com/nothingelsematters/University/tree/master/Web">Web</a>
 + <a href="https://github.com/nothingelsematters/University/tree/master/C++">C++</a>
 + <a href="https://github.com/nothingelsematters/University/tree/master/Java">Java</a>
++ <a href="https://github.com/nothingelsematters/University/tree/master/Mathematical Logic">Mathematical Logic</a>
