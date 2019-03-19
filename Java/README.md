@@ -27,7 +27,8 @@
             java/info/kgeorgiy/java/advanced/walk/samples/1234
             java/info/kgeorgiy/java/advanced/walk/samples/1
             java/info/kgeorgiy/java/advanced/walk/samples/binary
-            java/info/kgeorgiy/java/advanced/walk/samples/no-such-file```
+            java/info/kgeorgiy/java/advanced/walk/samples/no-such-file
+            ```
 
         + Выходной файл
 
@@ -38,7 +39,8 @@
             81ee2b55 java/info/kgeorgiy/java/advanced/walk/samples/1234
             050c5d2e java/info/kgeorgiy/java/advanced/walk/samples/1
             8e8881c5 java/info/kgeorgiy/java/advanced/walk/samples/binary
-            00000000 java/info/kgeorgiy/java/advanced/walk/samples/no-such-file```
+            00000000 java/info/kgeorgiy/java/advanced/walk/samples/no-such-file
+            ```
 
 
 + Усложненная версия:
@@ -53,7 +55,8 @@
 
         ```
         java/info/kgeorgiy/java/advanced/walk/samples/binary
-        java/info/kgeorgiy/java/advanced/walk/samples```
+        java/info/kgeorgiy/java/advanced/walk/samples
+        ```
 
         + Выходной файл
 
@@ -63,7 +66,8 @@
         2076af58 java/info/kgeorgiy/java/advanced/walk/samples/12
         72d607bb java/info/kgeorgiy/java/advanced/walk/samples/123
         81ee2b55 java/info/kgeorgiy/java/advanced/walk/samples/1234
-        8e8881c5 java/info/kgeorgiy/java/advanced/walk/samples/binary```
+        8e8881c5 java/info/kgeorgiy/java/advanced/walk/samples/binary
+        ```
 
 
 + При выполнении задания следует обратить внимание на:
@@ -78,8 +82,6 @@
     + Проверяется исходный код задания.
     + Весь код должен находиться в пакете ru.ifmo.rain.фамилия.walk.
 
----
-
 ## [Домашнее задание 2. Множество на массиве](https://github.com/nothingelsematters/University/tree/master/Java/2.ArraySet/)
 
 + Разработайте класс ArraySet, реализующие неизменяемое упорядоченное множество.
@@ -89,8 +91,6 @@
 + При выполнении задания следует обратить внимание на:
     + Применение стандартных коллекций.
     + Избавление от повторяющегося кода.
-
----
 
 ## [Домашнее задание 3. Студенты](https://github.com/nothingelsematters/University/tree/master/Java/3.StudentDB/)
 
@@ -103,8 +103,6 @@
 + При выполнении задания следует обратить внимание на:
     + Применение лямбда-выражений и потоков.
     + Избавление от повторяющегося кода.
-
----
 
 ## [Домашнее задание 4. Implementor](https://github.com/nothingelsematters/University/tree/master/Java/4.Implementor/)
 
@@ -126,8 +124,6 @@
     - Сложный — Implementor должен уметь реализовывать и классы и интерфейсы. Поддержка generics не требуется.
     - Бонусный — Implementor должен уметь реализовывать generic-классы и интерфейсы. Сгенерированный код должен иметь корректные параметры типов и не порождать UncheckedWarning.
 
----
-
 ## [Домашнее задание 5. Jar Implementor](https://github.com/nothingelsematters/University/tree/master/Java/5.JarImplementor/)
 
 + Создайте .jar-файл, содержащий скомпилированный Implementor и сопутствующие классы.
@@ -145,8 +141,6 @@
 
 + Сложная версия. Решение должно быть модуляризовано.
 
----
-
 ## [Домашнее задание 6. Javadoc](https://github.com/nothingelsematters/University/tree/master/Java/6.Javadoc/)
 
 + Документируйте класс Implementor и сопутствующие классы с применением Javadoc.
@@ -160,3 +154,28 @@
     + сгенерированная документация.
 
 + Данное домашнее задание сдается только вместе с предыдущим. Предыдущее домашнее задание отдельно сдать будет нельзя.
+
+## [Домашнее задание 7. Итеративный параллелизм](https://github.com/nothingelsematters/University/tree/master/Java/7.IterativeParallelism/)
+
++ Реализуйте класс IterativeParallelism, который будет обрабатывать списки в несколько потоков.
+
++ В простом варианте должны быть реализованы следующие методы:
+
+    + `minimum(threads, list, comparator)` — первый минимум;
+    + `maximum(threads, list, comparator)` — первый максимум;
+    + `all(threads, list, predicate)` — проверка, что все элементы списка удовлетворяют предикату;
+    + `any(threads, list, predicate)` — проверка, что существует элемент списка, удовлетворяющий предикату.
+
++ В сложном варианте должны быть дополнительно реализованы следующие методы:
+
+    + `filter(threads, list, predicate)` — вернуть список, содержащий элементы удовлетворяющие предикату;
+    + `map(threads, list, function)` — вернуть список, содержащий результаты применения функции;
+    + `join(threads, list)` — конкатенация строковых представлений элементов списка.
+
++ Во все функции передается параметр threads — сколько потоков надо использовать при вычислении. Вы можете рассчитывать, что число потоков не велико.
+
++ Не следует рассчитывать на то, что переданные компараторы, предикаты и функции работают быстро.
+
++ При выполнении задания нельзя использовать Concurrency Utilities.
+
++ Рекомендуется подумать, какое отношение к заданию имеют моноиды.
