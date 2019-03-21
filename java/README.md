@@ -1,4 +1,4 @@
-## [Домашнее задание 1. Обход файлов](https://github.com/nothingelsematters/University/tree/master/Java/1.RecursiveWalk/)
+## [Домашнее задание 1. Обход файлов](java/1-recursive-walk)
 
 + Разработайте класс Walk, осуществляющий подсчет хеш-сумм файлов.
 
@@ -82,7 +82,7 @@
     + Проверяется исходный код задания.
     + Весь код должен находиться в пакете ru.ifmo.rain.фамилия.walk.
 
-## [Домашнее задание 2. Множество на массиве](https://github.com/nothingelsematters/University/tree/master/Java/2.ArraySet/)
+## [Домашнее задание 2. Множество на массиве](java/2-array-set)
 
 + Разработайте класс ArraySet, реализующие неизменяемое упорядоченное множество.
     + Класс ArraySet должен реализовывать интерфейс SortedSet (упрощенная версия) или NavigableSet (усложненная версия).
@@ -92,7 +92,7 @@
     + Применение стандартных коллекций.
     + Избавление от повторяющегося кода.
 
-## [Домашнее задание 3. Студенты](https://github.com/nothingelsematters/University/tree/master/Java/3.StudentDB/)
+## [Домашнее задание 3. Студенты](java/3-student-db)
 
 + Разработайте класс StudentDB, осуществляющий поиск по базе данных студентов.
 
@@ -104,7 +104,7 @@
     + Применение лямбда-выражений и потоков.
     + Избавление от повторяющегося кода.
 
-## [Домашнее задание 4. Implementor](https://github.com/nothingelsematters/University/tree/master/Java/4.Implementor/)
+## [Домашнее задание 4. Implementor](java/4-implementor)
 
 + Реализуйте класс Implementor, который будет генерировать реализации классов и интерфейсов.
 
@@ -124,7 +124,7 @@
     - Сложный — Implementor должен уметь реализовывать и классы и интерфейсы. Поддержка generics не требуется.
     - Бонусный — Implementor должен уметь реализовывать generic-классы и интерфейсы. Сгенерированный код должен иметь корректные параметры типов и не порождать UncheckedWarning.
 
-## [Домашнее задание 5. Jar Implementor](https://github.com/nothingelsematters/University/tree/master/Java/5.JarImplementor/)
+## [Домашнее задание 5. Jar Implementor](java/5-jarimplementor)
 
 + Создайте .jar-файл, содержащий скомпилированный Implementor и сопутствующие классы.
 
@@ -141,7 +141,7 @@
 
 + Сложная версия. Решение должно быть модуляризовано.
 
-## [Домашнее задание 6. Javadoc](https://github.com/nothingelsematters/University/tree/master/Java/6.Javadoc/)
+## [Домашнее задание 6. Javadoc](java/6-javadoc)
 
 + Документируйте класс Implementor и сопутствующие классы с применением Javadoc.
 
@@ -155,7 +155,7 @@
 
 + Данное домашнее задание сдается только вместе с предыдущим. Предыдущее домашнее задание отдельно сдать будет нельзя.
 
-## [Домашнее задание 7. Итеративный параллелизм](https://github.com/nothingelsematters/University/tree/master/Java/7.IterativeParallelism/)
+## [Домашнее задание 7. Итеративный параллелизм](java/7-iterative-parallelism)
 
 + Реализуйте класс IterativeParallelism, который будет обрабатывать списки в несколько потоков.
 
@@ -179,3 +179,32 @@
 + При выполнении задания нельзя использовать Concurrency Utilities.
 
 + Рекомендуется подумать, какое отношение к заданию имеют моноиды.
+
+## [Домашнее задание 8. Параллельный запуск](java/8-parallel-mapper)
++ Напишите класс ParallelMapperImpl, реализующий интерфейс ParallelMapper.
+
+    ```java
+    public interface ParallelMapper extends AutoCloseable {
+        <T, R> List<R> run(
+            Function<? super T, ? extends R> f, 
+            List<? extends T> args
+        ) throws InterruptedException;
+
+        @Override
+        void close() throws InterruptedException;
+    }
+    ```
+
+    + Метод run должен параллельно вычислять функцию `f` на каждом из указанных аргументов (`args`).
+    + Метод close должен останавливать все рабочие потоки.
+    + Конструктор `ParallelMapperImpl(int threads)` создает `threads` рабочих потоков, которые могут быть использованы для распараллеливания.
+    + К одному ParallelMapperImpl могут одновременно обращаться несколько клиентов.
+    + Задания на исполнение должны накапливаться в очереди и обрабатываться в порядке поступления.
+    + В реализации не должно быть активных ожиданий. 
+    
++ Модифицируйте касс `IterativeParallelism` так, чтобы он мог использовать `ParallelMapper`.
+
+    + Добавьте конструктор IterativeParallelism(ParallelMapper)
+    + Методы класса должны делить работу на `threads` фрагментов и исполнять их при помощи `ParallelMapper`.
+    + Должна быть возможность одновременного запуска и работы нескольких клиентов, использующих один `ParallelMapper`.
+    + При наличии `ParallelMapper` сам `IterativeParallelism` новые потоки создавать не должен. 
