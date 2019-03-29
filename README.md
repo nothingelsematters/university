@@ -1,9 +1,10 @@
 # University
 
-+ [Algorithms and Data Structures](https://github.com/nothingelsematters/University/tree/master/algorithms-and-data-structures)
-+ [Discrete Maths](https://github.com/nothingelsematters/University/tree/master/discrete-maths)
-+ [Paradigms of Programming](https://github.com/nothingelsematters/University/tree/master/paradigms-of-programming)
-+ [Web Programming](https://github.com/nothingelsematters/University/tree/master/web)
-+ [C++](https://github.com/nothingelsematters/University/tree/master/c++)
-+ [Java](https://github.com/nothingelsematters/University/tree/master/java)
-+ [Mathematical Logic](https://github.com/nothingelsematters/University/tree/master/mathematical-logic)
++ [Algorithms and Data Structures](algorithms-and-data-structures)
++ [Discrete Maths](discrete-maths)
++ [Paradigms of Programming](paradigms-of-programming)
++ [Web Programming](web)
++ [C++](c++)
++ [Java](java)
++ [Mathematical Logic](mathematical-logic)
++ [Operation Systems](operation-systems)
