@@ -1,0 +1,15 @@
+[submodule "c++/similar-files"]
+	path = c++/similar-files
+	url = https://github.com/nothingelsematters/similar-files.git
+[submodule "c++/substring-finder"]
+	path = c++/substring-finder
+	url = https://github.com/nothingelsematters/substring-finder.git
+[submodule "c++/function"]
+	path = c++/function
+	url = https://github.com/nothingelsematters/function.git
+[submodule "operation-systems/terminal"]
+	path = operation-systems/terminal
+	url = https://github.com/nothingelsematters/terminal.git
+[submodule "operation-systems/find"]
+	path = operation-systems/find
+	url = https://github.com/nothingelsematters/find.git
