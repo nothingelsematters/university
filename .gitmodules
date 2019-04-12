@@ -13,3 +13,6 @@
 [submodule "c++/similar-files"]
 	path = c++/similar-files
 	url = https://github.com/nothingelsematters/similar-files.git
+[submodule "operation-systems/pseudo-jit"]
+	path = operation-systems/pseudo-jit
+	url = https://github.com/nothingelsematters/pseudo-jit.git
