@@ -16,3 +16,6 @@
 [submodule "operation-systems/pseudo-jit"]
 	path = operation-systems/pseudo-jit
 	url = https://github.com/nothingelsematters/pseudo-jit.git
+[submodule "operation-systems/libs-acquaintance"]
+	path = operation-systems/libs-acquaintance
+	url = https://github.com/nothingelsematters/libs-acquaintance
