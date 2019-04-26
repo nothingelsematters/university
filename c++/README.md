@@ -8,6 +8,6 @@
 
     An utility to find the given substring in directories
 ***
-+ [Exam: Function](https://github.com/nothingelsematters/functio)
++ [Exam: Function](https://github.com/nothingelsematters/function)
 
     std::function implementation
