@@ -19,3 +19,6 @@
 [submodule "operation-systems/libs-acquaintance"]
 	path = operation-systems/libs-acquaintance
 	url = https://github.com/nothingelsematters/libs-acquaintance
+[submodule "operation-systems/synchronous-socket-service"]
+	path = operation-systems/synchronous-socket-service
+	url = https://github.com/nothingelsematters/synchronous-socket-service.git
