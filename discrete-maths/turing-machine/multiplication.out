@@ -1,0 +1,129 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+
+s 0 -> s 0 <
+s 1 -> s 1 <
+s _ -> right # >
+
+right 0 -> right 0 >
+right 1 -> right 1 >
+right 2 -> right 2 >
+right 3 -> right 3 >
+right # -> right # >
+right * -> right * >
+right _ -> takeone _ <
+
+takeone 0 -> transfer0 _ <
+takeone 1 -> maxleft1 _ <
+takeone * -> clear _ <
+
+clear 0 -> clear _ <
+clear 1 -> clear _ <
+clear # -> left _ <
+
+left 0 -> left 0 <
+left 1 -> left 1 <
+left 2 -> left 0 <
+left 3 -> left 1 <
+left _ -> ac _ >
+
+transfer0 0 -> transfer0 0 <
+transfer0 1 -> transfer0 1 <
+transfer0 2 -> transfer0 2 <
+transfer0 3 -> transfer0 3 <
+transfer0 * -> transfer0 * <
+transfer0 # -> put0 # <
+
+put0 0 -> right 2 >
+put0 1 -> right 3 >
+put0 2 -> put0 2 <
+put0 3 -> put0 3 <
+put0 _ -> right 2 >
+
+maxleft1 0 -> maxleft1 0 <
+maxleft1 1 -> maxleft1 1 <
+maxleft1 2 -> maxleft1 2 <
+maxleft1 3 -> maxleft1 3 <
+maxleft1 * -> maxleft1 * <
+maxleft1 # -> maxleft1 # <
+maxleft1 _ -> plus _ >
+
+
+
+plus 0 -> plus 0 >
+plus 1 -> plus 1 >
+plus 2 -> plus 2 >
+plus 3 -> plus 3 >
+plus 4 -> plus 4 >
+plus 5 -> plus 5 >
+plus # -> search # >
+
+search 0 -> search 0 >
+search 1 -> search 1 >
+search 2 -> take 2 <
+search 3 -> take 3 <
+search * -> take * <
+
+take 0 -> zero 2 <
+take 1 -> one 3 <
+take # -> getbackleft # <
+
+getbackleft 0 -> getbackleft 0 <
+getbackleft 1 -> getbackleft 1 <
+getbackleft 2 -> getbackleft 2 <
+getbackleft 3 -> getbackleft 3 <
+getbackleft 4 -> getbackleft 0 <
+getbackleft 5 -> getbackleft 1 <
+getbackleft _ -> processed _ >
+
+processed 0 -> processed 0 >
+processed 1 -> processed 1 >
+processed 2 -> update 2 <
+processed 3 -> update 3 <
+processed # -> update # <
+
+update 0 -> togetback 2 >
+update 1 -> togetback 3 >
+update _ -> togetback 2 >
+
+togetback 2 -> togetback 2 >
+togetback 3 -> togetback 3 >
+togetback # -> getback # >
+
+getback 2 -> getback 0 >
+getback 3 -> getback 1 >
+getback * -> right * >
+
+zero 0 -> zero 0 <
+zero 1 -> zero 1 <
+zero 2 -> zero 2 <
+zero 3 -> zero 3 <
+zero # -> plus0 # <
+
+plus0 0 -> plus 4 >
+plus0 1 -> plus 5 >
+plus0 2 -> plus0 2 <
+plus0 3 -> plus0 3 <
+plus0 4 -> plus0 4 <
+plus0 5 -> plus0 5 <
+plus0 _ -> plus 4 >
+
+one 0 -> one 0 <
+one 1 -> one 1 <
+one 2 -> one 2 <
+one 3 -> one 3 <
+one # -> plus1 # <
+
+plus1 0 -> plus 5 >
+plus1 1 -> shift1 4 <
+plus1 2 -> plus1 2 <
+plus1 3 -> plus1 3 <
+plus1 4 -> plus1 4 <
+plus1 5 -> plus1 5 <
+plus1 _ -> plus 5 >
+
+shift1 0 -> plus 1 >
+shift1 1 -> shift1 0 <
+shift1 _ -> plus 1 >

@@ -1,0 +1,15 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+s _ -> ac _ ^
+s ( -> opened X >
+s ) -> rj _ ^
+s + -> s _ >
+opened + -> opened + >
+opened ( -> opened ( >
+opened ) -> run + <
+run X -> s _ >
+run ( -> run ( <
+run ) -> run ) <
+run + -> run + <

@@ -1,0 +1,58 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+s 0 -> right 2 >
+s 1 -> right 3 >
+s 2 -> check 2 <
+s 3 -> check 3 <
+
+right 0 -> right 0 >
+right 1 -> right 1 >
+right 2 -> take 2 <
+right 3 -> take 3 <
+right _ -> take _ <
+
+take 0 -> left 2 <
+take 1 -> left 3 <
+take 2 -> rj _ ^
+take 3 -> rj _ ^
+
+left 0 -> left 0 <
+left 1 -> left 1 <
+left 2 -> s 2 >
+left 3 -> s 3 >
+left _ -> s _ >
+
+check 0 -> check 0 <
+check 1 -> check 1 <
+check 2 -> check0-right 0 >
+check 3 -> check1-right 1 >
+check _ -> ac _ ^
+
+check-left 0 -> check 0 <
+check-left 1 -> check 1 <
+check-left 2 -> check-left 2 <
+check-left 3 -> check-left 3 <
+
+check0-right 0 -> check0-right 0 >
+check0-right 1 -> check0-right 1 >
+check0-right 2 -> check0-right 2 >
+check0-right 3 -> check0-right 3 >
+check0-right _ -> take0 _ <
+
+take0 0 -> rj _ ^
+take0 1 -> rj _ ^
+take0 2 -> check-left _ <
+take0 3 -> rj _ ^
+
+check1-right 0 -> check1-right 0 >
+check1-right 1 -> check1-right 1 >
+check1-right 2 -> check1-right 2 >
+check1-right 3 -> check1-right 3 >
+check1-right _ -> take1 _ <
+
+take1 0 -> rj _ ^
+take1 1 -> rj _ ^
+take1 2 -> rj _ ^
+take1 3 -> check-left _ <

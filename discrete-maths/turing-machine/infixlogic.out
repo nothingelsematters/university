@@ -1,0 +1,52 @@
+2
+
+S 0 _ -> S _ > 0 >
+S 1 _ -> S _ > 1 >
+S o _ -> S _ > o >
+S a _ -> and-pending _ > a >
+S ( _ -> S _ > ( >
+S ) _ -> between _ ^ _ <
+S _ _ -> between _ ^ _ <
+
+and-pending 0 _ -> and 0 ^ _ <
+and-pending 1 _ -> and 1 ^ _ <
+and-pending ( _ -> S _ > ( >
+
+and 0 a -> and 0 ^ _ <
+and 1 a -> and 1 ^ _ <
+and 0 0 -> S _ > 0 >
+and 0 1 -> S _ > 0 >
+and 1 0 -> S _ > 0 >
+and 1 1 -> S _ > 1 >
+
+between _ 0 -> between0 _ ^ _ <
+between _ 1 -> between1 _ ^ _ <
+
+between0 _ o -> between0 _ ^ _ <
+between0 _ 0 -> between0 _ ^ _ <
+between0 _ 1 -> between1 _ ^ _ <
+between0 _ ( -> andcheck0 _ ^ _ <
+between0 _ _ -> AC 0 ^ _ <
+
+between1 _ o -> between1 _ ^ _ <
+between1 _ 0 -> between1 _ ^ _ <
+between1 _ 1 -> between1 _ ^ _ <
+between1 _ ( -> andcheck1 _ ^ _ <
+between1 _ _ -> AC 1 ^ _ <
+
+andcheck0 _ o -> put0 _ ^ o >
+andcheck0 _ a -> andcheck0 _ ^ _ <
+andcheck0 _ 0 -> S _ > 0 >
+andcheck0 _ 1 -> S _ > 0 >
+andcheck0 _ ( -> put0 _ ^ ( >
+andcheck0 _ _ -> put0 _ ^ _ >
+
+andcheck1 _ o -> put1 _ ^ o >
+andcheck1 _ a -> andcheck1 _ ^ _ <
+andcheck1 _ 0 -> S _ > 0 >
+andcheck1 _ 1 -> S _ > 1 >
+andcheck1 _ ( -> put1 _ ^ ( >
+andcheck1 _ _ -> put1 _ ^ _ >
+
+put0 _ _ -> S _ > 0 >
+put1 _ _ -> S _ > 1 >

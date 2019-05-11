@@ -1,0 +1,266 @@
+start: write*
+accept: ac
+reject: rj
+blank: _
+
+write* 0 -> write* 0 >
+write* 1 -> write* 1 >
+write* _ -> leftcopy * <
+
+leftcopy 0 -> leftcopy 0 <
+leftcopy 1 -> leftcopy 1 <
+leftcopy 2 -> take 2 >
+leftcopy 3 -> take 3 >
+leftcopy * -> take * >
+leftcopy _ -> take _ >
+
+take 0 -> transfer0 2 >
+take 1 -> transfer1 3 >
+take * -> getback * <
+
+transfer0 0 -> transfer0 0 >
+transfer0 1 -> transfer0 1 >
+transfer0 * -> put0 * >
+
+put0 0 -> put0 0 >
+put0 1 -> put0 1 >
+put0 _ -> to* 0 <
+
+transfer1 0 -> transfer1 0 >
+transfer1 1 -> transfer1 1 >
+transfer1 * -> put1 * >
+
+put1 0 -> put1 0 >
+put1 1 -> put1 1 >
+put1 _ -> to* 1 <
+
+to* 0 -> to* 0 <
+to* 1 -> to* 1 <
+to* * -> leftcopy * <
+
+getback 2 -> getback 0 <
+getback 3 -> getback 1 <
+getback * -> right * >
+getback _ -> right _ >
+
+right 0 -> right 0 >
+right 1 -> right 1 >
+right * -> right * >
+right _ -> -1 _ <
+
+-1 1 -> check* 0 <
+-1 0 -> shift 1 <
+
+check* 0 -> write* 0 >
+check* 1 -> write* 1 >
+check* * -> clearto* * >
+
+shift 0 -> shift 1 <
+shift 1 -> check 0 <
+shift * -> clearto* _ <
+
+check * -> close * >
+check 0 -> write* 0 >
+check 1 -> write* 1 >
+
+close 0 -> takeone 0 >
+close 1 -> takeone 1 >
+
+takeone 0 -> place0 0 <
+takeone 1 -> place1 1 <
+takeone _ -> kick _ <
+
+kick 0 -> write* _ ^
+kick 1 -> write* _ ^
+
+place0 0 -> close 0 >
+place0 1 -> close 0 >
+
+place1 0 -> close 1 >
+place1 1 -> close 1 >
+
+clearto* 0 -> clearto* _ <
+clearto* * -> left _ <
+
+left 0 -> left 0 <
+left 1 -> left 1 <
+left * -> left * <
+left _ -> s+ _ >
+
+
+
+
+s+ 0 -> s+ 0 <
+s+ 1 -> s+ 1 <
+s+ _ -> right+ # >
+
+right+ 0 -> right+ 0 >
+right+ 1 -> right+ 1 >
+right+ 2 -> right+ 2 >
+right+ 3 -> right+ 3 >
+right+ # -> right+ # >
+right+ * -> rightafter* * >
+right+ _ -> gameover _ <
+
+rightafter* 0 -> rightafter* 0 >
+rightafter* 1 -> rightafter* 1 >
+rightafter* 2 -> rightafter* 2 >
+rightafter* 3 -> rightafter* 3 >
+rightafter* P -> takeone+ P <
+rightafter* * -> takeone+ * <
+rightafter* _ -> takeone+ _ <
+
+takeone+ 0 -> transfer0+ P <
+takeone+ 1 -> maxleft1+ P <
+takeone+ * -> clearleft P <
+
+clearleft 0 -> clearleft P <
+clearleft 1 -> clearleft P <
+clearleft # -> getbackresult P <
+
+getbackresult P -> getbackresult P <
+getbackresult 0 -> getbackresult 0 <
+getbackresult 1 -> getbackresult 1 <
+getbackresult 2 -> getbackresult 0 <
+getbackresult 3 -> getbackresult 1 <
+getbackresult _ -> toPtomoveright _ >
+
+toPtomoveright 0 -> toPtomoveright 0 >
+toPtomoveright 1 -> toPtomoveright 1 >
+toPtomoveright P -> moveright P <
+
+moveright 0 -> move0 P >
+moveright 1 -> move1 P >
+moveright _ -> clearP _ >
+
+clearP P -> clearP _ >
+clearP 0 -> s+ 0 ^
+clearP 1 -> s+ 1 ^
+
+move0 P -> move0 P >
+move0 0 -> emplace0 0 <
+move0 1 -> emplace0 1 <
+move0 * -> emplace0 * <
+move0 _ -> emplace0 _ <
+
+move1 P -> move1 P >
+move1 0 -> emplace1 0 <
+move1 1 -> emplace1 1 <
+move1 * -> emplace1 * <
+move1 _ -> emplace1 _ <
+
+emplace0 P -> lefttomoveright 0 <
+emplace1 P -> lefttomoveright 1 <
+
+lefttomoveright P -> lefttomoveright P <
+lefttomoveright 0 -> lefttomoveright 0 <
+lefttomoveright 1 -> lefttomoveright 1 <
+lefttomoveright _ -> toPtomoveright _ >
+
+left+ 0 -> left+ 0 <
+left+ 1 -> left+ 1 <
+left+ 2 -> left+ 0 <
+left+ 3 -> left+ 1 <
+left+ _ -> s+ _ >
+
+transfer0+ 0 -> transfer0+ 0 <
+transfer0+ 1 -> transfer0+ 1 <
+transfer0+ 2 -> transfer0+ 2 <
+transfer0+ 3 -> transfer0+ 3 <
+transfer0+ * -> transfer0+ * <
+transfer0+ # -> put0+ # <
+
+put0+ 0 -> right+ 2 >
+put0+ 1 -> right+ 3 >
+put0+ 2 -> put0+ 2 <
+put0+ 3 -> put0+ 3 <
+put0+ _ -> right+ 2 >
+
+maxleft1+ 0 -> maxleft1+ 0 <
+maxleft1+ 1 -> maxleft1+ 1 <
+maxleft1+ 2 -> maxleft1+ 2 <
+maxleft1+ 3 -> maxleft1+ 3 <
+maxleft1+ * -> maxleft1+ * <
+maxleft1+ # -> maxleft1+ # <
+maxleft1+ _ -> plus+ _ >
+
+plus+ 0 -> plus+ 0 >
+plus+ 1 -> plus+ 1 >
+plus+ 2 -> plus+ 2 >
+plus+ 3 -> plus+ 3 >
+plus+ 4 -> plus+ 4 >
+plus+ 5 -> plus+ 5 >
+plus+ # -> search+ # >
+
+search+ 0 -> search+ 0 >
+search+ 1 -> search+ 1 >
+search+ 2 -> take+ 2 <
+search+ 3 -> take+ 3 <
+search+ * -> take+ * <
+
+take+ 0 -> zero+ 2 <
+take+ 1 -> one+ 3 <
+take+ # -> getbackleft+ # <
+
+getbackleft+ 0 -> getbackleft+ 0 <
+getbackleft+ 1 -> getbackleft+ 1 <
+getbackleft+ 2 -> getbackleft+ 2 <
+getbackleft+ 3 -> getbackleft+ 3 <
+getbackleft+ 4 -> getbackleft+ 0 <
+getbackleft+ 5 -> getbackleft+ 1 <
+getbackleft+ _ -> processed+ _ >
+
+processed+ 0 -> processed+ 0 >
+processed+ 1 -> processed+ 1 >
+processed+ 2 -> update+ 2 <
+processed+ 3 -> update+ 3 <
+processed+ # -> update+ # <
+
+update+ 0 -> togetback+ 2 >
+update+ 1 -> togetback+ 3 >
+update+ _ -> togetback+ 2 >
+
+togetback+ 2 -> togetback+ 2 >
+togetback+ 3 -> togetback+ 3 >
+togetback+ # -> getback+ # >
+
+getback+ 2 -> getback+ 0 >
+getback+ 3 -> getback+ 1 >
+getback+ * -> right+ * ^
+
+zero+ 0 -> zero+ 0 <
+zero+ 1 -> zero+ 1 <
+zero+ 2 -> zero+ 2 <
+zero+ 3 -> zero+ 3 <
+zero+ # -> plus0+ # <
+
+plus0+ 0 -> plus+ 4 >
+plus0+ 1 -> plus+ 5 >
+plus0+ 2 -> plus0+ 2 <
+plus0+ 3 -> plus0+ 3 <
+plus0+ 4 -> plus0+ 4 <
+plus0+ 5 -> plus0+ 5 <
+plus0+ _ -> plus+ 4 >
+
+one+ 0 -> one+ 0 <
+one+ 1 -> one+ 1 <
+one+ 2 -> one+ 2 <
+one+ 3 -> one+ 3 <
+one+ # -> plus1+ # <
+
+plus1+ 0 -> plus+ 5 >
+plus1+ 1 -> shift1+ 4 <
+plus1+ 2 -> plus1+ 2 <
+plus1+ 3 -> plus1+ 3 <
+plus1+ 4 -> plus1+ 4 <
+plus1+ 5 -> plus1+ 5 <
+plus1+ _ -> plus+ 5 >
+
+shift1+ 0 -> plus+ 1 >
+shift1+ 1 -> shift1+ 0 <
+shift1+ _ -> plus+ 1 >
+
+
+gameover 0 -> gameover 0 <
+gameover 1 -> gameover 1 <
+gameover # -> ac _ >

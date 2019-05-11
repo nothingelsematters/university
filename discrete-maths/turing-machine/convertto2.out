@@ -1,0 +1,41 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+
+s 0 -> write# 0 <
+s 1 -> write# 1 <
+s 2 -> write# 2 <
+
+write# _ -> write0 # <
+
+write0 _ -> right 0 >
+
+right 0 -> right 0 >
+right 1 -> right 1 >
+right 2 -> right 2 >
+right # -> right # >
+right _ -> -1 _ <
+
+-1 0 -> -1 2 <
+-1 1 -> left'til# 0 <
+-1 2 -> left'til# 1 <
+-1 # -> last-right # >
+
+last-right 2 -> last-right 2 >
+last-right _ -> left _ <
+
+left 0 -> left 0 <
+left 1 -> left 1 <
+left 2 -> left _ <
+left # -> left _ <
+left _ -> ac _ >
+
+left'til# 0 -> left'til# 0 <
+left'til# 1 -> left'til# 1 <
+left'til# 2 -> left'til# 2 <
+left'til# # -> +1 # <
+
++1 0 -> right 1 >
++1 1 -> +1 0 <
++1 _ -> right 1 >

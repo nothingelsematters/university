@@ -6,3 +6,4 @@
 6. [Hamilton Paths](hamilton-path)
 7. [Graph Planarity](graph-planarity)
 8. [Generating Function](generating-function)
+9. [Turing machine](turing-machine)
