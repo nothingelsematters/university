@@ -10,3 +10,4 @@
 10. [Strings](strings)
 11. [Maximum Flow And Matching](flow-and-matching)
 12. [Maximum Flow Minimum Cost](maximum-flow-minimum-cost)
+13. [Mathematic](mathematic)
