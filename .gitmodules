@@ -22,3 +22,6 @@
 [submodule "operation-systems/synchronous-socket-service"]
 	path = operation-systems/synchronous-socket-service
 	url = https://github.com/nothingelsematters/synchronous-socket-service.git
+[submodule "operation-systems/net-descriptor-passing"]
+	path = operation-systems/net-descriptor-passing
+	url = https://github.com/nothingelsematters/net-descriptor-passing.git
