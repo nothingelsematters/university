@@ -25,3 +25,6 @@
 [submodule "operation-systems/net-descriptor-passing"]
 	path = operation-systems/net-descriptor-passing
 	url = https://github.com/nothingelsematters/net-descriptor-passing.git
+[submodule "operation-systems/sigsegv-handler"]
+	path = operation-systems/sigsegv-handler
+	url = https://github.com/nothingelsematters/sigsegv-handler.git
