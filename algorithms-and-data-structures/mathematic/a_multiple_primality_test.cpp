@@ -1,39 +1,38 @@
 #include <iostream>
-#include <memory>
+#include <vector>
+#include <algorithm>
+#include <iterator>
 
-static const size_t LIMIT = 1E6;
+static constexpr size_t LIMIT = 2 * 1E7;
 
-std::unique_ptr<bool[]> primality(size_t limit) {
-    size_t size = limit + 1;
-    auto is_prime = std::make_unique<bool[]>(size);
-    std::fill(is_prime.get(), is_prime.get() + size, true);
+std::vector<bool> primality(size_t limit) {
+    size_t size = limit;
+    auto is_prime = std::vector<bool>(size, true);
     is_prime[0] = false;
     is_prime[1] = false;
 
-    for (size_t i = 2; i <= size; ++i) {
-        if (!is_prime[i]) {
-            continue;
-        }
-        for (unsigned long long j = static_cast<unsigned long long>(i) * i; j <= size; j += i) {
-            is_prime[j] = false;
+    for (size_t i = 2; static_cast<unsigned long long>(i) * i < size; ++i) {
+        if (is_prime[i]) {
+            for (unsigned long long j = static_cast<unsigned long long>(i) * i; j < size; j += i) {
+                is_prime[j] = false;
+            }
         }
     }
-    return std::move(is_prime);
+    return is_prime;
 }
 
 bool is_prime(unsigned int num) {
-    static std::unique_ptr<bool[]> composite = primality(LIMIT);
+    static auto composite = primality(LIMIT + 1);
     return composite[num];
 }
 
 int main() {
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
     size_t amount;
     std::cin >> amount;
 
-    for (size_t i = 0; i < amount; ++i) {
-        unsigned int number;
-        std::cin >> number;
-        std::cout << (is_prime(number) ? "YES" : "NO") << '\n';
-    }
+    std::transform(std::istream_iterator<unsigned int>(std::cin), std::istream_iterator<unsigned int>(),
+        std::ostream_iterator<std::string>(std::cout, "\n"), [] (unsigned int number) { return is_prime(number) ? "YES" : "NO"; });
     return 0;
 }
