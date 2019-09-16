@@ -47,6 +47,7 @@ Unary       : Predicate                          { $1 }
 Variable    : SMALLVARIABLE                      { $1 }
 
 Predicate   : CAPVARIABLE OPENP List CLOSEP      { Predication (Predicate $1 $3) }
+            | CAPVARIABLE                        { Predication (Predicate $1 []) }
             | Therm EQUALS Therm                 { Predication (Equals $1 $3) }
 
 Therm       : Addend                             { $1 }

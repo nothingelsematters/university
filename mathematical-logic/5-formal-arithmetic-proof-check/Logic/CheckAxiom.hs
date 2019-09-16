@@ -133,9 +133,15 @@ isPropositionalAxiom = commonBelongs fits propositionalAxiomSchemes
 
 -- predicate calculus axiom schemes zone --
 isPredicateAxiom :: Expression -> Bool
-isPredicateAxiom (BinaryOperator Implication (Quantifiers Forall x psi) psi') = isSubstitution x psi psi'
-isPredicateAxiom (BinaryOperator Implication psi' (Quantifiers Exists x psi)) = isSubstitution x psi psi'
-isPredicateAxiom _                                                            = False
+isPredicateAxiom expr = isPredicateAxiomExists expr || isPredicateAxiomForall expr
+
+isPredicateAxiomForall :: Expression -> Bool
+isPredicateAxiomForall (BinaryOperator Implication (Quantifiers Forall x psi) psi') = isSubstitution x psi psi'
+isPredicateAxiomForall _                                                                  = False
+
+isPredicateAxiomExists :: Expression -> Bool
+isPredicateAxiomExists (BinaryOperator Implication psi' (Quantifiers Exists x psi)) = isSubstitution x psi psi'
+isPredicateAxiomExists _                                                                  = False
 
 -- formal arithmetic axioms zone --
 formalArithmeticAxioms :: [Expression]

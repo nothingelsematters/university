@@ -33,7 +33,22 @@ data Quantifier = Forall
                 deriving (Eq, Ord, Show)
 
 checkClosed :: String -> Expression -> Bool
-checkClosed variable (BinaryOperator _ l r) = on (||) (checkClosed variable) l r
+checkClosed variable (BinaryOperator _ l r) = on (&&) (checkClosed variable) l r
 checkClosed variable (Not e)                = checkClosed variable e
 checkClosed variable (Quantifiers _ v e)    = v == variable || checkClosed variable e
-checkClosed _        (Predication _)        = False
+checkClosed variable (Predication ps)       = checkClosedPS ps
+    where
+        checkClosedPS (Equals tl tr)         = checkTherms tl tr
+        checkClosedPS (Predicate _ tl)       = checkAllTherms tl
+
+        checkClosedTh (Application fs)       = checkClosedF fs
+        checkClosedTh (Variable v)           = v /= variable
+
+        checkClosedF  (Plus tl tr)           = checkTherms tl tr
+        checkClosedF  (Multiplication tl tr) = checkTherms tl tr
+        checkClosedF  (Colon t)              = checkClosedTh t
+        checkClosedF  (Function _ tl)        = checkAllTherms tl
+        checkClosedF   Zero                  = True
+
+        checkTherms    = on (&&) checkClosedTh
+        checkAllTherms = all checkClosedTh

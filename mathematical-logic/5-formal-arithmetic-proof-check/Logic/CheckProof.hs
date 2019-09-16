@@ -34,4 +34,5 @@ processLine proof expr
 
         add' expression =
             proof { obtained = obtained proof || expression == conclusion proof
-                  , indexes  = Map.insert expression (size proof + 1) $ indexes proof }
+                  , indexes  = Map.insert expression (size proof + 1) $ indexes proof
+                  , size     = size proof + 1 }
