@@ -9,3 +9,4 @@
 + [Mathematical Logic](mathematical-logic)
 + [Operation Systems](operation-systems)
 + [Translation Methods](translation-methods)
++ [Cryptography](cryptography)
