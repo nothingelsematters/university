@@ -13,6 +13,9 @@ public class LexicalAnalyzer(val ins: InputStream) {
     lateinit var curToken: Token
         private set
 
+    lateinit var curWord: String
+        private set
+
     init {
         nextChar()
     }
@@ -49,8 +52,8 @@ public class LexicalAnalyzer(val ins: InputStream) {
                     nextChar()
                 }
 
-                val token = wordsMap[sb.toString()]
-                if (token != null) token else Token.NAME
+                curWord = sb.toString()
+                wordsMap[curWord] ?: Token.NAME
             }
 
             in charactersMap -> {

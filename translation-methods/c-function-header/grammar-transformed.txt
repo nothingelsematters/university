@@ -1,0 +1,101 @@
+Function
+    -> Specifiers returnType NameAndArgList ';'
+
+NameAndArgs
+    -> '(' '*' Name ')' ArgsList
+    -> Name ArgsList
+
+NameAndArgList
+    -> Name ArgList
+
+Specifiers
+    -> e
+    -> Specifier Specifiers
+
+Specifier
+    -> 'static'
+    -> 'inline'
+
+ArgsList
+    -> '(' Args ')'
+
+Args
+    -> e
+    -> 'void'
+    -> NotEmptyArgs
+
+returnType
+    -> 'void'
+    -> argType
+
+NotEmptyArgs
+    -> Arg RestArgs
+
+RestArgs
+    -> e
+    -> , NotEmptyArgs
+
+Arg
+    -> ArgType ArgRight
+    -> 'void' FunctionArgumentNameAndArgsList
+
+ArgRight
+    -> ArgName
+    -> FunctionArgumentNameAndArgsList
+
+FunctionArgumentNameAndArgsList
+    -> '(' '*' name ')' nameAndArgList
+
+ArgName
+    -> e
+    -> Name
+
+Name // stops here in the grammar
+    -> FirstSymbol OtherSymbols
+// can not be reserved words
+// can not be similar
+
+FirstSymbol
+    -> a-z A-Z _
+
+OtherSymbols
+    -> e
+    -> a-z A-Z _ 0-9
+
+argType
+    -> TypeNameModifiers
+    -> 'const' TypeNameModifiers
+
+TypeNameModifiers
+    -> TypeName Modifiers
+
+Modifiers
+    -> e
+    -> '*' Modifiers
+    -> 'const' Modifiers
+
+TypeName
+    -> SystemTypes
+    -> 'struct' Name
+
+SystemTypes
+    -> NumericSpecifiers SystemTypes'
+
+SystemTypes'
+    -> 'char'
+    -> 'int'
+    -> 'short' Int
+    -> 'long' Long
+
+Long
+    -> Int
+    -> 'long' Int
+
+Int
+    -> e
+    -> 'int'
+
+NumericSpecifiers
+    -> e
+    -> 'unsigned'
+    -> 'signed'

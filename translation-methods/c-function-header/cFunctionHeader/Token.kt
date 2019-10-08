@@ -9,11 +9,18 @@ public enum class Token {
     STRUCT,
     POINTER,          // *
     COMA,             // ,
-    NAME,             // [\w_][\w\d_]*
     LEFTPARENTHESIS,  // (
     RIGHTPARENTHESIS, // )
     SEMICOLON,        // ;
-    END               // $ (fake)
+    END,              // $ (fake)
+    NAME {            // [\w_][\w\d_]*
+        var value: String = ""
+
+        public fun fromString(str: String): Token {
+            value = str
+            return this
+        }
+    }
 }
 
 val charactersMap = mapOf(
@@ -22,6 +29,27 @@ val charactersMap = mapOf(
     ';' to Token.SEMICOLON,
     '(' to Token.LEFTPARENTHESIS,
     ')' to Token.RIGHTPARENTHESIS
+)
+
+val tokenMap = mapOf(
+    Token.POINTER to "*",
+    Token.COMA to ",",
+    Token.SEMICOLON to ";",
+    Token.LEFTPARENTHESIS to "(",
+    Token.RIGHTPARENTHESIS to ")",
+    Token.CHAR to "char",
+    Token.SHORT to "short",
+    Token.INT to "int",
+    Token.LONG to "long",
+    Token.SIGNED to "signed",
+    Token.UNSIGNED to "unsigned",
+    Token.INLINE to "inline",
+    Token.STATIC to "static",
+    Token.VOID to "void",
+    Token.CONST to "const",
+    Token.STRUCT to "struct",
+    Token.END to "end of input",
+    Token.NAME to "name"
 )
 
 val wordsMap = mapOf(
