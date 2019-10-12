@@ -3,6 +3,13 @@ package cFunctionHeader
 import java.io.InputStream
 import java.text.ParseException
 
+typealias State = () -> SyntaxTree
+typealias StateList = List<State>
+
+public class SyntaxException(token: Token, pos: Int, comment: String):
+    ParseException("${tokenMap[token]!!} $comment at $pos", pos)
+
+
 public class Parser {
     private lateinit var lex: LexicalAnalyzer
 
@@ -16,27 +23,22 @@ public class Parser {
 
     private fun checkToken(expected: Token) {
         if (lex.curToken != expected) {
-            throw ParseException("${tokenMap[expected]!!} expected at ${lex.curPos}", lex.curPos)
+            throw SyntaxException(expected, lex.curPos, "expected")
         }
     }
 
-    private fun unxpectedToken(unexpected: Token): SyntaxTree =
-        throw ParseException("${tokenMap[unexpected]!!} is not expected at ${lex.curPos}", lex.curPos)
+    private fun unexpectedToken(unexpected: Token): Nothing = throw SyntaxException(unexpected, lex.curPos, "unexpected")
 
-    private fun tokenFork(
-        name: String,
-        token: Token,
-        ifPart: List<() -> SyntaxTree>,
-        elsePart: List<() -> SyntaxTree>
-    ): SyntaxTree = SyntaxTree(name,
-        if (lex.curToken == token) {
-            listOf(processToken(token)) + ifPart.map { it() }
-        } else {
-            elsePart.map { it() }
-        }
-    )
+    private fun tokenFork(name: String, token: Token, ifPart: StateList, elsePart: StateList): SyntaxTree =
+        SyntaxTree(name,
+            if (lex.curToken == token) {
+                listOf(processToken(token)) + ifPart.map { it() }
+            } else {
+                elsePart.map { it() }
+            }
+        )
 
-    private fun eitherwayTokenFork(name: String, token: Token, part: List<() -> SyntaxTree>): SyntaxTree =
+    private fun eitherwayTokenFork(name: String, token: Token, part: StateList): SyntaxTree =
         tokenFork(name, token, part, part)
 
     private fun processToken(token: Token): SyntaxTree {
@@ -61,7 +63,7 @@ public class Parser {
     private fun specifier(): SyntaxTree = SyntaxTree("specifier",
         when (val t = lex.curToken) {
             Token.STATIC, Token.INLINE -> processToken(t)
-            else -> unxpectedToken(t)
+            else -> unexpectedToken(t)
         }
     )
 
@@ -87,7 +89,7 @@ public class Parser {
             Token.CHAR, Token.INT -> listOf(processToken(t))
             Token.SHORT -> listOf(processToken(t), int())
             Token.LONG -> listOf(processToken(t), long())
-            else -> throw ParseException("${tokenMap[t]!!} is not expected at ${lex.curPos}", lex.curPos) // TODO fix copy paste
+            else -> unexpectedToken(t)
         }
     )
 
@@ -139,7 +141,7 @@ public class Parser {
             name(), processToken(Token.RIGHTPARENTHESIS), argsList())
 
     private fun argumentName(): SyntaxTree =
-        tokenFork("argument name", Token.NAME, emptyList<() -> SyntaxTree>(), listOf(::epsilon))
+        tokenFork("argument name", Token.NAME, emptyList<State>(), listOf(::epsilon))
 
     private fun notEmptyArgs(): SyntaxTree = SyntaxTree("not empty arguments", argument(), restArgs())
 

@@ -4,6 +4,8 @@ import java.io.InputStream
 import java.io.IOException
 import java.text.ParseException
 
+public class LexicalException(ch: Char, pos: Int): ParseException("Illegal character '$ch'", pos)
+
 public class LexicalAnalyzer(val ins: InputStream) {
     private var curChar = 0
 
@@ -62,7 +64,7 @@ public class LexicalAnalyzer(val ins: InputStream) {
             }
 
             (-1).toChar() -> Token.END
-            else          -> throw ParseException("Illegal character '${curChar.toChar()}'", curPos)
+            else          -> throw LexicalException(curChar.toChar(), curPos)
         }
     }
 }

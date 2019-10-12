@@ -1,5 +1,0 @@
-package cFunctionHeader
-
-class ParserTest {
-
-}
