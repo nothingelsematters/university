@@ -41,8 +41,6 @@ Arg
 
 Name
     -> FirstSymbol OtherSymbols
-// can not be reserved words
-// can not be similar
 
 FirstSymbol
     -> a-z A-Z _

@@ -2,6 +2,7 @@ package cFunctionHeader
 
 public enum class Token {
     CHAR, SHORT, INT, LONG,
+    FLOAT, DOUBLE,
     SIGNED, UNSIGNED,
     INLINE, STATIC,
     VOID,
@@ -49,10 +50,14 @@ val tokenMap = mapOf(
     Token.CONST to "const",
     Token.STRUCT to "struct",
     Token.END to "end of input",
-    Token.NAME to "name"
+    Token.NAME to "name",
+    Token.FLOAT to "float",
+    Token.DOUBLE to "double"
 )
 
 val wordsMap = mapOf(
+    "float"    to Token.FLOAT,
+    "double"   to Token.DOUBLE,
     "char"     to Token.CHAR,
     "short"    to Token.SHORT,
     "int"      to Token.INT,

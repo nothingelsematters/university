@@ -52,8 +52,6 @@ ArgName
 
 Name // stops here in the grammar
     -> FirstSymbol OtherSymbols
-// can not be reserved words
-// can not be similar
 
 FirstSymbol
     -> a-z A-Z _
@@ -84,6 +82,8 @@ SystemTypes
 SystemTypes'
     -> 'char'
     -> 'int'
+    -> 'float'
+    -> 'double'
     -> 'short' Int
     -> 'long' Long
 

@@ -86,7 +86,7 @@ public class Parser {
 
     private fun systemTypesPrime(): SyntaxTree = SyntaxTree("system type second",
         when (val t = lex.curToken) {
-            Token.CHAR, Token.INT -> listOf(processToken(t))
+            Token.CHAR, Token.INT, Token.FLOAT, Token.DOUBLE -> listOf(processToken(t))
             Token.SHORT -> listOf(processToken(t), int())
             Token.LONG -> listOf(processToken(t), long())
             else -> unexpectedToken(t)
