@@ -10,3 +10,4 @@
 + [Operation Systems](operation-systems)
 + [Translation Methods](translation-methods)
 + [Cryptography](cryptography)
++ [Type Theory](type-theory)
