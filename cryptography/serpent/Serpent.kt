@@ -10,108 +10,91 @@ import java.io.File // TEST
 
 infix fun Int.rotateLeft(bits: Int): Int = shl(bits) or ushr(Int.SIZE_BITS - bits)
 
-fun Int.takeBits(begin: Int, amount: Int): Int = (this ushr (begin - amount)) and ((1 shl amount) - 1)
-
 fun Int.toByteList(): List<Byte> = List<Byte>(Int.SIZE_BITS / Byte.SIZE_BITS) {
-    takeBits(Int.SIZE_BITS - it * Byte.SIZE_BITS, Byte.SIZE_BITS).toByte()
+    ((this ushr (Int.SIZE_BITS - (it + 1) * Byte.SIZE_BITS)) and ((1 shl Byte.SIZE_BITS) - 1)).toByte()
+}
+
+fun List<Int>.pairsByteList(): List<Byte> = List<Byte>(size / 2) {
+    ((get(it * 2) shl (Byte.SIZE_BITS / 2)) or get(it * 2 + 1)).toByte()
 }
 
 // BigInteger utilities
 
-fun BigInteger.takeBits(begin: Int, amount: Int): BigInteger = // lowest is zeroth
+fun BigInteger.takeBits(begin: Int, amount: Int = 1): BigInteger = // lowest is zeroth
     (this shr (begin - amount)) and ((1.toBigInteger() shl amount) - 1.toBigInteger())
 
 fun BigInteger.toInts(n: Int, step: Int = Int.SIZE_BITS): List<Int> = List<Int>(n) {
     takeBits((it + 1) * step, step).toInt()
 }
 
+fun List<Byte>.toBigInteger(): BigInteger = BigInteger(1, toByteArray())
+fun List<Byte>.toReversedBigInteger(): BigInteger = asReversed().toBigInteger()
+
+fun BigInteger.orBitFrom(pos: Int, otherPos: Int, from: BigInteger): BigInteger =
+    or(from.takeBits(otherPos + 1) shl pos)
+
 // algorithm utilities
 
-fun BigInteger.permutate(permutation: List<Int>, size: Int = BLOCK_BITS): BigInteger {
-    /* println("before   ${this.to16()}") */
-    return permutation.foldIndexed(0.toBigInteger()) { // TODO refactor
-        index, result, element ->
-            if (testBit(size - 1 - element)) result.setBit(size - 1 - index) else result
+fun BigInteger.permutate(permutation: List<Int>, size: Int = BLOCK_BITS): BigInteger =
+    permutation.foldIndexed(0.toBigInteger()) { index, result, element ->
+        result.orBitFrom(size - index - 1, size - element - 1, this)
     }
-    /* .also { println("permuted: ${it.to16()}") } */
+
+fun BigInteger.keySubstitute(sbox: List<Int>): BigInteger {
+    val size = BLOCK_BITS / 4
+
+    return List<BigInteger>(BLOCK_BITS / 4) {
+        takeBits(size * 3 + 1 + it)
+            .orBitFrom(1, size * 2 + it, this)
+            .orBitFrom(2, size * 1 + it, this)
+            .orBitFrom(3,            it, this)
+    }
+    .map { sbox[it.toInt()] }
+    .foldIndexed(0.toBigInteger()) { index, result, byte ->
+        val bigByte = byte.toBigInteger()
+        result
+            .orBitFrom(           index, 0, bigByte)
+            .orBitFrom(size     + index, 1, bigByte)
+            .orBitFrom(size * 2 + index, 2, bigByte)
+            .orBitFrom(size * 3 + index, 3, bigByte)
+    }
 }
 
-fun BigInteger.substitute(sbox: List<Int>): BigInteger {
-    var result = 0.toBigInteger()
-    for (i in 0..31) {
-        val z = sbox[(((this and (1.toBigInteger() shl (96 + i))) shr (96 + i)) or
-            (((this and (1.toBigInteger() shl (64 + i))) shr (64 + i)) shl 1) or
-            (((this and (1.toBigInteger() shl (32 + i))) shr (32 + i)) shl 2) or
-            (((this and (1.toBigInteger() shl i)) shr i) shl 3)).toInt()]
-        result = result or
-            (((z and 1)).toBigInteger() shl (i + 0) or
-            ((((z and (1 shl 1))) shr 1).toBigInteger() shl (32 + i)) or
-            ((((z and (1 shl 2))) shr 2).toBigInteger() shl (64 + i)) or
-            ((((z and (1 shl 3))) shr 3).toBigInteger() shl (96 + i)))
-    }
-    return result
-}
+fun BigInteger.substitute(sbox: List<Int>): BigInteger =
+    toInts(32, 4).map { sbox[it] }.asReversed().pairsByteList().toBigInteger()
 
-fun BigInteger.substitution(sbox: List<Int>): BigInteger {
-    var result = 0.toBigInteger()
-    for (i in 0..31) {
-        result = result or (sbox[takeBits(4 * (i + 1), 4).toInt()].toBigInteger() shl (i * 4))
-    }
-    return result
-}
 
-fun BigInteger.linearTransformation(transform: List<List<Int>>): BigInteger {
-    var b: Int
-    var result = 0.toBigInteger()
-    for (i in 0..127) {
-        b = 0
-        for (j in LINEAR_TRANSFORMATION[i]) {
-            b = b xor takeBits(j + 1, 1).toInt()
-        }
-        result = result or (b.toBigInteger() shl i)
+fun BigInteger.linearTransformation(transform: List<List<Int>>): BigInteger =
+    transform.foldIndexed(0.toBigInteger()) { index, result, bits ->
+        result or (bits.fold(0.toBigInteger()) { xorBit, bit -> xorBit xor takeBits(bit + 1) } shl index)
     }
-    return result
-}
-    /* transform.foldIndexed(0.toBigInteger()) {
-    index, result, element -> result or (element.fold(0.toBigInteger()) {
-        resultBit, xorBit -> resultBit xor takeBits(BLOCK_BITS - 1 - xorBit, 1)
-    } shl (BLOCK_BITS - 1 - index))
-} */
 
 
 // algorithm main part
 
-fun generateSubkeys(lb: List<Byte>): List<BigInteger> { // TODO refactor
-    val key = BigInteger(1, lb.asReversed().toByteArray())
+fun generateSubkeys(lb: List<Byte>): List<BigInteger> {
+    val key = lb.toReversedBigInteger()
     if (key >= (1.toBigInteger() shl KEY_SIZE)) {
         throw InvalidKeyException()
     }
 
-    val keys: MutableList<Int> = ArrayList<Int>(key.toInts(PARTS_KEY_SIZE) + List<Int>(132) { 0 }) // TODO refactor
-    for (i in PARTS_KEY_SIZE until keys.size) { // TODO mb fix
-        keys[i] = (keys[i - 8] xor keys[i - 5] xor keys[i - 3] xor keys[i - 1] xor PHI xor (i - PARTS_KEY_SIZE))
-            .rotateLeft(11)
+    val keys = ArrayList<Int>(key.toInts(PARTS_KEY_SIZE))
+    for (i in PARTS_KEY_SIZE until PARTS_KEY_SIZE + KEY_AMOUNT) {
+        keys.add(
+            (keys[i - 8] xor keys[i - 5] xor keys[i - 3] xor keys[i - 1] xor PHI xor (i - PARTS_KEY_SIZE))
+                .rotateLeft(11)
+        )
     }
-    /* println("pre-keys:")
-    keys.forEachIndexed { index, el -> println("pre-keys[$index] = ${intToString(el)}") } */
 
     return keys
         .subList(PARTS_KEY_SIZE, keys.size)
         .windowed(size = SUBKEY_INTS, step = SUBKEY_INTS)
         .mapIndexed { index, el ->
-            BigInteger(1, el.flatMap(Int::toByteList).toByteArray())
-                .substitute(SBOXES[((3 - index) % SBOXES.size + SBOXES.size) % SBOXES.size]) // TODO refactor
+            el.flatMap(Int::toByteList)
+                .toBigInteger()
+                .keySubstitute(SBOXES[(KEY_AMOUNT + 7 - index) % SBOXES.size])
+                .permutate(INITIAL_PERMUTATION)
         }
-        /* .also {
-            println("keys:")
-            it.forEachIndexed { index, el -> println("keys[$index] = ${el.to16()}") }
-        } */
-        .map { it.permutate(INITIAL_PERMUTATION) } // TODO
-        /* .also {
-            println("khat:")
-            it.forEachIndexed { index, el -> println("khat[$index] = ${el.to16()}") }
-        } */
-
 }
 
 fun encrypt(
@@ -126,36 +109,53 @@ fun encrypt(
     .flatMap {
         keys
             .subList(0, keys.lastIndex - 1)
-            .foldIndexed(BigInteger(1, it.asReversed().toByteArray()).permutate(initialPermutation)) { index, element, key ->
+            .foldIndexed(it.toReversedBigInteger().permutate(initialPermutation)) { index, element, key ->
                 element
                     .xor(key)
-                    /* .also { println("xored[$index] = ${it.to16()}") } */
-                    .substitution(sboxes[index % sboxes.size])
-                    /* .also { println("subst[$index] = ${it.to16()}") } */
+                    .substitute(sboxes[index % sboxes.size])
                     .linearTransformation(linearTransform)
-                    /* .also { println("trans[$index] = ${it.to16()}") } */
-                    /* .also { println("=".repeat(70))} */
             }
             .xor(keys[keys.lastIndex - 1])
-            /* .also { println("xored[31] = ${it.to16()}") } */
-            .substitution(sboxes.last())
-            /* .also { println("subst[31] = ${it.to16()}") } */
+            .substitute(sboxes.last())
             .xor(keys.last())
-            /* .also { println("xored[32] = ${it.to16()}") } */
             .permutate(finalPermutation)
-            /* .also { println("permu ${it.to16()}")} */
             .toByteArray()
             .toList()
-            .asReversed() // TODO mb
+            .asReversed()
             .subList(0, BLOCK_SIZE)
     }
 
 fun encrypt(key: List<Byte>, message: List<Byte>): List<Byte> =
     encrypt(message, generateSubkeys(key), INITIAL_PERMUTATION, SBOXES, LINEAR_TRANSFORMATION, FINAL_PERMUTATION)
 
-fun decrypt(key: List<Byte>, message: List<Byte>): List<Byte> = // TODO mb last round is the first, oops
-    encrypt(message, generateSubkeys(key).asReversed(),
-        FINAL_PERMUTATION, INVERSED_SBOXES, INVERSED_LINEAR_TRANSFORMATION, INITIAL_PERMUTATION)
+fun decrypt(key: List<Byte>, message: List<Byte>): List<Byte> =
+    /* encrypt(message, generateSubkeys(key).asReversed(),
+        FINAL_PERMUTATION, INVERSED_SBOXES, INVERSED_LINEAR_TRANSFORMATION, INITIAL_PERMUTATION) */
+
+        message
+            .windowed(size = BLOCK_SIZE, step = BLOCK_SIZE, partialWindows = true)
+            .flatMap {
+                val keys = generateSubkeys(key)
+                var result = it.toReversedBigInteger().permutate(INITIAL_PERMUTATION)
+
+                result
+                    .xor(keys.last())
+                    .substitute(INVERSED_SBOXES.last())
+                    .xor(keys[keys.lastIndex - 1])
+                for (i in keys.lastIndex - 2 downTo 0) {
+                    result = result
+                        .linearTransformation(INVERSED_LINEAR_TRANSFORMATION)
+                        .substitute(INVERSED_SBOXES[i % INVERSED_SBOXES.size])
+                        .xor(keys[i])
+                }
+                result
+                    .permutate(FINAL_PERMUTATION)
+                    .toByteArray()
+                    .toList()
+                    .asReversed()
+                    .subList(0, BLOCK_SIZE)
+            }
+
 
 /* TEST */
 
@@ -170,10 +170,10 @@ fun fromFile(fileName: String, length: Int): List<Byte> {
 fun main() {
     /* val inp = fromFile("../des/tests/encryption.in", 2000)
     val oup = fromFile("tests/encryption.out", 2000)
-    val res = encrypt(BigInteger(1, listOf(0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef,
+    val res = encrypt(listOf(0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef,
             0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef,
             0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef,
-            0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef).map { it.toByte() }.asReversed().toByteArray()),
+            0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef).map { it.toByte() },
                 inp)
     if (res == oup) {
         println("SUCCESS")
@@ -187,16 +187,16 @@ fun main() {
         listOf(0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F)
             .map(Int::toByte)
 
-    val expected = "DE269FF833E432B85B2E88D2701CE75C"
+    val expected = "b765b0de3d7d9f6d056080aef28e4c62".toUpperCase()
 
     val key = listOf(0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
             0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F). map(Int::toByte)
 
     /* println("was: ${test.to16()}")
     println("key: ${key.to16()}") */
-    println(if (BigInteger(1, encrypt(key, test).toByteArray()).toString(16).toUpperCase() == expected) "SUCCESS" else "FAILURE")
-    /* println("now: ${BigInteger(1, encrypt(key, test).toByteArray()).toString(16).toUpperCase()}")
-    println("exp: $expected") */
+    println(if (BigInteger(1, decrypt(key, test).toByteArray()).toString(16).toUpperCase() == expected) "SUCCESS" else "FAILURE")
+    println("now: ${BigInteger(1, decrypt(key, test).toByteArray()).toString(16).toUpperCase()}")
+    println("exp: $expected")
 }
 
 /* DEBUG */

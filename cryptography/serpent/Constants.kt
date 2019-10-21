@@ -6,6 +6,7 @@ const val PHI = 0x9E3779B9L.toInt()
 const val KEY_SIZE = 256
 const val SUBKEY_INTS = BLOCK_BITS / Int.SIZE_BITS
 const val PARTS_KEY_SIZE = KEY_SIZE / Int.SIZE_BITS
+const val KEY_AMOUNT = 132
 
 val INITIAL_PERMUTATION = listOf(
     0, 32, 64, 96, 1, 33, 65, 97, 2, 34, 66, 98, 3, 35, 67, 99,
