@@ -97,64 +97,52 @@ fun generateSubkeys(lb: List<Byte>): List<BigInteger> {
         }
 }
 
-fun encrypt(
-    message: List<Byte>,
-    keys: List<BigInteger>,
-    initialPermutation: List<Int>,
-    sboxes: List<List<Int>>,
-    linearTransform: List<List<Int>>,
-    finalPermutation: List<Int>
-): List<Byte> = message
-    .windowed(size = BLOCK_SIZE, step = BLOCK_SIZE, partialWindows = true)
-    .flatMap {
-        keys
-            .subList(0, keys.lastIndex - 1)
-            .foldIndexed(it.toReversedBigInteger().permutate(initialPermutation)) { index, element, key ->
-                element
-                    .xor(key)
-                    .substitute(sboxes[index % sboxes.size])
-                    .linearTransformation(linearTransform)
-            }
-            .xor(keys[keys.lastIndex - 1])
-            .substitute(sboxes.last())
-            .xor(keys.last())
-            .permutate(finalPermutation)
-            .toByteArray()
-            .toList()
-            .asReversed()
-            .subList(0, BLOCK_SIZE)
-    }
-
-fun encrypt(key: List<Byte>, message: List<Byte>): List<Byte> =
-    encrypt(message, generateSubkeys(key), INITIAL_PERMUTATION, SBOXES, LINEAR_TRANSFORMATION, FINAL_PERMUTATION)
+fun encrypt(message: List<Byte>, keys: List<BigInteger>): List<Byte> =
+    message
+        .windowed(size = BLOCK_SIZE, step = BLOCK_SIZE, partialWindows = true)
+        .flatMap {
+            keys
+                .subList(0, keys.lastIndex - 1)
+                .foldIndexed(it.toReversedBigInteger().permutate(INITIAL_PERMUTATION)) { index, element, key ->
+                    element
+                        .xor(key)
+                        .substitute(SBOXES[index % SBOXES.size])
+                        .linearTransformation(LINEAR_TRANSFORMATION)
+                }
+                .xor(keys[keys.lastIndex - 1])
+                .substitute(SBOXES.last())
+                .xor(keys.last())
+                .permutate(FINAL_PERMUTATION)
+                .toByteArray()
+                .toList()
+                .asReversed()
+                .subList(0, BLOCK_SIZE)
+        }
 
 fun decrypt(key: List<Byte>, message: List<Byte>): List<Byte> =
-    /* encrypt(message, generateSubkeys(key).asReversed(),
-        FINAL_PERMUTATION, INVERSED_SBOXES, INVERSED_LINEAR_TRANSFORMATION, INITIAL_PERMUTATION) */
+    message
+        .windowed(size = BLOCK_SIZE, step = BLOCK_SIZE, partialWindows = true)
+        .flatMap {
+            val keys = generateSubkeys(key)
+            var result = it.asReversed().toBigInteger().also { println("starting: ${it.to16()}") }.permutate(INITIAL_PERMUTATION).also { println("permuted: ${it.to16()}") }
 
-        message
-            .windowed(size = BLOCK_SIZE, step = BLOCK_SIZE, partialWindows = true)
-            .flatMap {
-                val keys = generateSubkeys(key)
-                var result = it.toReversedBigInteger().permutate(INITIAL_PERMUTATION)
-
-                result
-                    .xor(keys.last())
-                    .substitute(INVERSED_SBOXES.last())
-                    .xor(keys[keys.lastIndex - 1])
-                for (i in keys.lastIndex - 2 downTo 0) {
-                    result = result
-                        .linearTransformation(INVERSED_LINEAR_TRANSFORMATION)
-                        .substitute(INVERSED_SBOXES[i % INVERSED_SBOXES.size])
-                        .xor(keys[i])
-                }
-                result
-                    .permutate(FINAL_PERMUTATION)
-                    .toByteArray()
-                    .toList()
-                    .asReversed()
-                    .subList(0, BLOCK_SIZE)
+            result = result
+                .xor(keys.last())
+                .substitute(INVERSED_SBOXES.last())
+                .xor(keys[keys.lastIndex - 1])
+            for (i in keys.lastIndex - 2 downTo 0) {
+                result = result
+                    .linearTransformation(INVERSED_LINEAR_TRANSFORMATION)
+                    .substitute(INVERSED_SBOXES[i % INVERSED_SBOXES.size])
+                    .xor(keys[i])
             }
+            result
+                .permutate(FINAL_PERMUTATION)
+                .toByteArray()
+                .toList()
+                .asReversed()
+                .subList(0, BLOCK_SIZE)
+        }
 
 
 /* TEST */
@@ -184,10 +172,10 @@ fun main() {
     println("OUTPUT")
     println(oup) */
     val test =
-        listOf(0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F)
+        listOf(0xDE, 0x26, 0x9F, 0xF8, 0x33, 0xE4, 0x32, 0xB8, 0x5B, 0x2E, 0x88, 0xD2, 0x70, 0x1C, 0xE7, 0x5C)
             .map(Int::toByte)
 
-    val expected = "b765b0de3d7d9f6d056080aef28e4c62".toUpperCase()
+    val expected = "000102030405060708090a0b0c0d0e0f".toUpperCase()
 
     val key = listOf(0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
             0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F). map(Int::toByte)
