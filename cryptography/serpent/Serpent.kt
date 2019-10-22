@@ -2,9 +2,6 @@ package serpent
 
 import java.math.BigInteger
 import java.security.InvalidKeyException
-import java.io.File // TEST
-
-// TODO make cipher interface
 
 // Int utilities
 
@@ -97,10 +94,11 @@ fun generateSubkeys(lb: List<Byte>): List<BigInteger> {
         }
 }
 
-fun encrypt(message: List<Byte>, keys: List<BigInteger>): List<Byte> =
+fun encrypt(key: List<Byte>, message: List<Byte>): List<Byte> =
     message
         .windowed(size = BLOCK_SIZE, step = BLOCK_SIZE, partialWindows = true)
         .flatMap {
+            val keys = generateSubkeys(key)
             keys
                 .subList(0, keys.lastIndex - 1)
                 .foldIndexed(it.toReversedBigInteger().permutate(INITIAL_PERMUTATION)) { index, element, key ->
@@ -124,82 +122,22 @@ fun decrypt(key: List<Byte>, message: List<Byte>): List<Byte> =
         .windowed(size = BLOCK_SIZE, step = BLOCK_SIZE, partialWindows = true)
         .flatMap {
             val keys = generateSubkeys(key)
-            var result = it.asReversed().toBigInteger().also { println("starting: ${it.to16()}") }.permutate(INITIAL_PERMUTATION).also { println("permuted: ${it.to16()}") }
-
-            result = result
+            var result = it.asReversed().toBigInteger().permutate(INITIAL_PERMUTATION)
                 .xor(keys.last())
                 .substitute(INVERSED_SBOXES.last())
                 .xor(keys[keys.lastIndex - 1])
-            for (i in keys.lastIndex - 2 downTo 0) {
-                result = result
-                    .linearTransformation(INVERSED_LINEAR_TRANSFORMATION)
-                    .substitute(INVERSED_SBOXES[i % INVERSED_SBOXES.size])
-                    .xor(keys[i])
-            }
-            result
+
+            keys
+                .subList(0, keys.lastIndex - 1)
+                .foldRightIndexed(result) { index, element, res ->
+                    res
+                        .linearTransformation(INVERSED_LINEAR_TRANSFORMATION)
+                        .substitute(INVERSED_SBOXES[index % INVERSED_SBOXES.size])
+                        .xor(element)
+                }
                 .permutate(FINAL_PERMUTATION)
                 .toByteArray()
                 .toList()
                 .asReversed()
                 .subList(0, BLOCK_SIZE)
         }
-
-
-/* TEST */
-
-fun fromFile(fileName: String, length: Int): List<Byte> {
-    val bytes = ByteArray(length)
-    val stream = File(fileName).inputStream()
-    stream.read(bytes)
-    stream.close()
-    return bytes.toList()
-}
-
-fun main() {
-    /* val inp = fromFile("../des/tests/encryption.in", 2000)
-    val oup = fromFile("tests/encryption.out", 2000)
-    val res = encrypt(listOf(0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef,
-            0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef,
-            0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef,
-            0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef).map { it.toByte() },
-                inp)
-    if (res == oup) {
-        println("SUCCESS")
-    } else {
-        println("FAILURE")
-    } */
-    /* println(res)
-    println("OUTPUT")
-    println(oup) */
-    val test =
-        listOf(0xDE, 0x26, 0x9F, 0xF8, 0x33, 0xE4, 0x32, 0xB8, 0x5B, 0x2E, 0x88, 0xD2, 0x70, 0x1C, 0xE7, 0x5C)
-            .map(Int::toByte)
-
-    val expected = "000102030405060708090a0b0c0d0e0f".toUpperCase()
-
-    val key = listOf(0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
-            0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F). map(Int::toByte)
-
-    /* println("was: ${test.to16()}")
-    println("key: ${key.to16()}") */
-    println(if (BigInteger(1, decrypt(key, test).toByteArray()).toString(16).toUpperCase() == expected) "SUCCESS" else "FAILURE")
-    println("now: ${BigInteger(1, decrypt(key, test).toByteArray()).toString(16).toUpperCase()}")
-    println("exp: $expected")
-}
-
-/* DEBUG */
-
-fun BigInteger.to16(): String = toString(16).toUpperCase()
-fun ByteArray.to16(): String = BigInteger(1, this).to16()
-fun List<Byte>.to16(): String = map { it.toString(16).toUpperCase() }.joinToString(separator = "")
-
-fun intToString(k: Int): String {
-    var n = k
-    val buf = CharArray(8)
-    val HEX_DIGITS = charArrayOf('0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F')
-    for (i in 7 downTo 0) {
-        buf[i] = HEX_DIGITS[n and 0x0F]
-        n = n ushr 4;
-    }
-    return String(buf)
-}
