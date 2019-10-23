@@ -66,6 +66,12 @@ fun BigInteger.linearTransformation(transform: List<List<Int>>): BigInteger =
         result or (bits.fold(0.toBigInteger()) { xorBit, bit -> xorBit xor takeBits(bit + 1) } shl index)
     }
 
+fun List<Byte>.extend(n: Int): List<Byte> = when (size.compareTo(n)) {
+    1  -> subList(0, n)
+    0  -> this
+    -1 -> this + List<Byte>(n - size) { 0 }
+    else -> throw RuntimeException()
+}
 
 // algorithm main part
 
@@ -114,7 +120,7 @@ fun encrypt(key: List<Byte>, message: List<Byte>): List<Byte> =
                 .toByteArray()
                 .toList()
                 .asReversed()
-                .subList(0, BLOCK_SIZE)
+                .extend(BLOCK_SIZE)
         }
 
 fun decrypt(key: List<Byte>, message: List<Byte>): List<Byte> =
@@ -139,5 +145,5 @@ fun decrypt(key: List<Byte>, message: List<Byte>): List<Byte> =
                 .toByteArray()
                 .toList()
                 .asReversed()
-                .subList(0, BLOCK_SIZE)
+                .extend(BLOCK_SIZE)
         }
