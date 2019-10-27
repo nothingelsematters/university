@@ -18,17 +18,20 @@ fun Lines.toProgram(): FunctionalProgram {
         .toMap()
 
     return FunctionalProgram (
-        definitions.map { it as FunctionDefinition }.groupBy { it.name }.map { (name, cases) ->
-            Function (
-                name,
-                declarations[name] ?: throw NoTypeDefinitionException(name),
-                cases.map { SubstitutionCase(it.arguments, it.body) }
+        definitions
+            .map { it as FunctionDefinition }
+            .groupBy { it.name }
+            .map { (name, cases) ->
+                Function (
+                    name,
+                    declarations[name] ?: throw NoTypeDefinitionException(name),
+                    cases.map { SubstitutionCase(it.arguments, it.body) }
                 )
         }
     )
 }
 
-data class Function(val name: String, val type: Type, val substCases: List<SubstitutionCase>) {
+data class Function(val name: String, val type: FunctionalType, val substCases: List<SubstitutionCase>) {
     override fun toString(): String = "$name :: $type\n${substCases.joinToString(prefix = "$name ", separator = "\n$name ")}"
 }
 
@@ -47,19 +50,8 @@ interface Line {}
 
 // type
 
-data class DeclaredType(val name: String, val type: Type) : Line {
+data class DeclaredType(val name: String, val type: FunctionalType) : Line {
     override fun toString(): String = "$name :: $type"
-}
-
-
-interface Type {}
-
-data class AtomicType(val name: String) : Type {
-    override fun toString(): String = name
-}
-
-data class FunctionType(val from: Type, val to: Type) : Type {
-    override fun toString(): String = "($from -> $to)"
 }
 
 // function
@@ -81,10 +73,6 @@ class GuardedFunction(val boolCases: List<BooleanCase>) : FunctionBody {
 
 data class BooleanCase(val condition: Expression, val expression: Expression) {
     override fun toString(): String = "$condition = $expression"
-}
-
-data class Expression(val str: String) {
-    override fun toString(): String = str
 }
 
 interface Argument {}
