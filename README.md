@@ -11,3 +11,4 @@
 + [Translation Methods](translation-methods)
 + [Cryptography](cryptography)
 + [Type Theory](type-theory)
++ [Machine Learning](machine-learning)
