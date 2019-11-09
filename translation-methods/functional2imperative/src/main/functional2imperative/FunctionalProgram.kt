@@ -1,8 +1,6 @@
 package functional2imperative
 
-
 class NoTypeDefinitionException(val error: String) : Exception(error)
-
 
 data class FunctionalProgram(val functions: List<Function>) {
     override fun toString(): String = functions.joinToString(separator = "\n\n")
@@ -13,7 +11,7 @@ fun Lines.toProgram(): FunctionalProgram {
     val declarations = declaredTypes
         .map {
             val dt = it as DeclaredType
-            Pair(dt.name, dt.type)
+            Pair(dt.name, dt.ftype)
         }
         .toMap()
 
@@ -27,12 +25,12 @@ fun Lines.toProgram(): FunctionalProgram {
                     declarations[name] ?: throw NoTypeDefinitionException(name),
                     cases.map { SubstitutionCase(it.arguments, it.body) }
                 )
-        }
+            }
     )
 }
 
-data class Function(val name: String, val type: FunctionalType, val substCases: List<SubstitutionCase>) {
-    override fun toString(): String = "$name :: $type\n${substCases.joinToString(prefix = "$name ", separator = "\n$name ")}"
+data class Function(val name: String, val ftype: FunctionalType, val substCases: List<SubstitutionCase>) {
+    override fun toString(): String = "$name :: $ftype\n${substCases.joinToString(prefix = "$name ", separator = "\n$name ")}"
 }
 
 data class SubstitutionCase(val arguments: List<Argument>, val body: FunctionBody) {
@@ -50,8 +48,8 @@ interface Line {}
 
 // type
 
-data class DeclaredType(val name: String, val type: FunctionalType) : Line {
-    override fun toString(): String = "$name :: $type"
+data class DeclaredType(val name: String, val ftype: FunctionalType) : Line {
+    override fun toString(): String = "$name :: $ftype"
 }
 
 // function

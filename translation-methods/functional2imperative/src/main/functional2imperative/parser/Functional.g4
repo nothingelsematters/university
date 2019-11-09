@@ -55,12 +55,14 @@ booleanCase returns [BooleanCase bc]: CASE cond=expression EQUALS expr=expressio
 
 expression returns [Expression expr]: s=expressionString { $expr = new StringExpression($s.str); };
 
-expressionString returns [String str]: NAME      emptyExpression { $str = $NAME.text + " " + $emptyExpression.str; }
-                                     | OPERATION emptyExpression { $str = $OPERATION.text + " " + $emptyExpression.str; }
-                                     | LITERAL   emptyExpression { $str = $LITERAL.text + " " + $emptyExpression.str; }
+expressionString returns [String str]: NAME      emptyExpression { $str = $NAME.text + $emptyExpression.str; }
+                                     | OPERATION emptyExpression { $str = $OPERATION.text + $emptyExpression.str; }
+                                     | LITERAL   emptyExpression { $str = $LITERAL.text + $emptyExpression.str; }
+                                     | OPENP     emptyExpression { $str = $OPENP.text + $emptyExpression.str; }
+                                     | CLOSEP    emptyExpression { $str = $CLOSEP.text + $emptyExpression.str; }
                                      ;
 
-emptyExpression returns [String str]: expressionString    { $str = $expressionString.str; }
+emptyExpression returns [String str]: expressionString    { $str = " " + $expressionString.str; }
                                     | /* epsilon */       { $str = ""; }
                                     ;
 
@@ -83,7 +85,7 @@ OPENP : '(';
 CLOSEP : ')';
 LITERAL : [0-9]+;
 NAME : [a-zA-Z_]([a-zA-Z0-9_'])*;
-OPERATION : ([!%^&*()\-+<>'"/~]+ | '==');
+OPERATION : ([!%^&*,\-+<>'"/~]+ | '==');
 CASE : '|';
 EQUALS : '=';
 NEWLINE : [\n]+;

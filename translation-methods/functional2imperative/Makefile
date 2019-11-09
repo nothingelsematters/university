@@ -26,9 +26,10 @@ clean:
 	java -jar ${ANTLR} $<
 
 $(CLASSES): $(SOURCES) $(OUTDIR)
+	kotlinc -cp ${ANTLR}:${OUTDIR} -d ${OUTDIR} ${PROJECTDIR}/functional2imperative/Exceptions.kt
 	kotlinc -d ${OUTDIR} ${PROJECTDIR}/functional2imperative/Common.kt ${PROJECTDIR}/functional2imperative/FunctionalProgram.kt
 	javac -cp ${ANTLR}:${OUTDIR} -d ${OUTDIR} ${PARSER}/FunctionalBaseListener.java ${PARSER}/FunctionalLexer.java ${PARSER}/FunctionalListener.java ${PARSER}/FunctionalParser.java
-	kotlinc -cp ${ANTLR}:${OUTDIR}:${OUTDIR}/functional2imperative -d ${OUTDIR} ${PROJECTDIR}/functional2imperative/parser/FunctionalParserUtils.kt ${OUTDIR} ${PROJECTDIR}/functional2imperative/ImperativeProgram.kt ${PROJECTDIR}/functional2imperative/Translator.kt
+	kotlinc -cp ${ANTLR}:${OUTDIR}:${OUTDIR}/functional2imperative -d ${OUTDIR} ${PROJECTDIR}/functional2imperative/parser/FunctionalParserUtils.kt ${PROJECTDIR}/functional2imperative/Exceptions.kt ${PROJECTDIR}/functional2imperative/ImperativeProgram.kt ${PROJECTDIR}/functional2imperative/Common.kt ${PROJECTDIR}/functional2imperative/FunctionalToImperative.kt ${PROJECTDIR}/functional2imperative/Translator.kt
 
 $(OUTDIR):
 	mkdir -p ${OUTDIR}
