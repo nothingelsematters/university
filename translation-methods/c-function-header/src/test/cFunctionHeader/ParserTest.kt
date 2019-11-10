@@ -37,6 +37,4 @@ class ParserTest {
 
     @Test fun `middle difficulty test`() =
         stringTest("inline static void A_123(const unsigned long long int * const * b, struct n4ME_ * const * (*func)(signed short* arg));")
-
-    // TODO : more tests
 }

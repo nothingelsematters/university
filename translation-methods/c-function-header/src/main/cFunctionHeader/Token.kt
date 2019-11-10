@@ -14,14 +14,7 @@ public enum class Token {
     RIGHTPARENTHESIS, // )
     SEMICOLON,        // ;
     END,              // $ (fake)
-    NAME {            // [\w_][\w\d_]*
-        var value: String = ""
-
-        public fun fromString(str: String): Token {
-            value = str
-            return this
-        }
-    }
+    NAME              // [\w_][\w\d_]*
 }
 
 val charactersMap = mapOf(
