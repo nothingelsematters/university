@@ -1,27 +1,26 @@
-.PHONY: all compile run pack clean out
+.PHONY: pack all run clean
+GENERATED = src/parser.mli src/parser.ml src/lexer.ml
+OCAMLC = ocamlc # ocamlopt for speed
+PACKAGE = parsing
 
-KTC = kotlinc
-KTR = kotlin
-PROJECTNAME = parsing
-SOURCES = $(shell find -type f -name "*.kt")
-CLASSES = $(patsubst %.kt,out/%.class,$(SOURCES))
-DEPS = lib/better-parse-0.3.2.jar
-MAINCLASS = MainKt
-OUT = out
-
-all: out compile
+all: main
 
 run:
-	${KTR} -cp ${OUT}:${DEPS} -Djava.io.tmpdir=tmp ${MAINCLASS}
+	./main
 
-pack:
-	zip $(PROJECTNAME).zip -r Makefile lambda lib ${MAINCLASS}.kt
+src/tree.cmi:
+	cd src && $(OCAMLC) -c tree.ml
+
+main.exe: $(GENERATED) src/tree.cmi
+	cd src && $(OCAMLC) tree.ml $(GENERATED:src/%=%) main.ml -o ../main.exe
+
+pack: $(GENERATED)
+	zip $(PACKAGE) -r Makefile lambda main.ml
+
+$(GENERATED): src/lexer.mll src/parser.mly
+	ocamllex src/lexer.mll
+	ocamlyacc src/parser.mly
 
 clean:
-	rm -rvf ${OUT} tmp
-
-compile: ${SOURCES}
-	${KTC} -cp ${DEPS}:. -d ${OUT} $^
-
-out:
-	mkdir -p ${OUT}
+	cd src && $(DEL) $(GENERATED:src/%=%) *.c* *.o*
+	rm -f main $(PACKAGE)
