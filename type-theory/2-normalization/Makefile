@@ -1,35 +1,27 @@
-GHC = ghc
-PROJECTNAME = normalization
-MAIN = Main.hs
-PACKAGE = Lambda
-PARSING = $(PACKAGE)/Parse
-SOURCES = $(PACKAGE)/Expression.hs $(PARSING)/ExpressionParser.hs
-PREPARE = $(PARSING)/ExpressionGrammar.hs $(PARSING)/Tokens.hs
-OUTDIR = out
+.PHONY: all compile run pack clean out
 
-all: $(PROJECTNAME)
+KTC = kotlinc
+KTR = kotlin
+PROJECTNAME = parsing
+SOURCES = $(shell find -type f -name "*.kt")
+CLASSES = $(patsubst %.kt,out/%.class,$(SOURCES))
+DEPS = lib/better-parse-0.3.2.jar
+MAINCLASS = MainKt
+OUT = out
+
+all: out compile
 
 run:
-	./$(PROJECTNAME)
+	${KTR} -cp ${OUT}:${DEPS} -Djava.io.tmpdir=tmp ${MAINCLASS}
 
-noopt: $(PREPARE) $(MAIN) $(SOURCES)
-	$(GHC) -Wall $(MAIN) -o $(PROJECTNAME) -odir $(OUTDIR) -dumpdir $(OUTDIR) -outputdir $(OUTDIR) -tmpdir $(OUTDIR)
-
-pack: $(PREPARE)
-	zip $(PROJECTNAME).zip $(PREPARE) $(SOURCES) $(MAIN) Makefile
+pack:
+	zip $(PROJECTNAME).zip -r Makefile lambda lib ${MAINCLASS}.kt
 
 clean:
-	rm -f *.o *.hi $(PACKAGE)/*.o $(PACKAGE)/*.hi $(PREPARE) $(PARSING)/*.o $(PARSING)/*.hi $(PROJECTNAME)
-	rm -rvf $(OUTDIR)
+	rm -rvf ${OUT} tmp
 
-partclean:
-	rm -vf *.o *.hi $(PACKAGE)/*.o $(PACKAGE)/*.hi
+compile: ${SOURCES}
+	${KTC} -cp ${DEPS}:. -d ${OUT} $^
 
-prepare: $(PREPARE)
-
-$(PROJECTNAME): $(PREPARE) $(MAIN) $(SOURCES)
-	$(GHC) $(MAIN) -O2 -o $(PROJECTNAME)
-
-$(PREPARE): $(HAPPY) $(ALEX)
-	happy $(PARSING)/ExpressionGrammar.y
-	alex $(PARSING)/Tokens.x
+out:
+	mkdir -p ${OUT}
