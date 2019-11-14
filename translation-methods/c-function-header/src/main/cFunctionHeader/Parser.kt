@@ -82,7 +82,10 @@ public class Parser {
         tokenFork("type name", Token.STRUCT, listOf(::name), listOf(::systemTypes))
 
     private fun systemTypes(): SyntaxTree =
-        SyntaxTree("system types", numericSpecifiers(), systemTypesPrime())
+        when (lex.curToken) {
+            Token.DOUBLE, Token.FLOAT -> systemTypesPrime()
+            else -> SyntaxTree("system types", numericSpecifiers(), systemTypesPrime())
+        }
 
     private fun systemTypesPrime(): SyntaxTree = SyntaxTree("system type second",
         when (val t = lex.curToken) {
@@ -149,9 +152,9 @@ public class Parser {
         tokenFork("rest arguments", Token.COMA, listOf(::notEmptyArgs), listOf(::epsilon))
 
     private fun arguments(): SyntaxTree = SyntaxTree("arguments",
-        when (val t = lex.curToken) {
-            Token.VOID -> processToken(t)
-            Token.CONST, Token.STRUCT, Token.UNSIGNED, Token.SIGNED, Token.CHAR, Token.INT, Token.SHORT, Token.LONG ->
+        when (val t = lex.curToken) { // if it is possible: int f(void); -> LL(2)
+            Token.VOID, Token.CONST, Token.STRUCT, Token.UNSIGNED, Token.SIGNED,
+            Token.CHAR, Token.INT, Token.SHORT, Token.LONG, Token.DOUBLE, Token.FLOAT ->
                 notEmptyArgs()
             else -> epsilon()
         }
