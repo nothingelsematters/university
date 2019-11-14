@@ -1,26 +1,27 @@
 .PHONY: pack all run clean
-GENERATED = src/parser.mli src/parser.ml src/lexer.ml
-OCAMLC = ocamlc # ocamlopt for speed
-PACKAGE = parsing
+OCAMLC = ocamlc
+FOLDER = src
+GENERATED = $(FOLDER)/parser.mli $(FOLDER)/parser.ml $(FOLDER)/lexer.ml
+MAIN = main
 
-all: main
+all: $(MAIN)
 
 run:
-	./main
+	./$(MAIN)
 
-src/tree.cmi:
-	cd src && $(OCAMLC) -c tree.ml
+$(FOLDER)/lambda.cmi:
+	cd $(FOLDER) && $(OCAMLC) -c lambda.ml
 
-main.exe: $(GENERATED) src/tree.cmi
-	cd src && $(OCAMLC) tree.ml $(GENERATED:src/%=%) main.ml -o ../main.exe
+$(MAIN): $(GENERATED) $(FOLDER)/lambda.cmi
+	cd $(FOLDER) && $(OCAMLC) lambda.ml $(GENERATED:$(FOLDER)/%=%) $(MAIN).ml -o ../$(MAIN)
 
 pack: $(GENERATED)
-	zip $(PACKAGE) -r Makefile lambda main.ml
+	zip $(FOLDER) -r Makefile $(FOLDER) $(FOLDER)/$(MAIN).ml
 
-$(GENERATED): src/lexer.mll src/parser.mly
-	ocamllex src/lexer.mll
-	ocamlyacc src/parser.mly
+$(GENERATED): $(FOLDER)/lexer.mll $(FOLDER)/parser.mly
+	ocamllex $(FOLDER)/lexer.mll
+	ocamlyacc $(FOLDER)/parser.mly
 
 clean:
-	cd src && $(DEL) $(GENERATED:src/%=%) *.c* *.o*
-	rm -f main $(PACKAGE)
+	cd $(FOLDER) && rm -rvf $(GENERATED:$(FOLDER)/%=%) *.c* *.o*
+	rm -rvf $(MAIN)

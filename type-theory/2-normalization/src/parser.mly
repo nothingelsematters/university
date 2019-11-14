@@ -1,12 +1,12 @@
 %{
-  open Expression;;
+  open Lambda;;
 %}
 %token <string> VARIABLE
 %token LAMBDA DOT
-%token OPEN CLOSE
+%token OPENP CLOSEP
 %token EOF
 %start main
-%type <Expression.expression> main
+%type <Lambda.lambda> main
 %%
 main:
         application              { $1 }
@@ -18,7 +18,7 @@ atom:
         OPENP main CLOSEP        { $2 }
         |variable                { $1 }
 application:
-        atom application         { Application ($1, $2) }
+        application atom         { Application ($1, $2) }
         |application             { $1 }
         |atom                    { $1 }
 lambda:
