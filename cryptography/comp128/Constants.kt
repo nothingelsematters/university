@@ -1,5 +1,7 @@
 package comp128
 
+const val BLOCK_SIZE = 228
+
 val table = listOf(
     listOf(
         102,177,186,162,  2,156,112, 75, 55, 25,  8, 12,251,193,246,188,

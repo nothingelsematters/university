@@ -7,11 +7,12 @@ fun lengthAssertion(array: ByteArray, name: String, expected: Int) {
     if (array.size != expected) throw WrongLengthException(name, expected, array.size)
 }
 
-infix fun Byte.shl(shift: Int): Byte = toInt().shl(shift).toByte()
-infix fun Byte.ushr(shift: Int): Byte = toInt().ushr(shift).toByte()
-infix fun Byte.or(that: Int): Byte = toInt().or(that).toByte()
-infix fun Byte.or(that: Byte): Byte = toInt().or(that.toInt()).toByte()
-infix fun Byte.and(that: Int): Byte = toInt().and(that).toByte()
+fun Byte.cleverToInt(): Int = toInt() + if (toInt() < 0) 256 else 0
+infix fun Byte.shl(shift: Int): Byte = cleverToInt().shl(shift).toByte()
+infix fun Byte.ushr(shift: Int): Byte = cleverToInt().ushr(shift).toByte()
+infix fun Byte.or(that: Int): Byte = cleverToInt().or(that).toByte()
+infix fun Byte.or(that: Byte): Byte = cleverToInt().or(that.cleverToInt()).toByte()
+infix fun Byte.and(that: Int): Byte = cleverToInt().and(that).toByte()
 
 
 fun round(array: ByteArray, bits: ByteArray) {
@@ -20,8 +21,8 @@ fun round(array: ByteArray, bits: ByteArray) {
             for (k in 0 until (1 shl (4 - i))) {
                 val fromFirst = k + j * (1 shl (5 - i))
                 val fromSecond = fromFirst + (1 shl (4 - i))
-                val toFirst = (array[fromFirst] + (array[fromSecond] shl 1)) and ((1 shl (9 - i)) - 1) // 2 *
-                val toSecond = ((array[fromFirst] shl 1) + array[fromSecond]) and ((1 shl (9 - i)) - 1) // % (1 shl (9 - i))
+                val toFirst = (array[fromFirst] + (array[fromSecond] shl 1)) and ((1 shl (9 - i)) - 1)
+                val toSecond = ((array[fromFirst] shl 1) + array[fromSecond]) and ((1 shl (9 - i)) - 1)
                 array[fromFirst] = t[toFirst]
                 array[fromSecond] = t[toSecond]
             }
@@ -36,6 +37,8 @@ fun round(array: ByteArray, bits: ByteArray) {
 }
 
 /*
+ * A3 / A8 initial funciton
+ *
  * rand: challenge from base station
  * key: sim's key
  * return[0..3]: sres
@@ -50,7 +53,7 @@ fun a3a8(rand: ByteArray, key: ByteArray): ByteArray {
     rand.copyInto(array, 16)
 
     repeat (7) {
-        key.copyInto(array) // TODO check that array[16..31] is ok
+        key.copyInto(array)
         round(array, bits)
 
         for (j in 0 until 16) {
