@@ -21,7 +21,6 @@ ArgsList
 
 Args
     -> e
-    -> 'void'
     -> NotEmptyArgs
 
 returnType
@@ -51,7 +50,6 @@ ArgName
     -> Name
 
 Name // stops here in the grammar
-    -> FirstSymbol OtherSymbols
 
 FirstSymbol
     -> a-z A-Z _

@@ -89,7 +89,7 @@ public class Parser {
 
     private fun systemTypesPrime(): SyntaxTree = SyntaxTree("system type second",
         when (val t = lex.curToken) {
-            Token.CHAR, Token.INT, Token.FLOAT, Token.DOUBLE -> listOf(processToken(t))
+            Token.CHAR, Token.INT, Token.BOOL, Token.FLOAT, Token.DOUBLE -> listOf(processToken(t))
             Token.SHORT -> listOf(processToken(t), int())
             Token.LONG -> listOf(processToken(t), long())
             else -> unexpectedToken(t)
@@ -110,6 +110,7 @@ public class Parser {
     private fun modifiers(): SyntaxTree = SyntaxTree("modifiers",
         when (val t = lex.curToken) {
             Token.POINTER, Token.CONST -> listOf(processToken(t), modifiers())
+            Token.AMPERSAND -> listOf(processToken(t))
             else -> listOf(epsilon())
         }
     )
@@ -152,9 +153,9 @@ public class Parser {
         tokenFork("rest arguments", Token.COMA, listOf(::notEmptyArgs), listOf(::epsilon))
 
     private fun arguments(): SyntaxTree = SyntaxTree("arguments",
-        when (val t = lex.curToken) { // if it is possible: int f(void); -> LL(2)
+        when (lex.curToken) {
             Token.VOID, Token.CONST, Token.STRUCT, Token.UNSIGNED, Token.SIGNED,
-            Token.CHAR, Token.INT, Token.SHORT, Token.LONG, Token.DOUBLE, Token.FLOAT ->
+            Token.CHAR, Token.INT, Token.SHORT, Token.BOOL, Token.LONG, Token.DOUBLE, Token.FLOAT ->
                 notEmptyArgs()
             else -> epsilon()
         }

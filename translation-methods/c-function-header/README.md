@@ -8,3 +8,8 @@
 Используйте один терминал для всех имен переменных и имен типов.
 
 Пример: `int fib(int n)`;
+
+
+---
+
+> update: also `&` in types are supported (c++ style)
