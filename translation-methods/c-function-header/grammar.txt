@@ -1,0 +1,83 @@
+Function
+    -> Specifiers FunctionDeclaration ';'
+
+FunctionArg
+    -> FunctionDeclaration
+    -> FunctionType '(' '*' Name ')' ArgsList
+
+FunctionDeclaration
+    -> FunctionType Name ArgsList
+
+Specifiers
+    -> e
+    -> Specifier Specifiers
+
+Specifier
+    -> 'static'
+    -> 'inline'
+
+ArgsList
+    -> '(' Args ')'
+
+Args
+    -> e
+    -> 'void'
+    -> NotEmptyArgs
+
+FunctionType
+    -> 'void'
+    -> Type
+
+NotEmptyArgs
+    -> Arg RestArgs
+
+RestArgs
+    -> e
+    -> , NotEmptyArgs
+
+Arg
+    -> Type Name
+    -> FunctionArg
+
+Name
+    -> FirstSymbol OtherSymbols
+
+FirstSymbol
+    -> a-z A-Z _
+
+OtherSymbols
+    -> e
+    -> a-z A-Z _ 0-9
+
+Type
+    -> TypeNameModifiers
+    -> 'const' TypeNameModifiers
+
+TypeNameModifiers
+    -> TypeName Modifiers
+
+Modifiers
+    -> e
+    -> '*' Modifiers
+    -> 'const' Modifiers
+
+TypeName
+    -> SystemTypes
+    -> 'struct' Name
+
+SystemTypes
+    -> 'void'
+    -> NumericSpecifiers 'char'
+    -> NumericSpecifiers 'int'
+    -> NumericSpecifiers 'short' Int
+    -> NumericSpecifiers 'long' Int
+    -> NumericSpecifiers 'long' 'long' Int
+
+Int
+    -> e
+    -> 'int'
+
+NumericSpecifiers
+    -> e
+    -> 'unsigned'
+    -> 'signed'
