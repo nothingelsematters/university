@@ -1,7 +1,5 @@
 package functional2imperative
 
-class NoTypeDefinitionException(val error: String) : Exception(error)
-
 data class FunctionalProgram(val functions: List<Function>) {
     override fun toString(): String = functions.joinToString(separator = "\n\n")
 }

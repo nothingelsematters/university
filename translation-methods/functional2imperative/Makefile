@@ -1,35 +1,57 @@
-OUTDIR = out
-PROJECTDIR = src/main
-PARSER = ${PROJECTDIR}/functional2imperative/parser
+.PHONY: all run clean
 
-SOURCES = $(shell find src -type f -name "*.java")
-CLASSES = $(patsubst $(PROJECTDIR)/%.java,$(OUTDIR)/%.class,$(SOURCES))
-ANTLR_SOURCES = $(shell find src -type f -name "*.g4")
-ANTLR_RESULTS = $(patsubst %.g4,%Parser.java,$(ANTLR_SOURCES))
+PROJECT = functional2imperative
+FOLDER = src
+MAIN = $(FOLDER)/main/$(PROJECT)
+PARSER = $(MAIN)/parser
+OUTDIR = out
+GENERATED = $(PARSER)/FunctionalParser.java
 
 ANTLR = /nix/store/nicfx6951mlscczmjmgw3kb5vbb97sqc-antlr-4.7.2/share/java/antlr-4.7.2-complete.jar
-KOTLINSTD = /nix/store/4ba4lrrsnvww4xm936dmvif6mxgs7pir-kotlin-1.3.50/lib/kotlin-stdlib.jar
+ANTLR_SOURCES = $(shell find src -type f -name "*.g4")
+ANTLR_RESULTS = $(patsubst %.g4,%Parser.java,$(ANTLR_SOURCES))
+ANTLR_CLASSES = $(OUT)/$(PROJECT)/parser/FunctionalParser.class
 
-MAINCLASS = functional2imperative.TranslatorKt
+FUNC_SOURCES = $(MAIN)/Exceptions.kt $(MAIN)/Common.kt $(MAIN)/FunctionalProgram.kt
+FUNC_CLASSES = $(OUTDIR)/$(PROJECT)/FunctionalProgramKt.class
 
+TESTS = $(OUT)/$(PROJECT)/TranslatorTestKt.class
 
-all: $(ANTLR_RESULTS) $(CLASSES)
+SOURCES = $(shell find src -type f -name "*.kt")
+CLASSES = $(OUT)/$(PROJECT)/TranslatorKt.class
+
+all: $(CLASSES)
 
 run:
-	java -cp ${OUTDIR}:${ANTLR}:${KOTLINSTD}:${OUTDIR}/functional2imperative:${OUTDIR}/functional2imperative/parser ${MAINCLASS}
+	kotlin -cp $(OUTDIR) $(PROJECT).TranslatorKt
+
+test: $(CLASSES) $(TESTS)
+	kotlin -cp $(OUTDIR) $(PROJECT).TranslatorTestKt
+
+$(TESTS): all
+	kotlinc -d $(OUTDIR) -cp $(ANTLR):$(OUTDIR) $(shell find src/test -type f -name "*.kt")
+
+$(FUNC_CLASSES): $(OUTDIR) $(FUNC_SOURCES) $(MAIN)/FunctionalProgram.kt
+	kotlinc -d $(OUTDIR) -cp $(ANTLR) $(FUNC_SOURCES)
+
+$(ANTLR_CLASSES): $(ANTLR_RESULTS) $(FUNC_CLASSES)
+	javac -d $(OUTDIR) -cp $(ANTLR):$(OUTDIR) $(PARSER)/FunctionalBaseListener.java \
+		$(PARSER)/FunctionalLexer.java $(PARSER)/FunctionalListener.java \
+		$(PARSER)/FunctionalParser.java
+
+$(CLASSES): $(OUTDIR) $(FUNC_CLASSES) $(ANTLR_CLASSES) $(SOURCES)
+	kotlinc -d $(OUTDIR) -cp $(ANTLR):$(OUTDIR) \
+		$(PARSER)/FunctionalParserUtils.kt \
+		$(MAIN)/Exceptions.kt $(MAIN)/ImperativeProgram.kt \
+		$(MAIN)/Common.kt $(MAIN)/FunctionalToImperative.kt \
+		$(MAIN)/Translator.kt
+
+%Parser.java: %.g4
+	java -jar $(ANTLR) $<
 
 clean:
 	rm -rvf out
-	find ${PARSER} -regextype grep -regex '.*\(java\|interp\|tokens\)' -exec rm -rvf {} \;
-
-%Parser.java: %.g4
-	java -jar ${ANTLR} $<
-
-$(CLASSES): $(SOURCES) $(OUTDIR)
-	kotlinc -cp ${ANTLR}:${OUTDIR} -d ${OUTDIR} ${PROJECTDIR}/functional2imperative/Exceptions.kt
-	kotlinc -d ${OUTDIR} ${PROJECTDIR}/functional2imperative/Common.kt ${PROJECTDIR}/functional2imperative/FunctionalProgram.kt
-	javac -cp ${ANTLR}:${OUTDIR} -d ${OUTDIR} ${PARSER}/FunctionalBaseListener.java ${PARSER}/FunctionalLexer.java ${PARSER}/FunctionalListener.java ${PARSER}/FunctionalParser.java
-	kotlinc -cp ${ANTLR}:${OUTDIR}:${OUTDIR}/functional2imperative -d ${OUTDIR} ${PROJECTDIR}/functional2imperative/parser/FunctionalParserUtils.kt ${PROJECTDIR}/functional2imperative/Exceptions.kt ${PROJECTDIR}/functional2imperative/ImperativeProgram.kt ${PROJECTDIR}/functional2imperative/Common.kt ${PROJECTDIR}/functional2imperative/FunctionalToImperative.kt ${PROJECTDIR}/functional2imperative/Translator.kt
+	find $(PARSER) -regextype grep -regex '.*\(java\|interp\|tokens\)' -exec rm -rvf {} \;
 
 $(OUTDIR):
-	mkdir -p ${OUTDIR}
+	mkdir -p $(OUTDIR)
