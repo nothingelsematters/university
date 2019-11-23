@@ -51,7 +51,11 @@ fun FunctionalType.toImperativeType(amount: Int = -1): ImperativeType = when (th
             args.add(l.toImperativeType())
             left--
         }
-        ImperativeFunctionType(args, r as AtomicType)
+        ImperativeFunctionType(args, when(r) {
+            is FunctionType -> r.toImperativeType()
+            is AtomicType -> r
+            else -> throw IllegalArgumentException()
+        })
     }
     else -> throw IllegalArgumentException()
 }
