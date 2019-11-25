@@ -24,7 +24,8 @@ data class ImperativeFunction(
 }
 
 data class Assigning(val value: String, val ftype: ImperativeType, val expression: Expression, val readOnly: Boolean = true): Instruction {
-    override fun toString(): String = "${if (readOnly) "val" else "var"} $value: $ftype = $expression"
+    override fun toString(): String =
+        "${if (readOnly) "val" else "var"} $value: $ftype = ${if (ftype is AtomicType) "" else "::"}$expression"
 }
 
 data class When(var body: List<Pair<Expression, Expression>>, val level: Int = 0): Expression, Instruction {

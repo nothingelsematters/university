@@ -11,7 +11,7 @@ fun FunctionalProgram.toImperative(): ImperativeProgram = ImperativeProgram (
     }
 )
 
-fun Function.toImperativeFunction(): ImperativeFunction {
+fun Function.toImperativeFunction(): Instruction {
     val argsAmount = if (HashSet<Int>(substCases.map { it.arguments.size }).size == 1) {
         substCases.first().arguments.size
     } else {
@@ -28,7 +28,13 @@ fun Function.toImperativeFunction(): ImperativeFunction {
         ?: "arg$it" // TODO 0 arg may be "arg1"
     }
 
-    return ImperativeFunction (
+    return if (argsAmount == 0)
+        Assigning(
+            name,
+            ftype.toImperativeType(),
+            substCases.toWhen(listOf(name), 0)
+        )
+    else ImperativeFunction (
         this.name,
         names.zip(ift.args),
         ift.returnType,
@@ -72,9 +78,18 @@ fun List<SubstitutionCase>.toWhen(names: List<String>, indent: Int = 1): When = 
             .map { (name, lit) -> "$name == $lit" }
             .joinToString(separator = " && ")
 
+        val subs = it
+            .arguments
+            .mapIndexedNotNull { index, arg ->
+                if (arg is Name && arg.value != names[index])
+                    arg.value to names[index]
+                else
+                    null
+            }
+
         Pair<Expression, Expression> (
             if (conditionString.isEmpty()) TrueExpression() else StringExpression(conditionString),
-            it.body.toExpression(indent)
+            it.body.toExpression(indent).substitute(subs)
         )
     }
 )
@@ -86,4 +101,11 @@ fun FunctionBody.toExpression(indent: Int): Expression = when (this) {
     is InsecureFunction -> expression
     is GuardedFunction  -> boolCases.toWhen(indent)
     else                -> throw IllegalArgumentException()
+}
+
+fun Expression.substitute(subs: List<Pair<String, String>>): Expression = when (this) {
+    is TrueExpression -> this
+    is StringExpression -> StringExpression(subs.fold(str) { s, (old, new) -> s.replace(old, new) })
+    is When -> When(body.map { (l, r) -> l.substitute(subs) to r.substitute(subs) }, level)
+    else -> throw IllegalArgumentException()
 }
