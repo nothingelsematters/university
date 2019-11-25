@@ -1,20 +1,5 @@
 package comp128
 
-class WrongLengthException(val field: String, val expected: Int, val reality: Int) :
-    Exception("wrong length at $field: expected $expected, reality $reality")
-
-fun lengthAssertion(array: ByteArray, name: String, expected: Int) {
-    if (array.size != expected) throw WrongLengthException(name, expected, array.size)
-}
-
-fun Byte.cleverToInt(): Int = toInt() + if (toInt() < 0) 256 else 0
-infix fun Byte.shl(shift: Int): Byte = cleverToInt().shl(shift).toByte()
-infix fun Byte.ushr(shift: Int): Byte = cleverToInt().ushr(shift).toByte()
-infix fun Byte.or(that: Int): Byte = cleverToInt().or(that).toByte()
-infix fun Byte.or(that: Byte): Byte = cleverToInt().or(that.cleverToInt()).toByte()
-infix fun Byte.and(that: Int): Byte = cleverToInt().and(that).toByte()
-
-
 fun round(array: ByteArray, bits: ByteArray) {
     table.forEachIndexed { i, t ->
         for (j in 0 until (1 shl i)) {
