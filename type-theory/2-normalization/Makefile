@@ -1,5 +1,5 @@
 .PHONY: pack all run clean
-OCAMLC = ocamlc
+OCAMLC = ocamlopt -nodynlink
 FOLDER = src
 GENERATED = $(FOLDER)/parser.mli $(FOLDER)/parser.ml $(FOLDER)/lexer.ml
 MAIN = main
