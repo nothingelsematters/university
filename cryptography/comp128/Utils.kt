@@ -14,6 +14,24 @@ infix fun Byte.or(that: Int): Byte = cleverToInt().or(that).toByte()
 infix fun Byte.or(that: Byte): Byte = cleverToInt().or(that.cleverToInt()).toByte()
 infix fun Byte.and(that: Int): Byte = cleverToInt().and(that).toByte()
 
+fun String.hexToByte(): ByteArray {
+    val str = this
+    val data = ByteArray(str.length / 2)
+    for (i in str.indices step 2) {
+        data[i / 2] = (str[i + 1].toString().toLong(16) or (str[i].toString().toLong(16) shl 4)).toByte()
+    }
+    return data
+}
+
+fun ByteArray.byteToHex(): String {
+    val byteArray = this
+    var sb = ""
+    for (b in byteArray) {
+        sb += (b.toLong() and 0xff).toString(16).padStart(2, '0')
+    }
+    return sb
+}
+
 const val BLOCK_SIZE = 228
 
 fun byteArrayOf(vararg args: Int) = args.asList().map(Int::toByte).toByteArray()

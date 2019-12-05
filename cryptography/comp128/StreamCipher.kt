@@ -74,7 +74,6 @@ fun streamEncrypt(key: ByteArray, message: ByteArray): ByteArray {
 
     val result = BooleanArray(message.size * Byte.SIZE_BITS)
     val framesCount = message.size * 8 / BLOCK_SIZE + if (message.size * 8 % BLOCK_SIZE == 0) 0 else 1
-
     repeat (framesCount) { i ->
         cluster.launch(key, i)
         val block = cluster.getBlock()
