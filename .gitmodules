@@ -28,3 +28,6 @@
 [submodule "operation-systems/sigsegv-handler"]
 	path = operation-systems/sigsegv-handler
 	url = https://github.com/nothingelsematters/sigsegv-handler.git
+[submodule "translation-methods/lalr-generator"]
+	path = translation-methods/lalr-generator
+	url = https://github.com/nothingelsematters/lalr-generator.git
