@@ -12,3 +12,4 @@
 + [Cryptography](cryptography)
 + [Type Theory](type-theory)
 + [Machine Learning](machine-learning)
++ [Parallel Programming](parallel-programming)
