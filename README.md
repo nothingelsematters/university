@@ -114,11 +114,11 @@
     </summary>
     <ul>
     <li>
-    <a href="c++/similar-files">Similar Files Finder</a>: An utility to find files with similar content in directories
+    <a href="https://github.com/nothingelsematters/similar-files">Similar Files Finder</a>: An utility to find files with similar content in directories
     <li>
-    <a href="c++/substring-finder">Substring Finder</a>: An utility to find the given substring in directories
+    <a href="https://github.com/nothingelsematters/substring-finder">Substring Finder</a>: An utility to find the given substring in directories
     <li>
-    <a href="c++/function">Function</a>: <code>std::function</code> implementation
+    <a href="https://github.com/nothingelsematters/function">Function</a>: <code>std::function</code> implementation
     </ul>
 </details>
 <details>
@@ -266,7 +266,7 @@
             Using automatic analyzers generators Bison or ANTLR: <a href="translation-methods/functional2imperative">functional to imperative language translation</a>
         </li>
         <li>
-            <a href="translation-methods/lalr-generator">LALR parser generator</a>
+            <a href="https://github.com/nothingelsematters/lalr-generator">LALR parser generator</a>
         </li>
     </ul>
 </details>
