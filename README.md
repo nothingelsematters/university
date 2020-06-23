@@ -1,12 +1,29 @@
 # ITMO University Computer Science course homeworks
 
+## [Distributed Systems](distributed-systems)
+
+- __Semester:__ 6
+
+- __Course by:__ Roman Elizarov
+
+- __Content:__ distributed systems homework in **Kotlin**
+
+    <details>
+        <summary>Course structure</summary>
+        <ul>
+            <li>
+                <a href="distributed-systems/distributed-mutex">distributed mutex</a>
+            </li>
+        </ul>
+    </details>
+
 ## [Functional Programming](functional-programming)
 
 - __Semester:__ 6
 
 - __Course by:__ Arseniy Seroka
 
-- __Content:__ haskell homeworks
+- __Content:__ **haskell** homeworks
 
     <details>
         <summary>Course structure</summary>
