@@ -1,5 +1,22 @@
 # ITMO University Computer Science course homeworks
 
+## [Probability Theory](probability-theory)
+
+- __Semester:__ 5-6
+
+- __Course by:__ Irina Suslina
+
+- __Content:__ probability algorithm implementations in **Octave**
+
+    <details>
+        <summary>Course structure</summary>
+        <ul>
+            <li>
+                <a href="probability-theory/monte-carlo">Monte Carlo Method</a>
+            </li>
+        </ul>
+    </details>
+
 ## [Parallel Programming](parallel-programming)
 
 - __Semester:__ 5
