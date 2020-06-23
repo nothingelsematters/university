@@ -1,0 +1,24 @@
+name:                practice1
+version:             0.1.0.0
+synopsis:            First practice task
+description:         Practice 1 for FP ITMO course
+
+homepage:            https://github.com/nothingelsematters/functional-programming-course/tree/master/practice1#readme
+license:             MIT
+license-file:        LICENSE
+author:              Simon Naumov
+maintainer:          daretoodefy@gmail.ru
+copyright:           2020 Simon Naumov
+
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+tested-with:         GHC == 8.6.5
+
+executable practice1
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -Wall
+  build-depends:       base >= 4.9 && < 5
+  default-language:    Haskell2010

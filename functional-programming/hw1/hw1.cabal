@@ -1,0 +1,56 @@
+name:                hw1
+version:             0.1.0.0
+synopsis:            First home howrk
+description:         Task 1 for FP ITMO course
+
+homepage:            https://github.com/nothingelsematters/functional-programming-course/tree/master/hw1#readme
+license:             MIT
+license-file:        LICENSE
+author:              Simon Naumov
+maintainer:          daretoodefy@gmail.com
+copyright:           2020 Simon Naumov
+
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+tested-with:         GHC == 8.8.2
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Block1 Block2 Block3 Block4 Block5 Block6
+  ghc-options:         -Wall
+  build-depends:       base >= 4.9 && < 5
+                     , mtl >= 2.2
+  default-language:    Haskell2010
+
+test-suite hw1-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  other-modules:       Generator
+                     , InstanceTest
+                     , SpecBlock1
+                     , SpecBlock2
+                     , SpecBlock3
+                     , SpecBlock4
+                     , SpecBlock5
+                     , SpecBlock6
+  exposed-modules:     Spec
+                     , Generator
+                     , InstanceTest
+                     , SpecBlock1
+                     , SpecBlock2
+                     , SpecBlock3
+                     , SpecBlock4
+                     , SpecBlock5
+                     , SpecBlock6
+  main-is:             Spec.hs
+  build-depends:       base >= 4.9 && < 5
+                     , split >= 0.2.3
+                     , tasty >= 1.2.3
+                     , hedgehog >= 1.0.2
+                     , hedgehog-fn >= 1.0
+                     , tasty-hedgehog >= 1.0.0
+                     , hw1
+  ghc-options:         -Wall -Werror -main-is Spec
+  default-language:    Haskell2010

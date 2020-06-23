@@ -1,5 +1,38 @@
 # ITMO University Computer Science course homeworks
 
+## [Functional Programming](functional-programming)
+
+- __Semester:__ 6
+
+- __Course by:__ Arseniy Seroka
+
+- __Content:__ haskell homeworks
+
+    <details>
+        <summary>Course structure</summary>
+        Practices:
+        <ul>
+            <li>
+                <a href="functional-programming/practice1">1. Sorting functions</a>
+            </li>
+            <li>
+                <a href="functional-programming/practice2">2. Number operations</a>
+            </li>
+        </ul>
+        Homeworks:
+        <ul>
+            <li>
+                <a href="functional-programming/hw0">0. Theoretical</a>
+            </li>
+            <li>
+                <a href="functional-programming/hw1">1. Basic language constructions</a>
+            </li>
+            <li>
+                <a href="functional-programming/hw2">2. File System Shell</a>
+            </li>
+        <ul/>
+    </details>
+
 ## [Probability Theory](probability-theory)
 
 - __Semester:__ 5-6
