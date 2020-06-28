@@ -17,3 +17,5 @@ Haskell homework project for [FP ITMO course](https://github.com/jagajaga/FP-cou
   - 1. [Basic Language constructions](hw1)
 
   - 2. [File System Shell](hw2)
+
+  - 3. [Strictness. Multithreading. Advanced types. Lenses. Comonads.](hw3)

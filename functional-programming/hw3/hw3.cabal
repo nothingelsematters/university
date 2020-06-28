@@ -1,0 +1,84 @@
+name:                hw3
+version:             0.1.0.0
+synopsis:            Third home work
+description:         Task 3 for FP ITMO course
+
+homepage:            https://github.com/fp-ctd-itmo/hw3-nothingelsematters/tree/master#readme
+license:             MIT
+license-file:        LICENSE
+author:              Simon Naumov
+maintainer:          daretoodefy@gmail.com
+copyright:           2020 Simon Naumov
+
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+tested-with:         GHC == 8.8.3
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Geometry
+                     , FileSystemLens
+                     , FileSystemTraversal
+                     , FileSystemChange
+                     , Script
+                     , ScriptPrinter
+                     , ConcurrentHashTable
+                     , Comonad19
+  ghc-options:         -Wall -O2
+  build-depends:       base >= 4.9 && < 5
+                     , microlens
+                     , text
+                     , directory
+                     , filepath
+                     , extra
+                     , monad-loops
+                     , array
+                     , hashable
+                     , random
+                     , comonad
+                     , vector
+  default-language:    Haskell2010
+
+executable comonad-19
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -Wall -Werror -O2
+  build-depends:       base >= 4.9 && < 5
+                     , ncurses >= 0.2.16
+                     , random
+                     , hw3
+  default-language:    Haskell2010
+
+benchmark hw3-benchmark
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      bench
+  main-is:             Main.hs
+  other-modules:       GeometryBench
+                     , ConcurrentHashTableBench
+  build-depends:       base >= 4.9 && < 5
+                     , hw3
+                     , criterion
+                     , split
+                     , deepseq
+                     , random
+                     , hashable
+  ghc-options:         -Wall -O2 -threaded -rtsopts -with-rtsopts=-N4
+  default-language:    Haskell2010
+
+test-suite hw3-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  other-modules:       ScriptSpec
+                     , ScriptPrinterSpec
+                     , ConcurrentHashTableSpec
+  main-is:             Main.hs
+  build-depends:       base >= 4.9 && < 5
+                     , tasty
+                     , hedgehog
+                     , tasty-hedgehog
+                     , split
+                     , hw3
+  ghc-options:         -Wall -Werror -O2 -threaded -rtsopts -with-rtsopts=-N4
+  default-language:    Haskell2010

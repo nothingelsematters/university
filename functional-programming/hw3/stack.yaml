@@ -1,0 +1,14 @@
+resolver: lts-14.27
+
+packages:
+- .
+
+extra-deps: [ncurses-0.2.16]
+
+flags: {}
+
+extra-package-dbs: []
+
+nix:
+  enable: true
+  packages: [ncurses]

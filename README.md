@@ -28,26 +28,29 @@
     <details>
         <summary>Course structure</summary>
         Practices:
-        <ul>
+        <ol>
             <li>
-                <a href="functional-programming/practice1">1. Sorting functions</a>
+                <a href="functional-programming/practice1">Sorting functions</a>
             </li>
             <li>
-                <a href="functional-programming/practice2">2. Number operations</a>
+                <a href="functional-programming/practice2">Number operations</a>
             </li>
-        </ul>
+        </ol>
         Homeworks:
-        <ul>
+        <ol start="0">
             <li>
-                <a href="functional-programming/hw0">0. Theoretical</a>
+                <a href="functional-programming/hw0">Theoretical</a>
             </li>
             <li>
-                <a href="functional-programming/hw1">1. Basic language constructions</a>
+                <a href="functional-programming/hw1">Basic language constructions</a>
             </li>
             <li>
-                <a href="functional-programming/hw2">2. File System Shell</a>
+                <a href="functional-programming/hw2">File System Shell</a>
             </li>
-        <ul/>
+            <li>
+                <a href="functional-programming/hw3">Strictness. Multithreading. Advanced types. Lenses. Comonads.</a>
+            </li>
+        </ol>
     </details>
 
 ## [Probability Theory](probability-theory)
