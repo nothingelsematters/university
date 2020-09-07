@@ -1,5 +1,22 @@
 # ITMO University Computer Science course homeworks
 
+## [Databases](databases)
+
+- __Semester:__ 7
+
+- __Course by:__ Georgiy Korneev
+
+- __Content:__ Postgresql working homeworks
+
+    <details>
+        <summary>Course structure</summary>
+        <ul>
+            <li>
+                <a href="databases/1-introduction">Introduction: setting environment</a>
+            </li>
+        </ul>
+    </details>
+
 ## [Distributed Systems](distributed-systems)
 
 - __Semester:__ 6
