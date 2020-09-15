@@ -54,6 +54,9 @@
             <li>
                 <a href="databases/1-introduction">Introduction: setting environment</a>
             </li>
+            <li>
+                <a href="databases/2-university">University: ERM, PDM, DDL, DML</a>
+            </li>
         </ul>
     </details>
 

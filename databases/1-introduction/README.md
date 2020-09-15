@@ -1,7 +1,7 @@
-# Домашнее задание 1
+# Homework 1
 
-1. Установите систему управления реляционными базами данных.
-2. Узнайте, как в вашей СУБД исполнять SQL в интерактивном режиме.
-3. Узнайте, как в вашей СУБД исполнять SQL в пакетном режиме.
-4. Разберитесь, как в вашей СУБД осуществляется поддержка русского языка.
-5. Создайте базу данных и наполните ее в соответствии с разобранным примерами.
+1. Install the Relational Database Management System.
+2. Learn how to execute SQL in your DBMS in the interactive mode.
+3. Learn how to execute SQL in your DBMS in batch mode.
+4. Learn how your DBMS provides Russian language support.
+5. Create a database and fill it in accordance with the analyzed examples.
