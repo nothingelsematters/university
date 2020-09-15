@@ -1,5 +1,45 @@
 # ITMO University Computer Science course homeworks
 
+## [Machine Learning](machine-learning)
+
+- __Semester:__ 7
+
+- __Course by:__ Huawei
+
+- __Content:__ different maching learning algorithm implementation using **C++** and **Python**
+
+    <details>
+        <summary>Course structure</summary>
+        <ul>
+            <li>
+                <a href="machine-learning/kNN">kNN classifying method</a>
+            </li>
+            <li>
+                <a href="machine-learning/linear-regression">linear regression</a>: using stochastic gradient descent with momentum and matrix method
+            </li>
+            <li>
+                <a href="machine-learning/small-tasks">different tasks</a>
+            </li>
+        </ul>
+    </details>
+
+## [Software Design](software-design)
+
+- __Semester:__ 7
+
+- __Course by:__ A. Kirakozov
+
+- __Content:__ **Kotlin** languages homeworks solutions: assertions
+
+    <details>
+        <summary>Course structure</summary>
+        <ul>
+            <li>
+                <a href="software-design/1-lrucache">Using assertions in program: LRU Cache implementation</a>
+            </li>
+        </ul>
+    </details>
+
 ## [Databases](databases)
 
 - __Semester:__ 7
@@ -531,29 +571,6 @@
             </li>
             <li>
                 <a href="paradigms-of-programming/10-object-expression">object expression</a>
-            </li>
-        </ul>
-    </details>
-
----
-
-## [Extra Machine Learning course](machine-learning)
-
-- __Course by:__ Huawei workers
-
-- __Content:__ different maching learning algorithm implementation
-
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-            <li>
-                <a href="machine-learning/kNN">kNN classifying method</a>
-            </li>
-            <li>
-                <a href="machine-learning/linear-regression">linear regression</a>: using stochastic gradient descent with momentum and matrix method
-            </li>
-            <li>
-                <a href="machine-learning/small-tasks">different tasks</a>
             </li>
         </ul>
     </details>
