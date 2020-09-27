@@ -46,7 +46,7 @@
 
 - __Course by:__ Georgiy Korneev
 
-- __Content:__ Postgresql working homeworks
+- __Content:__ Homeworks creating University database step by step
 
     <details>
         <summary>Course structure</summary>
@@ -55,7 +55,10 @@
                 <a href="databases/1-introduction">Introduction: setting environment</a>
             </li>
             <li>
-                <a href="databases/2-university">University: ERM, PDM, DDL, DML</a>
+                <a href="databases/2-model">Models: ERM, PDM, DDL, DML</a>
+            </li>
+            <li>
+                <a href="databases/3-functional-dependencies">Functional dependencies, keys, attribute set closure</a>
             </li>
         </ul>
     </details>
