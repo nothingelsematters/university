@@ -60,6 +60,9 @@
             <li>
                 <a href="databases/3-functional-dependencies">Functional dependencies, keys, attribute set closure</a>
             </li>
+            <li>
+                <a href="databases/4-normalization">Normalization</a>
+            </li>
         </ul>
     </details>
 
