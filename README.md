@@ -1,5 +1,22 @@
 # ITMO University Computer Science course homeworks
 
+## [Network](network)
+
+- __Semester:__ 7
+
+- __Course by:__ Artem Beresnev
+
+- __Content:__ network connected laboratory reports
+
+    <details>
+        <summary>Course structure</summary>
+        <ul>
+            <li>
+                <a href="network/1-network-settings">Console network components settings utilities in Linux and Windows OS</a>
+            </li>
+        </ul>
+    </details>
+
 ## [Machine Learning](machine-learning)
 
 - __Semester:__ 7
