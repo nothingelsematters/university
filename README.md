@@ -37,6 +37,7 @@
 - __Course structure__:
 
     + [Using assertions in program: LRU Cache implementation](software-design/1-lrucache)
+    + [Modular and Mock object tests: Using VK API for requests](software-design/2-api)
 
 ## [Databases](databases)
 
