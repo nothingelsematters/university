@@ -8,14 +8,9 @@
 
 - __Content:__ network connected laboratory reports
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-            <li>
-                <a href="network/1-network-settings">Console network components settings utilities in Linux and Windows OS</a>
-            </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [Console network components settings utilities in Linux and Windows OS](network/1-network-settings)
 
 ## [Machine Learning](machine-learning)
 
@@ -25,20 +20,11 @@
 
 - __Content:__ different maching learning algorithm implementation using **C++** and **Python**
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-            <li>
-                <a href="machine-learning/kNN">kNN classifying method</a>
-            </li>
-            <li>
-                <a href="machine-learning/linear-regression">linear regression</a>: using stochastic gradient descent with momentum and matrix method
-            </li>
-            <li>
-                <a href="machine-learning/small-tasks">different tasks</a>
-            </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [kNN classifying method](machine-learning/kNN)
+    + [linear regression using stochastic gradient descent with momentum and matrix method](machine-learning/linear-regression)
+    + [different tasks](machine-learning/small-tasks)
 
 ## [Software Design](software-design)
 
@@ -48,14 +34,9 @@
 
 - __Content:__ **Kotlin** languages homeworks solutions: assertions
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-            <li>
-                <a href="software-design/1-lrucache">Using assertions in program: LRU Cache implementation</a>
-            </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [Using assertions in program: LRU Cache implementation](software-design/1-lrucache)
 
 ## [Databases](databases)
 
@@ -65,23 +46,12 @@
 
 - __Content:__ Homeworks creating University database step by step
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-            <li>
-                <a href="databases/1-introduction">Introduction: setting environment</a>
-            </li>
-            <li>
-                <a href="databases/2-model">Models: ERM, PDM, DDL, DML</a>
-            </li>
-            <li>
-                <a href="databases/3-functional-dependencies">Functional dependencies, keys, attribute set closure</a>
-            </li>
-            <li>
-                <a href="databases/4-normalization">Normalization</a>
-            </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [Introduction: setting environment](databases/1-introduction)
+    + [Models: ERM, PDM, DDL, DML](databases/2-model)
+    + [Functional dependencies, keys, attribute set closure](databases/3-functional-dependencies)
+    + [Normalization](databases/4-normalization)
 
 ## [Distributed Systems](distributed-systems)
 
@@ -91,14 +61,9 @@
 
 - __Content:__ distributed systems homework in **Kotlin**
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-            <li>
-                <a href="distributed-systems/distributed-mutex">distributed mutex</a>
-            </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [distributed mutex](distributed-systems/distributed-mutex)
 
 ## [Functional Programming](functional-programming)
 
@@ -108,33 +73,18 @@
 
 - __Content:__ **haskell** homeworks
 
-    <details>
-        <summary>Course structure</summary>
-        Practices:
-        <ol>
-            <li>
-                <a href="functional-programming/practice1">Sorting functions</a>
-            </li>
-            <li>
-                <a href="functional-programming/practice2">Number operations</a>
-            </li>
-        </ol>
-        Homeworks:
-        <ol start="0">
-            <li>
-                <a href="functional-programming/hw0">Theoretical</a>
-            </li>
-            <li>
-                <a href="functional-programming/hw1">Basic language constructions</a>
-            </li>
-            <li>
-                <a href="functional-programming/hw2">File System Shell</a>
-            </li>
-            <li>
-                <a href="functional-programming/hw3">Strictness. Multithreading. Advanced types. Lenses. Comonads.</a>
-            </li>
-        </ol>
-    </details>
+- __Course structure__:
+
+    + Practices:
+        + [Sorting functions](functional-programming/practice1)
+        + [Number operations](functional-programming/practice2)
+
+    + Homeworks:
+
+        0. [Theoretical](functional-programming/hw0)
+        1. [Basic language constructions](functional-programming/hw1)
+        2. [File System Shell](functional-programming/hw2)
+        3. [Strictness. Multithreading. Advanced types. Lenses. Comonads.](functional-programming/hw3)
 
 ## [Probability Theory](probability-theory)
 
@@ -144,14 +94,9 @@
 
 - __Content:__ probability algorithm implementations in **Octave**
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-            <li>
-                <a href="probability-theory/monte-carlo">Monte Carlo Method</a>
-            </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [Monte Carlo Method](probability-theory/monte-carlo)
 
 ## [Parallel Programming](parallel-programming)
 
@@ -161,50 +106,21 @@
 
 - __Content:__ parallelism homeworks in **Java** and **Kotlin**
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-            <li>
-                <a href="parallel-programming/stack-elimination">stack with elimination</a>
-            </li>
-            <li>
-                <a href="parallel-programming/msqueue">Michael Scott queue</a>
-            </li>
-            <li>
-                <a href="parallel-programming/fine-grained-bank">fine grained bank</a>
-            </li>
-            <li>
-                <a href="parallel-programming/linked-list-set">linked list set</a>
-            </li>
-            <li>
-                <a href="parallel-programming/dijkstra">parallel dijkstra</a>
-            </li>
-            <li>
-                <a href="parallel-programming/monotonic-clock">monotonic clock</a>
-            </li>
-            <li>
-                <a href="parallel-programming/universal-construction">universal construction</a>
-            </li>
-            <li>
-                <a href="parallel-programming/mcs-lock">mcs lock</a>
-            </li>
-            <li>
-                <a href="parallel-programming/faa-queue">fetch-and-add queue</a>
-            </li>
-            <li>
-                <a href="parallel-programming/synchronous-queue">synchronous queue</a>
-            </li>
-            <li>
-                <a href="parallel-programming/lock-free-bank">lock free bank</a>
-            </li>
-            <li>
-                <a href="parallel-programming/stm-bank">stm bank</a>
-            </li>
-            <li>
-                <a href="parallel-programming/blocking-stack">blocking stack</a>
-            </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [stack with elimination](parallel-programming/stack-elimination)
+    + [Michael Scott queue](parallel-programming/msqueue)
+    + [fine grained bank](parallel-programming/fine-grained-bank)
+    + [linked list set](parallel-programming/linked-list-set)
+    + [parallel dijkstra](parallel-programming/dijkstra)
+    + [monotonic clock](parallel-programming/monotonic-clock)
+    + [universal construction](parallel-programming/universal-construction)
+    + [mcs lock](parallel-programming/mcs-lock)
+    + [fetch-and-add queue](parallel-programming/faa-queue)
+    + [synchronous queue](parallel-programming/synchronous-queue)
+    + [lock free bank](parallel-programming/lock-free-bank)
+    + [stm bank](parallel-programming/stm-bank)
+    + [blocking stack](parallel-programming/blocking-stack)
 
 ## [Type Theory](type-theory)
 
@@ -214,20 +130,13 @@
 
 - __Content:__ laboratory works in **Haskell** with make builds, alex and happy
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-            <li>
-                Lambda expression parser: <a href="type-theory/1-lambda-expression-parsing-haskell">haskell version</a>, <a href="type-theory/1-lambda-expression-parsing-ocaml">ocaml version</a>
-            </li>
-            <li>
-                <a href="type-theory/2-normalization">normalization</a>
-            </li>
-            <li>
-                <a href="type-theory/3-type-deduction">expression type reducing</a>
-            </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + Lambda expression parser
+        + [haskell version](type-theory/1-lambda-expression-parsing-haskell)
+        + [ocaml version](type-theory/1-lambda-expression-parsing-ocaml)
+    + [normalization](type-theory/2-normalization)
+    + [expression type reducing](type-theory/3-type-deduction)
 
 ## [Cryptography](cryptography)
 
@@ -237,47 +146,29 @@
 
 - __Content:__ symmetric, stream, assymmetric ciphers and cryptographic hash functions implementation mostly in **Kotlin**
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-            <li><b>Symmetric Ciphers</b>
-                <ul>
-                    <li>
-                        <a href="cryptography/kasiski-examination">Kasiski examination</a>: hacking Vigenere cipher
-                    </li>
-                    <li>
-                        <a href="cryptography/des">des cipher</a> (Data Encryption Standard)
-                    </li>
-                    <li>
-                        <a href="cryptography/serpent">serpent cipher</a>: Advanced Encryption Standard contest second place
-                    </li>
-                </ul>
-            </li>
-            <li><b>Stream Ciphers</b>
-                <ul>
-                    <li>
-                        <a href="cryptography/rc4">rc4</a>: simpliest stream cipher
-                    </li>
-                    <li>
-                        <a href="cryptography/comp128">a5 and comp128</a>: implementation of the A3, A5 and A8 functions defined in the GSM standard </br> A3 is used to authenticate the mobile station to the network. A8 is used to generate the session key used by A5 to encrypt the data transmitted between the mobile station and the BTS
-                    </li>
-                </ul>
-            </li>
-            <li><b>Assymmetric Ciphers</b>
-                <ul>
-                    <li>
-                        <a href="cryptography/rsa">rsa</a>: simpliest modulo operation based assymmetric cipher, one of the first public-key cryptosystems and is widely used for secure data transmission
-                    </li>
-                </ul>
-            </li>
-            <li><b>Cryptographic Hash Functions</b>
-                <ul>
-                    <li>
-                        <a href="cryptography/cubehash">CubeHash</a>: a cryptographic hash function submitted to the NIST hash function competition, SHA-3 semi-finalist
-                    </li>
-                </ul>
-            </li>
-    </details>
+- __Course structure__:
+
+    + Symmetric Ciphers
+
+        + [Kasiski examination](kasiski-examination): hacking Vigenere cipher
+        + [des cipher](des) (Data Encryption Standard)
+        + [serpent cipher](serpent): Advanced Encryption Standard contest second place
+
+    + Stream Ciphers
+
+        + [rc4](rc4): simpliest stream cipher
+        + [a5 and comp128](comp128): implementation of the A3, A5 and A8 functions defined in the GSM standard
+
+        > A3 is used to authenticate the mobile station to the network. A8 is used to generate the session key used by A5 to encrypt the data transmitted between the mobile station and the BTS
+
+    + Assymmetric Ciphers
+
+        + [rsa](rsa): simpliest modulo operation based assymmetric cipher, one of the first public-key cryptosystems and is widely used for secure data transmission
+
+    + Cryptographic Hash Functions
+
+        + [CubeHash](cubehash): a cryptographic hash function submitted to the NIST hash function competition, SHA-3 semi-finalist
+
 
 ## [Translation Methods](translation-methods)
 
@@ -287,23 +178,12 @@
 
 - __Content:__ regex laboratory work in **Perl**, parsers in **Kotlin**
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-            <li>
-                <a href="translation-methods/regular-expressions">Regular Expressions in Perl</a>
-            </li>
-            <li>
-                Manual building top-to-bottom syntax analyzers: <a href="translation-methods/c-function-header">c function headers</a>
-            </li>
-            <li>
-                Using automatic analyzers generators Bison or ANTLR: <a href="translation-methods/functional2imperative">functional to imperative language translation</a>
-            </li>
-            <li>
-                <a href="https://github.com/nothingelsematters/lalr-generator">LALR parser generator</a>
-            </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [Regular Expressions in Perl](translation-methods/regular-expressions)
+    + [Manual building top-to-bottom syntax analyzers: c function headers](translation-methods/c-function-header)
+    + [Using automatic analyzers generators Bison or ANTLR: functional to imperative language translation](translation-methods/functional2imperative)
+    + [LALR parser generator](https://github.com/nothingelsematters/lalr-generator)
 
 ## [Operation Systems](operation-systems)
 
@@ -313,32 +193,14 @@
 
 - __Content:__ homeworks in **c++** with make builds
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-        <li>
-            <a href="operation-systems/terminal">Interpreter</a>
-        </li>
-        <li>
-            <a href="operation-systems/find">Find utility subset</a>
-        </li>
-        <li>
-            <a href="operation-systems/pseudo-jit">Piece of JIT complier</a>
-        </li>
-        <li>
-            <a href="operation-systems/libs-acquaintance">Introduction to libraries</a>
-        </li>
-        <li>
-            <a href="operation-systems/synchronous-spcket-service">Introduction to sockets</a>
-        </li>
-        <li>
-            <a href="operation-systems/net-descriptor-passing">Introduction to descriptors transferring and IPC</a>
-        </li>
-        <li>
-            <a href="operation-systems/sigsegv-handler">Signals handling</a>
-        </li>
-        </ul>
-    </details>
+- __Course structure__:
+    + [Interpreter](operation-systems/terminal)
+    + [Find utility subset](operation-systems/find)
+    + [Piece of JIT complier](operation-systems/pseudo-jit)
+    + [Introduction to libraries](operation-systems/libs-acquaintance)
+    + [Introduction to sockets](operation-systems/synchronous-spcket-service)
+    + [Introduction to descriptors transferring and IPC](operation-systems/net-descriptor-passing)
+    + [Signals handling](operation-systems/sigsegv-handler)
 
 ## [Mathematical Logic](mathematical-logic)
 
@@ -348,26 +210,13 @@
 
 - __Content:__ laboratory works in **Haskell** with make builds, alex and happy
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-            <li>
-                <a href="mathematical-logic/1-expression-parser">expression parser</a>
-            </li>
-            <li>
-                <a href="mathematical-logic/2-proof-minimization">proof minimization</a>
-            </li>
-            <li>
-                <a href="mathematical-logic/3-intuitionistic-proof-conversion">intuitionistic proof conversion</a>
-            </li>
-            <li>
-                <a href="mathematical-logic/4-propositional-calculus-completeness">propositional calculus completeness</a>
-            </li>
-            <li>
-                <a href="mathematical-logic/5-formal-arithmetic-proof-check">formal arithmetic proof check</a>
-            </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [expression parser](mathematical-logic/1-expression-parser)
+    + [proof minimization](mathematical-logic/2-proof-minimization)
+    + [intuitionistic proof conversion](mathematical-logic/3-intuitionistic-proof-conversion)
+    + [propositional calculus completeness](mathematical-logic/4-propositional-calculus-completeness)
+    + [formal arithmetic proof check](mathematical-logic/5-formal-arithmetic-proof-check)
 
 ## [Java](java)
 
@@ -377,44 +226,19 @@
 
 - __Content:__ homeworks in **Java** with buildscripts and javadoc
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-            <li>
-                <a href="java/1-recursive-walk">recursive walk</a>
-            </li>
-            <li>
-                <a href="java/2-array-set">array set</a>
-            </li>
-            <li>
-                <a href="java/3-student-db">student db</a>
-            </li>
-            <li>
-                <a href="java/4-implementor">implementor</a>
-            </li>
-            <li>
-                <a href="java/5-jarimplementor">jar implementor</a>
-            </li>
-            <li>
-                <a href="java/6-javadoc">javadoc</a>
-            </li>
-            <li>
-                <a href="java/7-iterative-parallelism">iterative parallelism</a>
-            </li>
-            <li>
-                <a href="java/8-parallel-mapper">parallel mapper</a>
-            </li>
-            <li>
-                <a href="java/9-web-crawler">web crawler</a>
-            </li>
-            <li>
-                <a href="java/10-hello-udp">hello udp</a>
-            </li>
-            <li>
-                <a href="java/11-private-persons">private persons</a>
-            </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [recursive walk](java/1-recursive-walk)
+    + [array set](java/2-array-set)
+    + [student db](java/3-student-db)
+    + [implementor](java/4-implementor)
+    + [jar implementor](java/5-jarimplementor)
+    + [javadoc](java/6-javadoc)
+    + [iterative parallelism](java/7-iterative-parallelism)
+    + [parallel mapper](java/8-parallel-mapper)
+    + [web crawler](java/9-web-crawler)
+    + [hello udp](java/10-hello-udp)
+    + [private persons](java/11-private-persons)
 
 ## [Web Programming](web)
 
@@ -424,41 +248,18 @@
 
 - __Content:__ codeforces site implementation homeworks in **Java** with **Tomcat** ans **Spring**
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-        <li>
-            <a href="web/1-server">HTTP (cURL usage, HTTP-requests, simple HTTP server)</a>
-        </li>
-        <li>
-            <a href="web/2-front">Верстка (HTML + CSS)</a>
-        </li>
-        <li>
-            <a href="web/3-servlets">Servlet API (Tomcat, JSON, CaptchaFilter)</a>
-        </li>
-        <li>
-            <a href="web/4-login">Servlet API 2 (Java reflection, file database, Freemaker)</a>
-        </li>
-        <li>
-            <a href="web/5-webmail">SQL (SQL basics, refactoring with Java reflection, MariaDB)</a>
-        </li>
-        <li>
-            <a href="web/6-js">AJAX (Javascript, AJAX)</a>
-        </li>
-        <li>
-            <a href="web/7-spring">Spring (Spring Boot)</a>
-        </li>
-        <li>
-            <a href="web/8-table-relations">Spring (OneToMany, ManyToOne, ManyToMany relations)</a>
-        </li>
-        <li>
-            <a href="web/9-vue-js">Vue.js (Basics)</a>
-        </li>
-        <li>
-            <a href="web/10-spring-api">Spring Rest API w/ Vue.js frontend</a>
-        </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [HTTP (cURL usage, HTTP-requests, simple HTTP server)](web/1-server)
+    + [Верстка (HTML + CSS)](web/2-front)
+    + [Servlet API (Tomcat, JSON, CaptchaFilter)](web/3-servlets)
+    + [Servlet API 2 (Java reflection, file database, Freemaker)](web/4-login)
+    + [SQL (SQL basics, refactoring with Java reflection, MariaDB)](web/5-webmail)
+    + [AJAX (Javascript, AJAX)](web/6-js)
+    + [Spring (Spring Boot)](web/7-spring)
+    + [Spring (OneToMany, ManyToOne, ManyToMany relations)](web/8-table-relations)
+    + [Vue.js (Basics)](web/9-vue-js)
+    + [Spring Rest API w/ Vue.js frontend](web/10-spring-api)
 
 ## [C++](c++)
 
@@ -468,17 +269,11 @@
 
 - __Content:__ **c++** homework projects
 
-    <details>
-        <summary>Course structure </summary>
-        <ul>
-        <li>
-        <a href="https://github.com/nothingelsematters/similar-files">Similar Files Finder</a>: An utility to find files with similar content in directories
-        <li>
-        <a href="https://github.com/nothingelsematters/substring-finder">Substring Finder</a>: An utility to find the given substring in directories
-        <li>
-        <a href="https://github.com/nothingelsematters/function">Function</a>: <code>std::function</code> implementation
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [Similar Files Finder: An utility to find files with similar content in directories](https://github.com/nothingelsematters/similar-files)
+    + [Substring Finder: An utility to find the given substring in directories](https://github.com/nothingelsematters/substring-finder)
+    + [Function: `std::function` implementation](https://github.com/nothingelsematters/function)
 
 ## [Descrete Mathematics](discrete-maths)
 
@@ -488,30 +283,15 @@
 
 - __Content:__ laboratory works mostly in **c++**
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-        <li>
-            <a href="descrete-maths/probability">Probability</a>
-        </li>
-        <li>
-            <a href="descrete-maths/languages">Language Theory and Automats</a>
-        </li>
-        <li>Context Free Grammars</li>
-        <li>
-            <a href="descrete-maths/hamilton-path">Hamilton Paths</a>
-        </li>
-        <li>
-            <a href="descrete-maths/graph-planarity">Graph Planarity</a>
-        </li>
-        <li>
-            <a href="descrete-maths/generating-function">Generating Function</a>
-        </li>
-        <li>
-            <a href="descrete-maths/turing-machine">Turing machine</a>
-        </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [Probability](descrete-maths/probability)
+    + [Language Theory and Automats](descrete-maths/languages)
+    + Context Free Grammars
+    + [Hamilton Paths](descrete-maths/hamilton-path)
+    + [Graph Planarity](descrete-maths/graph-planarity)
+    + [Generating Function](descrete-maths/generating-function)
+    + [Turing machine](descrete-maths/turing-machine)
 
 ## [Algorithms and Data Structures](algorithms-and-data-structures)
 
@@ -521,44 +301,19 @@
 
 - __Content:__ laboratory works mostly in **c++**
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-        <li>
-            <a href="algorithms-and-data-structures/dynamic-programming">Dynamic Programming</a>
-        </li>
-        <li>
-            <a href="algorithms-and-data-structures/egment-tree">Segment Tree</a>
-        </li>
-        <li>
-            <a href="algorithms-and-data-structures/binary-search-tree">Binary Search Tree</a>
-        </li>
-        <li>
-            <a href="algorithms-and-data-structures/tree-algorithms">Tree Algorithms: LCA, Link-Cut, etc</a>
-        </li>
-        <li>
-            <a href="algorithms-and-data-structures/greed">Greed Algorithms</a>
-        </li>
-        <li>
-            <a href="algorithms-and-data-structures/graphs">Graphs</a>
-        </li>
-        <li>
-            <a href="algorithms-and-data-structures/minimum-path">Minimum Paths</a>
-        </li>
-        <li>
-            <a href="algorithms-and-data-structures/strings">Strings</a>
-        </li>
-        <li>
-            <a href="algorithms-and-data-structures/flow-and-matching">Maximum Flow And Matching</a>
-        </li>
-        <li>
-            <a href="algorithms-and-data-structures/maximum-flow-minimum-cost">Maximum Flow Minimum Cost</a>
-        </li>
-        <li>
-            <a href="algorithms-and-data-structures/mathematic">Mathematic</a>
-        </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [Dynamic Programming](algorithms-and-data-structures/dynamic-programming)
+    + [Segment Tree](algorithms-and-data-structures/egment-tree)
+    + [Binary Search Tree](algorithms-and-data-structures/binary-search-tree)
+    + [Tree Algorithms: LCA, Link-Cut, etc](algorithms-and-data-structures/tree-algorithms)
+    + [Greed Algorithms](algorithms-and-data-structures/greed)
+    + [Graphs](algorithms-and-data-structures/graphs)
+    + [Minimum Paths](algorithms-and-data-structures/minimum-path)
+    + [Strings](algorithms-and-data-structures/strings)
+    + [Maximum Flow And Matching](algorithms-and-data-structures/flow-and-matching)
+    + [Maximum Flow Minimum Cost](algorithms-and-data-structures/maximum-flow-minimum-cost)
+    + [Mathematic](algorithms-and-data-structures/mathematic)
 
 ## [Paradigms of Programming](paradigms-of-programming)
 
@@ -568,35 +323,14 @@
 
 - __Content:__ homeworks in **Java** with some contracts and single **JavaScript** parser
 
-    <details>
-        <summary>Course structure</summary>
-        <ul>
-            <li>
-                <a href="paradigms-of-programming/1-calc-sah256">calc sha256</a>
-            </li>
-            <li>
-                <a href="paradigms-of-programming/2-binary-search">binary search</a>
-            </li>
-            <li>
-                <a href="paradigms-of-programming/3-array-queue">array queue</a>
-            </li>
-            <li>
-                <a href="paradigms-of-programming/4-queue">queue</a>
-            </li>
-            <li>
-                <a href="paradigms-of-programming/5-evaluate">evaluate</a>
-            </li>
-            <li>
-                <a href="paradigms-of-programming/6-expression-parser">expression parser</a>
-            </li>
-            <li>
-                <a href="paradigms-of-programming/7-exceptions">exceptions</a>
-            </li>
-            <li>
-                <a href="paradigms-of-programming/9-functional-expression">functional expression</a>
-            </li>
-            <li>
-                <a href="paradigms-of-programming/10-object-expression">object expression</a>
-            </li>
-        </ul>
-    </details>
+- __Course structure__:
+
+    + [calc sha256](paradigms-of-programming/1-calc-sah256)
+    + [binary search](paradigms-of-programming/2-binary-search)
+    + [array queue](paradigms-of-programming/3-array-queue)
+    + [queue](paradigms-of-programming/4-queue)
+    + [evaluate](paradigms-of-programming/5-evaluate)
+    + [expression parser](paradigms-of-programming/6-expression-parser)
+    + [exceptions](paradigms-of-programming/7-exceptions)
+    + [functional expression](paradigms-of-programming/9-functional-expression)
+    + [object expression](paradigms-of-programming/10-object-expression)
