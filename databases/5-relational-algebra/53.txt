@@ -1,0 +1,6 @@
+projection{StudentName, CourseName}
+(
+  (projection{StudentId, StudentName, CourseName}(Students natural-join Plan natural-join Courses))
+    diff
+  (projection{StudentId, StudentName, CourseName}(Students natural-join (selection{Mark = 4 || Mark = 5}(Marks)) natural-join Courses))
+)

@@ -1,0 +1,1 @@
+projection{StudentName, CourseName}(Students natural-join Plan natural-join Courses)

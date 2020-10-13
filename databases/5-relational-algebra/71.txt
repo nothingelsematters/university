@@ -1,0 +1,1 @@
+projection{StudentId, CourseId}(selection{Mark > 2}(Marks)) gdiv projection{StudentId, GroupId}(Students)

@@ -1,0 +1,1 @@
+projection{StudentId, CourseName}(selection{Mark > 2}(Marks) natural-join Courses) gdiv projection{StudentId, GroupName}(Students natural-join Groups)

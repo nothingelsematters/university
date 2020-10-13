@@ -1,0 +1,1 @@
+((selection{Mark = :Mark}(selection{CourseName = :CourseName}(Marks natural-join Courses))) right-semijoin Students)

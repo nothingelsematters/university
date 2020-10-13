@@ -1,0 +1,6 @@
+projection{StudentId}
+(
+  projection{StudentId, CourseId}(selection{LecturerName = :LecturerName}(Lecturers) natural-join Plan natural-join Students natural-join Marks)
+  gdiv
+  projection{GroupId, CourseId}(selection{LecturerName = :LecturerName}(Lecturers) natural-join Plan)
+)

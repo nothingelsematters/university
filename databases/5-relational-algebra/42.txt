@@ -1,0 +1,5 @@
+(Students left-semijoin (Plan natural-join (selection{CourseName = :CourseName}(Courses))))
+diff
+(projection{StudentId, StudentName, GroupId}
+    ((Students natural-join Marks) natural-join (selection{CourseName = :CourseName}(Courses)))
+)

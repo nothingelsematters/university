@@ -1,0 +1,3 @@
+  projection{StudentId, CourseId}(Plan right-join Marks)
+  div
+  projection{CourseId}(selection{LecturerName = :LecturerName}(Lecturers natural-join Plan))

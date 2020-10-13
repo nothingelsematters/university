@@ -1,0 +1,4 @@
+Students diff
+(projection{StudentId, StudentName, GroupId}
+    ((Students natural-join Marks) natural-join (selection{CourseName = :CourseName}(Courses)))
+)

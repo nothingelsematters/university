@@ -1,0 +1,1 @@
+projection{StudentId, StudentName, GroupName}(selection{StudentId = :StudentId}(Students natural-join Groups))

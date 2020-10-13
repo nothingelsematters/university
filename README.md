@@ -53,6 +53,7 @@
     + [Models: ERM, PDM, DDL, DML](databases/2-model)
     + [Functional dependencies, keys, attribute set closure](databases/3-functional-dependencies)
     + [Normalization](databases/4-normalization)
+    + [Relational Algebra](databases/5-relational-algebra)
 
 ## [Distributed Systems](distributed-systems)
 
