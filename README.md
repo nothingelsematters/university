@@ -54,6 +54,7 @@
     + [Functional dependencies, keys, attribute set closure](databases/3-functional-dependencies)
     + [Normalization](databases/4-normalization)
     + [Relational Algebra](databases/5-relational-algebra)
+    + [Relational Calculus, Datalog](databases/6-relational-calculus)
 
 ## [Distributed Systems](distributed-systems)
 
