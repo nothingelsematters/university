@@ -6,3 +6,4 @@
 4. [Normalization](4-normalization)
 5. [Relation Algebra](5-relational-algebra)
 6. [Relation Calculus](6-relational-calculus)
+7. [Modification requests](7-modification)

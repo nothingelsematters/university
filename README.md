@@ -56,6 +56,7 @@
     + [Normalization](databases/4-normalization)
     + [Relational Algebra](databases/5-relational-algebra)
     + [Relational Calculus, Datalog](databases/6-relational-calculus)
+    + [Modification requests](databases/7-modification)
 
 ## [Distributed Systems](distributed-systems)
 
