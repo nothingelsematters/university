@@ -61,7 +61,32 @@ create trigger RefreshLoserT after insert or update or delete on Marks
 -- 2.3
 drop trigger RefreshLoserT on Losers;
 
--- 2.4 TODO
+-- 2.4
+merge into LoserT
+using (
+  select StudentId, CourseId, coalesce(Mark, 0) as OldPoints, Points as AdditionalPoints
+  from Plan
+    natural join Students
+    natural left join Marks
+    natural join NewPoints
+) PointUpdates
+on LoserT.StudentId = PointUpdates.StudentId
+when matched
+  and PointUpdates.OldPoints < 60
+  and PointUpdates.OldPoints + PointUpdates.AdditionalPoints >= 60
+  and LoserT.DebtAmount = 1
+  then delete
+when matched
+  and PointUpdates.OldPoints < 60
+  and PointUpdates.OldPoints + PointUpdates.AdditionalPoints >= 60
+  then update set DebtAmount = LoserT.DebtAmount - 1
+when matched
+  and PointUpdates.OldPoints >= 60
+  and PointUpdates.OldPoints + PointUpdates.AdditionalPoints < 60
+  then update set DebtAmount = LoserT.DebtAmount + 1
+when not matched
+  and PointUpdates.OldPoints + PointUpdates.AdditionalPoints < 60
+  then insert (StudentId, DebtAmount) values (PointUpdates.StudentId, 1);
 
 -- 3.1
 -- We don't need that. That's a redundant check.
