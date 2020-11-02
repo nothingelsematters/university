@@ -1,0 +1,1 @@
+../small-tasks/support-vector-machine.cpp

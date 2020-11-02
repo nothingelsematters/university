@@ -24,7 +24,9 @@
 
     + [kNN classifying method](machine-learning/kNN)
     + [linear regression using stochastic gradient descent with momentum and matrix method](machine-learning/linear-regression)
-    + [different tasks](machine-learning/small-tasks)
+    + [Support Vector Machine](machine-learning/support-vector-machine)
+
+    > [different codeforces tasks](machine-learning/small-tasks)
 
 ## [Software Design](software-design)
 
