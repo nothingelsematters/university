@@ -34,13 +34,14 @@
 
 - __Course by:__ A. Kirakozov
 
-- __Content:__ **Kotlin** languages homeworks solutions: assertions
+- __Content:__ **Kotlin** languages homeworks solutions: different programming patterns and techniques
 
 - __Course structure__:
 
     + [Using assertions in program: LRU Cache implementation](software-design/1-lrucache)
     + [Modular and Mock object tests: Using VK API for uests](software-design/2-api)
     + [Refactoring](software-design/3-refactoring)
+    + [Model View Controller pattern](software-design/4-model-view-controller)
 
 ## [Databases](databases)
 
