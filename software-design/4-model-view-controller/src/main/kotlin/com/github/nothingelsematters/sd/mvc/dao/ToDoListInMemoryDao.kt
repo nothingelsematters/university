@@ -28,7 +28,7 @@ class ToDoListInMemoryDao : ToDoListDao {
     override fun addTask(listId: Int, description: String): Task {
         val toDoList = forcedGetById(listId)
         val id = lastId.incrementAndGet()
-        val task = Task(id, description)
+        val task = Task(id, listId, description)
         toDoList.tasks.add(task)
         return task
     }

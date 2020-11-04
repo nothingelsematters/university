@@ -1,0 +1,42 @@
+<iframe name="hiddenFrame" style="position:absolute; top:-1px; left:-1px; width:1px; height:1px;"></iframe>
+
+<ul>
+    {{#lists}}
+        <li>
+            {{name}}
+            <form action="/api/v1/{{id}}" method="post" target="hiddenFrame">
+                <input type="submit" value="delete">
+            </form>
+            <ul>
+                {{#tasks}}
+                    <li>
+                        {{#completed}}
+                            <s>{{description}}</s>
+                        {{/completed}}
+
+                        {{^completed}}
+                            {{description}}
+                            <form action="/api/v1/{{parentId}}/{{id}}" method="post" target="hiddenFrame">
+                                <input type="submit" value="done">
+                            </form>
+                        {{/completed}}
+                    </li>
+                {{/tasks}}
+
+                <li>
+                    <form action="/api/v1/{{id}}/new-task" method="post" target="hiddenFrame">
+                        <input type="text" id="description" name="description">
+                        <input type="submit" value="add new task">
+                    </form>
+                </li>
+            </ul>
+        </li>
+    {{/lists}}
+
+    <li>
+        <form action="/api/v1" method="post" target="hiddenFrame">
+            <input type="text" id="listName" name="listName">
+            <input type="submit" value="add new list">
+        </form>
+    </li>
+</ul>
