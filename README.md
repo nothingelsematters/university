@@ -26,6 +26,7 @@
     + [linear regression using stochastic gradient descent with momentum and matrix method](machine-learning/linear-regression)
     + [Support Vector Machine](machine-learning/support-vector-machine)
 
+
     > [different codeforces tasks](machine-learning/small-tasks)
 
 ## [Software Design](software-design)
@@ -38,7 +39,7 @@
 
 - __Course structure__:
 
-    + [Using assertions in program: LRU Cache implementation](software-design/1-lrucache)
+    + [Using assertions in program: LRU Cache implementation](software-design/1-assertions)
     + [Modular and Mock object tests: Using VK API for uests](software-design/2-api)
     + [Refactoring](software-design/3-refactoring)
     + [Model View Controller pattern](software-design/4-model-view-controller)
