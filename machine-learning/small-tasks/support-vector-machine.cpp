@@ -18,7 +18,7 @@ public:
     SupportVectorMachine(
         vector<vector<double>> objects,
         vector<double> results,
-        unsigned int c,
+        double c,
         double tolerance = 1e-3) :
         tolerance(tolerance),
         c(c),
@@ -227,7 +227,7 @@ private:
     double b = 0.0;
 
     double tolerance;
-    unsigned int c;
+    double c;
     size_t objects_amount;
     vector<vector<double>> objects;
     vector<double> results;
@@ -244,7 +244,7 @@ int main() {
 
     vector<vector<double>> objects(objects_amount, vector<double>(objects_amount));
     vector<double> results(objects_amount);
-    int c;
+    double c;
 
     for (size_t i = 0; i < objects_amount; ++i) {
         for (size_t j = 0; j < objects_amount; ++j) {
