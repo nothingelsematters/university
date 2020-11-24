@@ -43,6 +43,7 @@
     + [Modular and Mock object tests: Using VK API for uests](software-design/2-api)
     + [Refactoring](software-design/3-refactoring)
     + [Model View Controller pattern](software-design/4-model-view-controller)
+    + [Bridge pattern](software-design/5-bridge)
 
 ## [Databases](databases)
 
