@@ -25,6 +25,8 @@
     + [kNN classifying method](machine-learning/kNN)
     + [linear regression using stochastic gradient descent with momentum and matrix method](machine-learning/linear-regression)
     + [Support Vector Machine](machine-learning/support-vector-machine)
+    + [Naive Bayes Classifier](naive-bayes-classifier): spam and legit messages determining
+    + [Decision Tree](decision-tree)
 
 
     > [different codeforces tasks](machine-learning/small-tasks)
