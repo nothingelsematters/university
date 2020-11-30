@@ -5,3 +5,5 @@
 3. [Refactoring](refactoring)
 4. [Model View Controller pattern](mvc)
 5. [Bridge pattern](bridge)
+6. [Visitor pattern](visitor)
+7. [Aspect Oriented Programming paradigm](aspects)

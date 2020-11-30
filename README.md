@@ -25,8 +25,9 @@
     + [kNN classifying method](machine-learning/kNN)
     + [linear regression using stochastic gradient descent with momentum and matrix method](machine-learning/linear-regression)
     + [Support Vector Machine](machine-learning/support-vector-machine)
-    + [Naive Bayes Classifier](naive-bayes-classifier): spam and legit messages determining
-    + [Decision Tree](decision-tree)
+    + [Naive Bayes Classifier](machine-learning/naive-bayes-classifier): spam and legit messages determining
+    + [Decision Tree](machine-learning/decision-tree)
+    + [Boost](machine-learning/boost)
 
 
     > [different codeforces tasks](machine-learning/small-tasks)
@@ -46,6 +47,8 @@
     + [Refactoring](software-design/refactoring)
     + [Model View Controller pattern](software-design/model-view-controller)
     + [Bridge pattern](software-design/bridge)
+    + [Visitor pattern](software-design/visitor)
+    + [Aspect Oriented Programming paradigm](software-design/aspects)
 
 ## [Databases](databases)
 
