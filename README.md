@@ -28,6 +28,7 @@
     + [Naive Bayes Classifier](machine-learning/naive-bayes-classifier): spam and legit messages determining
     + [Decision Tree](machine-learning/decision-tree)
     + [Boost](machine-learning/boost)
+    + [Clust](machine-learning/clust)
 
 
     > [different codeforces tasks](machine-learning/small-tasks)

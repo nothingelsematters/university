@@ -6,3 +6,4 @@
 4. [Naive Bayes Classifier](naive-bayes-classifier): spam and legit messages determining
 5. [Decision Tree](decision-tree)
 6. [AdaBoost](adaboost): AdaBoost algorithm with [decision tree](decision-tree) as a base algorithm
+7. [Clust: KMeans, F score, Silhouette metrics](clust)
