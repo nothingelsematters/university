@@ -1,5 +1,29 @@
 # ITMO University Computer Science course homeworks
 
+## [Software Testing](https://github.com/nothingelsematters/software-testing/)
+
+- __Semester:__ 7
+
+- __Course by:__ Vsevolod Brekelov
+
+- __Content:__ Miscellaneous patterns and instruments of testing, automatization and deployment
+
+- __Course structure__:
+
+    + [React framework](https://reactjs.org/) frontend with [node.js](https://nodejs.org/) backend testing:
+      unit and component tests
+
+    + [Kotlin](https://kotlinlang.org/) + [Spring](https://spring.io/) + [PostgreqSQL](https://www.postgresql.org/)
+      backend application testing:
+      unit, component tests, mocking with [MockK](https://mockk.io/),
+      [TestContainers](https://testcontainers.org/) database tests
+
+    + [Github Actions](https://github.com/features/actions) for Continious Integration
+      (linting and testing) and Continious Deployment using [Heroku](https://heroku.com/)
+
+    + Workshop Performance Testing using thing [Gatling](https://gatling.io/) Scala DSL:
+      [Tinkoff Perf Workshop](https://gitlab.com/tinkoffperfworkshop/)
+
 ## [Network](network)
 
 - __Semester:__ 7

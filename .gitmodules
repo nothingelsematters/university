@@ -31,3 +31,6 @@
 [submodule "translation-methods/lalr-generator"]
 	path = translation-methods/lalr-generator
 	url = https://github.com/nothingelsematters/lalr-generator.git
+[submodule "software-testing"]
+	path = software-testing
+	url = https://github.com/nothingelsematters/software-testing.git
