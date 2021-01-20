@@ -81,7 +81,7 @@
 
 - __Course by:__ Georgiy Korneev
 
-- __Content:__ Homeworks creating University database step by step
+- __Content:__ Homeworks creating University database step by step and a course project
 
 - __Course structure__:
 
@@ -92,6 +92,9 @@
     + [Relational Algebra](databases/5-relational-algebra)
     + [Relational Calculus, Datalog](databases/6-relational-calculus)
     + [Modification requests](databases/7-modification)
+
+    > [Course project GitHub database](databases/project): 5 normal form normalization, ERM, PDM, DDL, DML, views,
+    > functions, triggers
 
 ## [Distributed Systems](distributed-systems)
 
