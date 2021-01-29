@@ -13,10 +13,18 @@
     + [React framework](https://reactjs.org/) frontend with [node.js](https://nodejs.org/) backend testing:
       unit and component tests
 
+    + [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
+      Accessibility, Best Practices, SEO: 100%
+
     + [Kotlin](https://kotlinlang.org/) + [Spring](https://spring.io/) + [PostgreqSQL](https://www.postgresql.org/)
       backend application testing:
       unit, component tests, mocking with [MockK](https://mockk.io/),
-      [TestContainers](https://testcontainers.org/) database tests
+      [TestContainers](https://testcontainers.org/) database tests,
+      [Allure report](https://docs.qameta.io/allure/) integration
+
+    + E2E testing using miscellaneous frameworks: [Cypress](https://www.cypress.io/) in JavaScript,
+      [Playwright](https://playwright.dev/) in TypeScript, [Selenide](https://selenide.org/) in Kotlin with
+      [Selenoid](https://aerokube.com/selenoid/latest/) and [Allure report](https://docs.qameta.io/allure/) integrations
 
     + [Github Actions](https://github.com/features/actions) for Continious Integration
       (linting and testing) and Continious Deployment using [Heroku](https://heroku.com/)
