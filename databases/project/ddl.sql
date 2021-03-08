@@ -217,3 +217,25 @@ create index repositories_name_index on Repositories using hash (name);
 
 -- search gists by filename in search bar
 create index gists_filename_index on Gists using hash (filename);
+
+create index gists_developer_index on Gists using hash (developer_id);
+create index starts_developer_index on Stars using hash (developer_id);
+create index contributors_developer_index on Contributors using hash (developer_id);
+create index contributors_repository_index on Contributors using hash (repository_id);
+
+Create index inssue_processings_repository_pull_request_index on IssueProcessings using btree (repository_id, pull_request_number);
+Create index inssue_processings_pull_request_repository_index on IssueProcessings using btree (pull_request_number, repository_id);
+
+Create index inssue_processings_repository_issue_index on IssueProcessings using btree (repository_id, issue_number);
+Create index inssue_processings_issue_repository_index on IssueProcessings using btree (issue_number, repository_id);
+
+create index project_issues_repository_project_index on ProjectIssues using btree (repository_id, project_name);
+create index project_issues_project_repository_index on ProjectIssues using btree (project_name, repository_id);
+create index project_isssues_repository_issues_index on ProjectIssues using btree (repository_id, issue_number);
+create index project_isssues_issues_repository_index on ProjectIssues using btree (issue_number, repository_id);
+
+create index project_pull_requests_repository_project_index on ProjectPullRequests using btree (repository_id, project_name);
+create index project_pull_requests_project_repository_index on ProjectPullRequests using btree (repository_id, project_name);
+
+create index project_pull_requests_repository__pull_request_index on ProjectPullRequests using btree (repository_id, pull_request_number);
+create index project_pull_requests__pull_request_repository_index on ProjectPullRequests using btree (pull_request_number, repository_id);
