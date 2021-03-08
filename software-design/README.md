@@ -7,3 +7,4 @@
 5. [Bridge pattern](bridge)
 6. [Visitor pattern](visitor)
 7. [Aspect Oriented Programming paradigm](aspects)
+8. [Actors](actors)
