@@ -10,14 +10,16 @@
 
 - **Course structure**:
 
-  - [Using assertions in program: LRU Cache implementation](software-design/assertions)
-  - [Modular and Mock object tests: Using VK API for uests](software-design/api)
+  - [Assertions](software-design/assertions): LRU Cache implementation
+  - [Modular and Mock object tests](software-design/api): Using VK API for requests
   - [Refactoring](software-design/refactoring)
   - [Model View Controller pattern](software-design/model-view-controller)
-  - [Bridge pattern](software-design/bridge)
-  - [Visitor pattern](software-design/visitor)
-  - [Aspect Oriented Programming paradigm](software-design/aspects)
-  - [Actors](software-design/actors)
+  - [Bridge pattern](software-design/bridge): Graph drawing desktop application
+  - [Visitor pattern](software-design/visitor): Tokenizing, parsing, printing
+  - [Aspect Oriented Programming paradigm](software-design/aspects): Aggregating code statistics
+  - [Actors](software-design/actors): Different search engines request aggregation
+  - [Reactive Application Example](software-design/reactive): Product shop backend application
+  - [Event Sourcing](software-design/event-sourcing): Fitness center application
 
 ## [Software Testing](https://github.com/nothingelsematters/software-testing/)
 
