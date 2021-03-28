@@ -34,3 +34,6 @@
 [submodule "software-testing"]
 	path = software-testing
 	url = https://github.com/nothingelsematters/software-testing.git
+[submodule "optimization-methods"]
+	path = optimization-methods
+	url = https://github.com/pool-party/optimization-methods.git

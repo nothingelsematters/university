@@ -1,5 +1,17 @@
 # ITMO University Computer Science course homeworks
 
+## [Optimization Methods](https://github.com/pool-party/optimization-methods/)
+
+- **Semester:** 8
+
+- **Course by:** Mary Moskalenko
+
+- **Content:** Optimization method algorithm implementation and researching in **Python** and **Jupyter Notebooks**
+
+- **Course structure**:
+
+  - [First oder optimization methods](https://github.com/pool-party/optimization-methods/tree/master/first-order)
+
 ## [Software Design](software-design)
 
 - **Semester:** 7-8
