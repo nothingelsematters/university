@@ -118,6 +118,14 @@
   > [Course project GitHub database](databases/project): 5 normal form normalization, ERM, PDM, DDL, DML, views,
   > functions, triggers
 
+## [Numerical Methods](https://github.com/pool-party/numerical-methods/)
+
+- **Semester:** 6
+
+- **Course by:** Alex Segal
+
+- **Content:** Homeworks and Course work
+
 ## [Distributed Systems](distributed-systems)
 
 - **Semester:** 6

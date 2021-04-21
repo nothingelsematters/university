@@ -37,3 +37,6 @@
 [submodule "optimization-methods"]
 	path = optimization-methods
 	url = https://github.com/pool-party/optimization-methods.git
+[submodule "numerical-methods"]
+	path = numerical-methods
+	url = https://github.com/pool-party/numerical-methods.git
