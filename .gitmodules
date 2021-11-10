@@ -40,3 +40,6 @@
 [submodule "numerical-methods"]
 	path = numerical-methods
 	url = https://github.com/pool-party/numerical-methods.git
+[submodule "information-theory"]
+	path = information-theory
+	url = https://github.com/nothingelsematters/information-theory.git

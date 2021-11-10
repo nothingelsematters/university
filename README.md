@@ -1,12 +1,24 @@
 # ITMO University Computer Science course homeworks
 
+## [Information Theory](https://github.com/nothingelsematters/information-theory/)
+
+- **Semester**: 9
+
+- **Coursy by**: Evgeny Belyaev
+
+- **Content**: compressing algorithm implementations in **Rust**
+
+- **Course structure**:
+
+  - [Burrows Wheeler transformation with Huffman compression](https://github.com/nothingelsematters/information-theory/tree/main/burrows-wheeler)
+
 ## [Optimization Methods](https://github.com/pool-party/optimization-methods/)
 
-- **Semester:** 8
+- **Semester**: 8
 
-- **Course by:** Mary Moskalenko
+- **Course by**: Mary Moskalenko
 
-- **Content:** Optimization method algorithm implementation and researching in **Python** and **Jupyter Notebooks**
+- **Content**: optimization method algorithm implementation and researching in **Python** and **Jupyter Notebooks**
 
 - **Course structure**:
 
@@ -14,11 +26,11 @@
 
 ## [Software Design](software-design)
 
-- **Semester:** 7-8
+- **Semester**: 7-8
 
-- **Course by:** A. Kirakozov
+- **Course by**: A. Kirakozov
 
-- **Content:** **Kotlin** languages homeworks solutions: different programming patterns and techniques
+- **Content**: **Kotlin** languages homeworks solutions: different programming patterns and techniques
 
 - **Course structure**:
 
@@ -35,11 +47,11 @@
 
 ## [Software Testing](https://github.com/nothingelsematters/software-testing/)
 
-- **Semester:** 7
+- **Semester**: 7
 
-- **Course by:** Vsevolod Brekelov
+- **Course by**: Vsevolod Brekelov
 
-- **Content:** Miscellaneous patterns and instruments of testing, automatization and deployment
+- **Content**: Miscellaneous patterns and instruments of testing, automatization and deployment
 
 - **Course structure**:
 
@@ -67,11 +79,11 @@
 
 ## [Network](network)
 
-- **Semester:** 7
+- **Semester**: 7
 
-- **Course by:** Artem Beresnev
+- **Course by**: Artem Beresnev
 
-- **Content:** network connected laboratory reports
+- **Content**: network connected laboratory reports
 
 - **Course structure**:
 
@@ -79,11 +91,11 @@
 
 ## [Machine Learning](machine-learning)
 
-- **Semester:** 7
+- **Semester**: 7
 
-- **Course by:** Huawei
+- **Course by**: Huawei
 
-- **Content:** different maching learning algorithm implementation using **C++** and **Python**
+- **Content**: different maching learning algorithm implementation using **C++** and **Python**
 
 - **Course structure**:
 
@@ -99,11 +111,11 @@
 
 ## [Databases](databases)
 
-- **Semester:** 7
+- **Semester**: 7
 
-- **Course by:** Georgiy Korneev
+- **Course by**: Georgiy Korneev
 
-- **Content:** Homeworks creating University database step by step and a course project
+- **Content**: Homeworks creating University database step by step and a course project
 
 - **Course structure**:
 
@@ -120,19 +132,19 @@
 
 ## [Numerical Methods](https://github.com/pool-party/numerical-methods/)
 
-- **Semester:** 6
+- **Semester**: 6
 
-- **Course by:** Alex Segal
+- **Course by**: Alex Segal
 
-- **Content:** Homeworks and Course work
+- **Content**: Homeworks and Course work
 
 ## [Distributed Systems](distributed-systems)
 
-- **Semester:** 6
+- **Semester**: 6
 
-- **Course by:** Roman Elizarov
+- **Course by**: Roman Elizarov
 
-- **Content:** distributed systems homework in **Kotlin**
+- **Content**: distributed systems homework in **Kotlin**
 
 - **Course structure**:
 
@@ -140,11 +152,11 @@
 
 ## [Functional Programming](functional-programming)
 
-- **Semester:** 6
+- **Semester**: 6
 
-- **Course by:** Arseniy Seroka
+- **Course by**: Arseniy Seroka
 
-- **Content:** **haskell** homeworks
+- **Content**: **haskell** homeworks
 
 - **Course structure**:
 
@@ -162,11 +174,11 @@
 
 ## [Probability Theory](probability-theory)
 
-- **Semester:** 5-6
+- **Semester**: 5-6
 
-- **Course by:** Irina Suslina
+- **Course by**: Irina Suslina
 
-- **Content:** probability algorithm implementations in **Octave**
+- **Content**: probability algorithm implementations in **Octave**
 
 - **Course structure**:
 
@@ -174,11 +186,11 @@
 
 ## [Parallel Programming](parallel-programming)
 
-- **Semester:** 5
+- **Semester**: 5
 
-- **Course by:** Roman Elizarov, Nikita Koval
+- **Course by**: Roman Elizarov, Nikita Koval
 
-- **Content:** parallelism homeworks in **Java** and **Kotlin**
+- **Content**: parallelism homeworks in **Java** and **Kotlin**
 
 - **Course structure**:
 
@@ -198,11 +210,11 @@
 
 ## [Type Theory](type-theory)
 
-- **Semester:** 5
+- **Semester**: 5
 
-- **Course by:** Dmitry Shtukenberg
+- **Course by**: Dmitry Shtukenberg
 
-- **Content:** laboratory works in **Haskell** with make builds, alex and happy
+- **Content**: laboratory works in **Haskell** with make builds, alex and happy
 
 - **Course structure**:
 
@@ -214,11 +226,11 @@
 
 ## [Cryptography](cryptography)
 
-- **Semester:** 5
+- **Semester**: 5
 
-- **Course by:** Alla Levina
+- **Course by**: Alla Levina
 
-- **Content:** symmetric, stream, assymmetric ciphers and cryptographic hash functions implementation mostly in **Kotlin**
+- **Content**: symmetric, stream, assymmetric ciphers and cryptographic hash functions implementation mostly in **Kotlin**
 
 - **Course structure**:
 
@@ -245,11 +257,11 @@
 
 ## [Translation Methods](translation-methods)
 
-- **Semester:** 5
+- **Semester**: 5
 
-- **Course by:** Andrey Stankevich
+- **Course by**: Andrey Stankevich
 
-- **Content:** regex laboratory work in **Perl**, parsers in **Kotlin**
+- **Content**: regex laboratory work in **Perl**, parsers in **Kotlin**
 
 - **Course structure**:
 
@@ -260,11 +272,11 @@
 
 ## [Operation Systems](operation-systems)
 
-- **Semester:** 4
+- **Semester**: 4
 
-- **Course by:** Dmitry Banschikov
+- **Course by**: Dmitry Banschikov
 
-- **Content:** homeworks in **c++** with make builds
+- **Content**: homeworks in **c++** with make builds
 
 - **Course structure**:
   - [Interpreter](operation-systems/terminal)
@@ -277,11 +289,11 @@
 
 ## [Mathematical Logic](mathematical-logic)
 
-- **Semester:** 4
+- **Semester**: 4
 
-- **Course by:** Dmitry Shtukenberg
+- **Course by**: Dmitry Shtukenberg
 
-- **Content:** laboratory works in **Haskell** with make builds, alex and happy
+- **Content**: laboratory works in **Haskell** with make builds, alex and happy
 
 - **Course structure**:
 
@@ -293,11 +305,11 @@
 
 ## [Descrete Mathematics](discrete-maths)
 
-- **Semesters:** 1-4
+- **Semesters**: 1-4
 
-- **Course by:** Andrey Stankevich, Artem Vasilyev
+- **Course by**: Andrey Stankevich, Artem Vasilyev
 
-- **Content:** laboratory works mostly in **c++**
+- **Content**: laboratory works mostly in **c++**
 
 - **Course structure**:
 
@@ -311,11 +323,11 @@
 
 ## [Algorithms and Data Structures](algorithms-and-data-structures)
 
-- **Semesters:** 1-4
+- **Semesters**: 1-4
 
-- **Course by:** Pavel Mavrin
+- **Course by**: Pavel Mavrin
 
-- **Content:** laboratory works mostly in **c++**
+- **Content**: laboratory works mostly in **c++**
 
 - **Course structure**:
 
@@ -333,11 +345,11 @@
 
 ## [Java](java)
 
-- **Semester:** 3
+- **Semester**: 3
 
-- **Course by:** Georgiy Korneev
+- **Course by**: Georgiy Korneev
 
-- **Content:** homeworks in **Java** with buildscripts and javadoc
+- **Content**: homeworks in **Java** with buildscripts and javadoc
 
 - **Course structure**:
 
@@ -355,11 +367,11 @@
 
 ## [Web Programming](web)
 
-- **Semester:** 3
+- **Semester**: 3
 
-- **Course by:** Mike Mirzayanov
+- **Course by**: Mike Mirzayanov
 
-- **Content:** codeforces site implementation homeworks in **Java** with **Tomcat** ans **Spring**
+- **Content**: codeforces site implementation homeworks in **Java** with **Tomcat** ans **Spring**
 
 - **Course structure**:
 
@@ -376,11 +388,11 @@
 
 ## [C++](c++)
 
-- **Semesters:** 2-3
+- **Semesters**: 2-3
 
-- **Course by:** Ivan Sorokin
+- **Course by**: Ivan Sorokin
 
-- **Content:** **c++** homework projects
+- **Content**: **c++** homework projects
 
 - **Course structure**:
 
@@ -390,11 +402,11 @@
 
 ## [Paradigms of Programming](paradigms-of-programming)
 
-- **Semester:** 2
+- **Semester**: 2
 
-- **Course by:** Georgiy Korneev, Nikolay Vedernikov
+- **Course by**: Georgiy Korneev, Nikolay Vedernikov
 
-- **Content:** homeworks in **Java** with some contracts and single **JavaScript** parser
+- **Content**: homeworks in **Java** with some contracts and single **JavaScript** parser
 
 - **Course structure**:
 
