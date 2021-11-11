@@ -1,0 +1,4 @@
+poetry.lock
+flake.lock
+.ipynb_checkpoints
+venv

@@ -1,0 +1,121 @@
+% --------------------------------------------------------------------------
+% Version 2.1
+% This template is available on the sites:
+% https://www.overleaf.com/read/rpkkfchcnbsc
+% https://www.overleaf.com/latex/templates/itmo-beamer-theme/fpttrgnmqwsb
+% https://github.com/AlexZabashta/ITMO-Beamer-theme
+% --------------------------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+%\usepackage{fontspec}
+%\usepackage{iflang}
+
+%\setmonofont{Courier New}
+%\defaultfontfeatures{Ligatures=TeX}
+%\setmainfont{Times New Roman}
+%\setsansfont{Arial}
+%\setsansfont{Calibri.ttf}
+
+
+\definecolor{ITMOblue}{RGB}{25,70,186} 
+\definecolor{ITMOred}{RGB}{236,11,67} 
+\definecolor{ITMOwhite}{RGB}{255,255,255} 
+
+\definecolor{ITMOorange}{RGB}{255,132,0}
+\definecolor{ITMOsky}{RGB}{57,180,230}
+\definecolor{ITMOpistachio}{RGB}{150,214,0}
+\definecolor{ITMOaqua}{RGB}{34,172,155}
+\definecolor{ITMOice}{RGB}{91,193,214}
+\definecolor{ITMOgold}{RGB}{255,222,23} 
+\definecolor{ITMOyellow}{RGB}{235,231,14} 
+\definecolor{ITMOtomato}{RGB}{234,65,38}
+\definecolor{ITMOgreen}{RGB}{0,148,77} 
+
+
+\setbeamercolor{title}{fg=ITMOwhite}
+\setbeamercolor{frametitle}{fg=ITMOwhite,bg=ITMOblue}
+
+\setbeamercolor{alerted text}{fg=ITMOtomato}
+\setbeamercolor{block title alerted}{fg=ITMOtomato}
+
+\setbeamercolor{block title}{fg=ITMOblue}
+\setbeamercolor{block title example}{fg=ITMOgreen}
+
+\setbeamercolor{caption name}{fg=ITMOblue}
+\setbeamercolor{footline}{fg=ITMOwhite,bg=ITMOblue}
+\setbeamercolor{headline}{fg=ITMOwhite,bg=ITMOblue}
+
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{itemize subsubitem}[circle]
+\setbeamercolor{itemize item}{fg=ITMOred}
+\setbeamercolor{itemize subitem}{fg=ITMOred}
+\setbeamercolor{itemize subsubitem}{fg=ITMOred}
+\setbeamercolor{enumerate item}{fg=ITMOred}
+\setbeamercolor{enumerate subitem}{fg=ITMOred}
+\setbeamercolor{enumerate subsubitem}{fg=ITMOred}
+\setbeamercolor{item projected}{fg=ITMOred}
+
+
+
+\newcommand{\itmopolygons}[1]{
+\tikz[remember picture,overlay] \node at (current page.center){
+	\includegraphics[height=\paperheight,width=\paperwidth]{itmo/polygons.pdf}
+};
+\tikz \node at (current page.center){
+	\begin{minipage}[t][0.97\paperheight][c]{0.843\paperwidth}
+		\begin{center}
+			\usebeamercolor[fg]{title}{
+				#1
+			}
+		\end{center}
+	\end{minipage}
+};
+}
+
+
+\setbeamertemplate{title page}{
+	\itmopolygons{
+	    \begin{center}
+	        \vfill
+    		\usebeamerfont{titlegraphic}{\inserttitlegraphic}
+    		\vfill
+    		\usebeamerfont{title}{  \inserttitle} 
+    		\vfill
+    		\usebeamerfont{subtitle}{\insertsubtitle}
+    		\vfill
+    		\insertauthor
+    		\vfill
+    		\insertinstitute
+    		\vfill
+    		\ifx\insertplace\empty
+    			\insertdate
+    		\else
+    			\insertplace,  \insertdate
+    		\fi
+		\end{center}
+	}
+}
+
+
+\def \insertplace {}
+\newcommand{\where}[1]{ \def \insertplace {#1} }
+
+
+\def \insertfootlinetext {\inserttitle}
+\newcommand{\setfootlinetext}[1]{ \def \insertfootlinetext {#1} }
+
+
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{footline}[page number]{}
+\setbeamerfont{footnote}{size=\scriptsize}
+
+\setbeamertemplate{footline}{\colorbox{ITMOblue}{\begin{minipage}[c][0.04\textheight][c]{0.83\paperwidth}\hskip1em\insertfootlinetext\hfill\end{minipage}}\colorbox{ITMOred}{\begin{minipage}[c][0.04\textheight][c]{0.15\paperwidth}\begin{center}\small\textbf{\insertframenumber/\inserttotalframenumber}\end{center}\end{minipage}}}
+%
+\setbeamerfont{footline}{size=\footnotesize}
+\setbeamerfont{frametitle}{size=\bf\Large}

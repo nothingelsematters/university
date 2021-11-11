@@ -1,5 +1,17 @@
 # ITMO University Computer Science course homeworks
 
+## [Data Processing and Analysis](data-processing)
+
+- **Semester**: 9
+
+- **Course by**: Yang Qi
+
+- **Content**: miscellaneous helpful data manipulations and transformations and a project
+
+- **Course structure**:
+
+  - [Sentiment Analysis of Microblog Data Streams](data-processing/sentiment)
+
 ## [Information Theory](https://github.com/nothingelsematters/information-theory/)
 
 - **Semester**: 9
