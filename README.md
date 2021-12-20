@@ -23,6 +23,7 @@
 - **Course structure**:
 
   - [Burrows Wheeler transformation with Huffman compression](https://github.com/nothingelsematters/information-theory/tree/main/burrows-wheeler)
+  - [Jpeg format compression improver](https://github.com/nothingelsematters/information-theory/tree/main/jpg-improver) using BWT + MTF + RLE + AC
 
 ## [Optimization Methods](https://github.com/pool-party/optimization-methods/)
 
