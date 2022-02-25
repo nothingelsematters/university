@@ -1,5 +1,17 @@
 # ITMO University Computer Science course homeworks
 
+## [Compilers](https://github.com/nothingelsematters/compilers-course)
+
+- **Semester**: 10
+
+- **Course by**: Computer Science Center
+
+- **Content**: writing Lama compiler in a Lama langugage
+
+- **Course structure**:
+
+  - [Expression interpreter](https://github.com/nothingelsematters/compilers-course/tree/main/src/task-1)
+
 ## [Data Processing and Analysis](data-processing)
 
 - **Semester**: 9

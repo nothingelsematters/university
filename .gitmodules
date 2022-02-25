@@ -43,3 +43,6 @@
 [submodule "information-theory"]
 	path = information-theory
 	url = https://github.com/nothingelsematters/information-theory.git
+[submodule "compilers-course"]
+	path = compilers
+	url = https://github.com/nothingelsematters/compilers-course
