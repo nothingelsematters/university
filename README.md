@@ -6,11 +6,18 @@
 
 - **Course by**: Computer Science Center
 
-- **Content**: writing Lama compiler in a Lama langugage
+- **Content**: writing a Lama compiler in a [Lama language](https://github.com/JetBrains-Research/Lama)
 
 - **Course structure**:
 
-  - [Expression interpreter](https://github.com/nothingelsematters/compilers-course/tree/main/src/task-1)
+  - [Expression interpretator](https://github.com/nothingelsematters/compilers-course/tree/A01-straight-line-int-sm)
+  - [X86 assembler compiler](https://github.com/nothingelsematters/compilers-course/tree/A02-straight-line-x86)
+  - [AST parser](https://github.com/nothingelsematters/compilers-course/tree/A03-straight-line-parser)
+  - [Control Flow](https://github.com/nothingelsematters/compilers-course/tree/A04-control-flow)
+  - [All expressions](https://github.com/nothingelsematters/compilers-course/tree/A05-all-expressions)
+  - [Scope functions](https://github.com/nothingelsematters/compilers-course/tree/A06-scopes-functions)
+  - [Data Structures](https://github.com/nothingelsematters/compilers-course/tree/A07-data-structures)
+  - [Fixnum](https://github.com/nothingelsematters/compilers-course/tree/A08-fixnum)
 
 ## [Data Processing and Analysis](data-processing)
 
