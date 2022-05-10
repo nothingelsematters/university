@@ -46,3 +46,6 @@
 [submodule "compilers-course"]
 	path = compilers
 	url = https://github.com/nothingelsematters/compilers-course
+[submodule "deep-learning/neural-style-transfer"]
+	path = deep-learning/neural-style-transfer
+	url = https://github.com/nothingelsematters/neural-style-transfer.git

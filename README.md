@@ -1,5 +1,18 @@
 # ITMO University Computer Science course homeworks
 
+## [Deep Learning](deep-learning)
+
+- **Semester**: 10
+
+- **Course by**: Denis Stepanov
+
+- **Content**: miscellaneous theory and practice tasks in **Python** in **Jupyter notebooks**.
+
+- **Course structure**:
+
+  - Several Jupyter Notebook tasks: both practice and theory
+  - [Neural Style Transfer](https://github.com/nothingelsematters/neural-style-transfer)
+
 ## [Compilers](https://github.com/nothingelsematters/compilers-course)
 
 - **Semester**: 10
