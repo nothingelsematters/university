@@ -19,6 +19,16 @@
   - [Data Structures](https://github.com/nothingelsematters/compilers-course/tree/A07-data-structures)
   - [Fixnum](https://github.com/nothingelsematters/compilers-course/tree/A08-fixnum)
 
+## [Mathematical Models](mathematical-models)
+
+- **Semester**: 10
+
+- **Content**: Several small random tasks
+
+- **Course structure**:
+
+  - [Dataset Visualization](mathematical-models/dataset-visualization.ipynb)
+
 ## [Data Processing and Analysis](data-processing)
 
 - **Semester**: 9
