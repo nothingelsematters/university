@@ -1,12 +1,22 @@
 # ITMO University Computer Science course homeworks
 
+## [Big Data Machine Learning](big-data-machine-learning)
+
+- **Semester**: 10
+
+- **Content**: assignments in **Scala** using **[Spark](https://spark.apache.org/)**
+
+- **Course structure**:
+
+  - [Linear Regression with Spark](https://github.com/nothingelsematters/spark-linear-regression)
+
 ## [Deep Learning](deep-learning)
 
 - **Semester**: 10
 
 - **Course by**: Denis Stepanov
 
-- **Content**: miscellaneous theory and practice tasks in **Python** in **Jupyter notebooks**.
+- **Content**: miscellaneous theory and practice tasks in **Python** in **Jupyter notebooks**
 
 - **Course structure**:
 

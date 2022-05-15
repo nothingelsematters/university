@@ -49,3 +49,6 @@
 [submodule "deep-learning/neural-style-transfer"]
 	path = deep-learning/neural-style-transfer
 	url = https://github.com/nothingelsematters/neural-style-transfer.git
+[submodule "big-data-machine-learning/spark-linear-regression"]
+	path = big-data-machine-learning/spark-linear-regression
+	url = https://github.com/nothingelsematters/spark-linear-regression.git
