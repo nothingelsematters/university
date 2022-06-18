@@ -52,3 +52,6 @@
 [submodule "big-data-machine-learning/spark-linear-regression"]
 	path = big-data-machine-learning/spark-linear-regression
 	url = https://github.com/nothingelsematters/spark-linear-regression.git
+[submodule "deep-learning/model-distillation"]
+	path = deep-learning/model-distillation
+	url = git@github.com:nothingelsematters/model-distillation.git

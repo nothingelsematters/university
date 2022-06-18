@@ -22,6 +22,7 @@
 
   - Several Jupyter Notebook tasks: both practice and theory
   - [Neural Style Transfer](https://github.com/nothingelsematters/neural-style-transfer)
+  - [Model Distillation](https://github.com/nothingelsematters/model-distillation)
 
 ## [Compilers](https://github.com/nothingelsematters/compilers-course)
 
