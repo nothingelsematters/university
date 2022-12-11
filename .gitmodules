@@ -55,3 +55,6 @@
 [submodule "deep-learning/model-distillation"]
 	path = deep-learning/model-distillation
 	url = git@github.com:nothingelsematters/model-distillation.git
+[submodule "parallel-algorithms"]
+	path = parallel-algorithms
+	url = git@github.com:nothingelsematters/parallel-algorithms.git
