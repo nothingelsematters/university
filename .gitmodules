@@ -58,3 +58,6 @@
 [submodule "parallel-algorithms"]
 	path = parallel-algorithms
 	url = git@github.com:nothingelsematters/parallel-algorithms.git
+[submodule "bioinformatics"]
+	path = bioinformatics
+	url = git@github.com:nothingelsematters/bioinformatics.git
