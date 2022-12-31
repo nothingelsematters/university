@@ -61,3 +61,6 @@
 [submodule "bioinformatics"]
 	path = bioinformatics
 	url = git@github.com:nothingelsematters/bioinformatics.git
+[submodule "evolutionary-algorithms"]
+	path = evolutionary-algorithms
+	url = git@github.com:nothingelsematters/evolutionary-algorithms.git
