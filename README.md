@@ -17,6 +17,32 @@
 
 [Lama]: https://img.shields.io/badge/Lama-grey?style=flat-square&logo=data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAACxAAAAsQHGLUmNAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAA6dJREFUSImdll9sVFUQxn9z7v6pbSQxGoWtBUG3K5qmIWojMdFUUWuiiRZCoqjgmwRCKJtFI665psUQK4oQNRHLA1FIiGAEibqyXaI+aEwJPFhtS6rlYSEaMa0Ut3TvGR+2u911bxvrvJ355nzffHPuuTnCVOhPr12L4+1DGaHR2yziWuYQ2t+1CMemwISwdpUsfaUPwJQqjLcL5WuEBQwG1syFHABHkyhvIbyDY7YX0wKgGTdAxBkh6y2inoVo4EtC+SZZ7Ob+U/eD7hLUHCNvlxFyGrD0k/XqpNXNFxxcTw3CuLS6eWl0hxE9zqSzw5cs4wZ0sHOpDrk3lppTZy9WNsjt7pWpsiC3zAuWHADoz50jTNTcJs2JcR3aHcYbzSAcBnLAWpBrQD8HHgUWFzaRAn5B6JNYcm/BTWc7ynsSS94A5WcgfEc49wiARDdNgLcK6EJpwmMN1rYjNAHfYm0bqs8gzEdYViSfEn0OSBWXgWlADmBYD3wMQCjoMWl3yK3JV8sm1FoxrjPdnxDObSybwv0Fh3rvdN9lsyXiDGOcNom+1O83/9lCh3aHsaNDwA8SS64s5ksjklY3D/RivXvmSg5ATd4AQeBSedpUVuk8kLH/wy8NW/4GDoLeXZ4PVFaJUy06h1A5B3xYnqokU06i9uXSMt3Ropn4dTPyfbF5gaa2RgBUDzmIJhA9OrMAPI5ypEC+ZR1qvsfjpC95OnEzAWcE4w1ruqNeZLUH8iJIh6+AqmuA5ajtAcDKGGCB877tT+TGgIvAn0zkCzfYkxNAS3lZ6QxEXKsDnecwZgXwgTy484imtjYQrP0NQI+5tYRH78IxSl765OE3ftdD7kKWZFXufH8SAMe7D/jVV2BKZh+wR890H5TmxLg89Hq2BF311ykwMRRwtBd4QFaX/j3FSIL5yHdEBX5tB90lzYlxn6GULiXKiA8OQjfo0zMLKFFE0r6b4QngPOin5K7e6Fuh5IDILA44BazzbW7Fzn7Qs6g5Lo+5l6u4VQWVTSinZ3NQi3LTDA4A6hCNzoLXI2TLE9Of6dmuBqAFo9v8dmo6/iRIM/Cs9sbv+DcuIorIZyDL/R1cdi4BV7A0VZGfiG9HOQCkUNbi6dv6VXx/dRcYRP+oEK7ABzrfBDYg9OBpT/FloJnEfCwRvqk7LW71a0N/dEMEzVOovIvwgjQm9xSxynvQGEswODCG8jwiF4E+AGntvgBcqOq4GCETxUobyHqi2/ZDsgT9A4lKYqk85JylAAAAAElFTkSuQmCC
 
+## [Advanced Algorithms](advanced-algorithms)
+
+![Rust] ![Kotlin] ![C++]
+
+- **Semester**: 11
+- **Content**: randomized algorithms and scheduling problem soultions in **Rust**, **Kotlin** and **C++**
+- **Course by**: Andrey Stankevich
+- **Course structure**:
+  - Randomized Algorithms
+    -  [B. MinDisk](advanced-algorithms/rust/src/randomized/hell_flapper.rs)
+  - Scheduling
+    - [A. Cheese](advanced-algorithms/cplusplus/a_cheese.cpp)
+    - [B. $O_2 ||C_{\max}$](advanced-algorithms/kotlin/src/bO2CMax.kt)
+    - [C. $1 | \text{outree} | \sum w_i c_i$](advanced-algorithms/rust/src/scheduling/c_p1_outree_sum_wc.rs)
+    - [D. $1 || \sum U_i$](advanced-algorithms/rust/src/scheduling/d_p1_sum_u.rs)
+    - [E. $1 | p_i = 1 | \sum w_i U_i$](advanced-algorithms/rust/src/scheduling/e_p1_sum_wu.rs)
+    - [F. $1 | \text{prec} | f_{\max}$](advanced-algorithms/kotlin/src/fP1PrecFMax.kt)
+    - [G. $R_2 || C_{\max}$](advanced-algorithms/kotlin/src/gR2CMax.kt)
+    - [H. $1 | \text{prec}; \text{pmtn}; r_i | f_{\max}$](advanced-algorithms/kotlin/src/h1PrecPmtnRFMax.kt)
+    - [J. $P_1 | p_1 = 1 |\sum U_i$](advanced-algorithms/kotlin/src/jP1P1SumU.kt)
+    - [K. $P_2 | \text{prec}; p_i = 1 | L_{\max}$](advanced-algorithms/rust/src/scheduling/k_p2_prec_p1_l_max.rs)
+    - [L. $P | \text{intree}; p_i = 1 | L_{\max}$](advanced-algorithms/kotlin/src/lPIntreeP1LMax.kt)
+    - [M. $R || \sum C_i$](advanced-algorithms/cplusplus/m_r_sum_c.cpp)
+    - [N. $F_2 || C_{\max}$](advanced-algorithms/rust/src/scheduling/n_f2_c_max.rs)
+    - [O. $Q || \sum C_i$](advanced-algorithms/rust/src/scheduling/o_q_sum_c.rs)
+
 ## [Bioinformatics](https://github.com/nothingelsematters/bioinformatics)
 
 ![Rust]

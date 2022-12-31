@@ -1,0 +1,11 @@
+[package]
+name = "advanced-algorithms"
+version = "0.1.0"
+authors = ["Simon Naumov <daretoodefy@gmail.com>"]
+edition = "2021"
+
+[dependencies]
+text_io = "0.1"
+
+[dev-dependencies]
+maplit = "1.0.2"
