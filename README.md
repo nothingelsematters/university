@@ -1,10 +1,11 @@
 # ITMO University Computer Science course homeworks
 
-[Rust]: https://img.shields.io/badge/Rust-grey?style=flat-square&logo=Rust
+[Rust]: https://img.shields.io/badge/Rust-grey?style=flat-square&logo=Rust&logoColor=crimson
 [JavaScript]: https://img.shields.io/badge/JavaScript-grey?style=flat-square&logo=JavaScript
 [Kotlin]: https://img.shields.io/badge/Kotlin-grey?style=flat-square&logo=Kotlin
 [Scala]: https://img.shields.io/badge/Scala-grey?style=flat-square&logo=Scala
-[Haskell]: https://img.shields.io/badge/Haskell-grey?style=flat-square&logo=Haskell
+[Haskell]: https://img.shields.io/badge/Haskell-grey?style=flat-square&logo=Haskell&logoColor=deeppink
+[Ocaml]: https://img.shields.io/badge/Ocaml-grey?style=flat-square&logo=Ocaml
 [Perl]: https://img.shields.io/badge/Perl-grey?style=flat-square&logo=Perl
 [Python]: https://img.shields.io/badge/Python-grey?style=flat-square&logo=Python
 [C++]: https://img.shields.io/badge/C%2B%2B-grey?style=flat-square&logo=C%2B%2B
@@ -28,6 +29,12 @@
   - [Reconstruct a String from its Paired Composition](https://github.com/nothingelsematters/bioinformatics/tree/main/src/paired_composition_reconstruction.rs)
   - [Find a Median String](https://github.com/nothingelsematters/bioinformatics/tree/main/src/median_string.rs)
   - [Implement the Viterbi Algorithm](https://github.com/nothingelsematters/bioinformatics/tree/main/src/viterbi.rs)
+  - [Implement RandomizedMotifSearch](https://github.com/nothingelsematters/bioinformatics/tree/main/src/randomized_motif_search.rs)
+  - [Implement AdditivePhylogeny](https://github.com/nothingelsematters/bioinformatics/tree/main/src/additive_phylogeny.rs)
+  - [Pattern Matching with the Suffix Array](https://github.com/nothingelsematters/bioinformatics/tree/main/src/pattern_matching.rs)
+  - [Find All Approximate Occurrences of a Collection of Patterns in a String](https://github.com/nothingelsematters/bioinformatics/tree/main/src/approximate_occurancies.rs)
+  - [Find a Shortest Transformation of One Genome into Another by 2-Breaks](https://github.com/nothingelsematters/bioinformatics/tree/main/src/two_breaks_transform.rs)
+
 
 ## [Parallel Algorithms](https://github.com/nothingelsematters/parallel-algorithms)
 
@@ -281,6 +288,7 @@
 ## [Type Theory](type-theory)
 
 ![Haskell]
+![Ocaml]
 
 - **Semester**: 5
 - **Course by**: Dmitry Shtukenberg
